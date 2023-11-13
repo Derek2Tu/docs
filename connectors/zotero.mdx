@@ -1,0 +1,51 @@
+---
+title: 'Zotero'
+description: 'The Carbon Connect `enabledIntegrations` value for Zotero is `ZOTERO`.'
+---
+
+## Authorization Type
+
+Carbon uses **[OAuth 1.0](https://www.zotero.org/support/dev/web_api/v2/oauth)** to connect to Zotero.
+
+## Authorization Flow
+
+Log into your Zotero account. 
+![](https://i.ibb.co/sgnb9xC/Screen-Shot-2023-11-06-at-12-45-31-PM.png)
+
+Click the "Accept Defaults" button to grant us permission to access Zotero.
+![](https://i.ibb.co/sJbyWX7/Screen-Shot-2023-11-06-at-12-43-09-PM.png)
+
+Once clicking "Accept Defaults", all Zotero files are synced and you should see the following confirmation:
+![](https://i.ibb.co/HLvPWK8/Screen-Shot-2023-11-06-at-12-42-42-PM.png)
+
+## Configuration
+
+### Custom OAuth Credentials
+
+#### Setting up the OAuth App
+
+1. Create or log into your [Zotero](https://www.zotero.org/) Account.
+
+2. Click [here](https://www.zotero.org/oauth/apps) to set up your OAuth app.
+
+![](https://i.ibb.co/rs41H7N/Screen-Shot-2023-11-06-at-2-41-13-PM.png)
+
+3. Click "Register a New Application" and fill out the info below. Add https://api.carbon.ai/integrations/zotero as the `Callback URL`. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/zotero`.
+
+![](https://i.ibb.co/5nBwgWT/Screen-Shot-2023-11-06-at-12-51-59-PM.png)
+
+4. Copy and share the Client Key and Client Secret with Carbon.
+
+![](https://i.ibb.co/cTkv51s/Screen-Shot-2023-11-06-at-2-46-20-PM.png)
+
+## Functionality
+
+Carbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from Zotero.
+
+## Synchronization
+
+By default, Carbon syncs all attachments from your Zotero library along with the accompanying info as metadata.
+
+You can use the `resync_file` API endpoint to programmatically resync specific Zotero files. To delete Zotero files from Carbon, you can use the `deletefile` endpoint directly.
+
+We do not run our 24-hour batch sync for Zotero by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.

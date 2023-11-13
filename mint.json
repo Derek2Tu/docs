@@ -55,7 +55,12 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": ["introduction",
+        {
+          "group": "Carbon Connect",
+          "pages": ["react-component","js-sdk"]
+      }
+      ]
     },
     {
       "group": "Connectors",
@@ -67,6 +72,10 @@
         {
             "group": "File Formats",
             "pages": ["learn/text","learn/image","learn/audio"]
+        },
+        {
+          "group": "Webhooks",
+          "pages": ["learn/webhooks/introduction","learn/webhooks/event-types"]
         }
     ]
     },
@@ -90,13 +99,26 @@
       "group": "Files",
       "pages": [
         "api-reference/endpoint/files/create-upload-file",
+        "api-reference/endpoint/files/create-raw-text",
+        "api-reference/endpoint/files/create-upload-file-from-url",
         "api-reference/endpoint/files/user-files-v2",
         "api-reference/endpoint/files/delete-files-endpoint",
         "api-reference/endpoint/files/resync-file"
       ]
     },
     {
-      "group": "Data Sources",
+      "group": "Web Scrape",
+      "pages": [
+        "api-reference/endpoint/utilities/web-scrape",
+        "api-reference/endpoint/utilities/scrape-sitemap",
+        "api-reference/endpoint/utilities/fetch-urls",
+        "api-reference/endpoint/utilities/sitemap",
+        "api-reference/endpoint/utilities/fetch-youtube-transcripts",
+        "api-reference/endpoint/utilities/search-urls"
+      ]
+    },
+    {
+      "group": "Data Source",
       "pages": [
         "api-reference/endpoint/data-sources/revoke-access-token",
         "api-reference/endpoint/data-sources/user-data-sources"
@@ -110,9 +132,12 @@
       ]
     },
     {
-      "group": "Search",
+      "group": "Retrieval",
       "pages": [
-        "api-reference/endpoint/embeddings/embeddings"
+        "api-reference/endpoint/embeddings/embeddings",
+        "api-reference/endpoint/embeddings/retrieve-embeddings-and-content",
+        "api-reference/endpoint/files/parsed-file",
+        "api-reference/endpoint/files/raw-file"
       ]
     },
     {

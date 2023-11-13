@@ -1,0 +1,110 @@
+---
+title: 'SharePoint'
+description: 'The Carbon Connect `enabledIntegrations` value for SharePoint is `SHAREPOINT`.'
+---
+
+## Authorization Type
+
+Carbon uses **[OAuth 2.0](https://learn.microsoft.com/en-us/onedrive/developer/rest-api/getting-started/msa-oauth?view=odsp-graph-online)** to connect to SharePoint.
+
+## Authorization Flow
+
+Enter your Sharepoint `tenant` and `site name`. For example, if the SharePoint site URL is `https://jasoncarbon.sharepoint.com/sites/carbon-dev`, `jasoncarbon` is the tenant and `carbon-dev` is the site name.
+
+![](https://i.ibb.co/sgW9vfQ/Screen-Shot-2023-10-24-at-11-45-21-AM.png)
+
+Log into your Microsoft SharePoint account.
+![](https://i.ibb.co/86FPknL/Screen-Shot-2023-08-31-at-4-41-48-PM.png)
+
+Click the "Confirm" button to grant us permission to access SharePoint.
+![](https://i.ibb.co/x6L7knS/Screen-Shot-2023-10-24-at-11-45-27-AM.png)
+
+Once clicking "Confirm", you will be taken through a flow to grant permissions.
+![](https://i.ibb.co/HTqCBVR/Screen-Shot-2023-10-24-at-1-00-08-PM.png)
+
+Click the "Select Files from SharePoint" button to open up the SharePoint file selector.
+![](https://i.ibb.co/6tn24b3/Screen-Shot-2023-10-24-at-1-00-20-PM.png)
+
+Click "Select" after selecting files to grant Carbon access to files.
+![](https://i.ibb.co/WVTwT9P/Screen-Shot-2023-10-24-at-11-45-39-AM.png)
+
+You'll see a screen confirming that your files have been added.
+![](https://i.ibb.co/nwSRcSS/Screen-Shot-2023-10-24-at-11-45-11-AM.png)
+
+## Configuration
+
+### Custom OAuth Credentials
+
+#### Setting up the OAuth App
+
+1. Create or log into your [Microsoft Azure](https://portal.azure.com/) Account.
+
+2. Under `Azure Services`, select `App Registration` -> `New registration`.
+
+![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)
+
+3. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.
+
+![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)
+
+4. Add https://api.carbon.ai/integrations/onedrive and https://api.carbon.ai/integrations/sharepoint to `Redirect URI` and select `Web` under the `Select a platform` dropdown. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain paths must still be `/integrations/onedrive` and `/integrations/sharepoint`.
+
+![](https://i.ibb.co/9NTZycz/Screen-Shot-2023-09-08-at-2-59-16-PM.png)
+
+5. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `offline_access`, `openid`, and `User.Read`.
+
+![](https://i.ibb.co/VTGK90Z/Onedrive-1.png)
+
+6. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.
+
+![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)
+
+7. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.
+
+![](https://i.ibb.co/KGWzr1H/Screen-Shot-2023-09-12-at-11-14-08-PM.png)
+
+8. Customize your app branding under `Manage` -> `Branding & properties`.
+
+![](https://i.ibb.co/HrS9Cxj/Screen-Shot-2023-09-08-at-3-24-16-PM.png)
+
+#### Setting up the File Picker UI
+
+1. Under `Azure Services`, select `App Registration` -> `New registration`.
+
+![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)
+
+2. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.
+
+![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)
+
+3. Under the `Authentication` tab, select `Add a Platform` -> `Single Page Application`. 
+
+![](https://i.ibb.co/nLDdQfP/Screen-Shot-2023-09-13-at-3-03-00-PM.png)
+
+4. For the `Redirect URI` of the `Single Page Application`, you can use https://api.carbon.ai/static/loading.html or add a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/static/loading.html`.
+
+![](https://i.ibb.co/0X5Nkz7/Screen-Shot-2023-09-13-at-3-13-53-PM.png)
+
+5. Under the `Authentciation`'s `Implicit grant and hybrid flows` section, check `Access tokens (used for implicit flows)` and `ID tokens (used for implicit and hybrid flows)`.
+
+![](https://i.ibb.co/ckVKZgV/Screen-Shot-2023-09-13-at-3-17-44-PM.png)
+
+6. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `Sites.Read.All`, `User.Read`, `AllSites.Read`, and `MyFiles.Read`.
+
+![](https://i.ibb.co/xjtvKTg/Screen-Shot-2023-09-13-at-3-22-12-PM.png)
+
+7. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.
+
+![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)
+
+8. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.
+
+## Functionality
+
+Carbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from SharePoint.
+
+## Synchronization
+
+Syncs are triggered when end-users select files to upload via the SharePoint file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific SharePoint files. To delete SharePoint files from Carbon, you can use the `deletefile` endpoint directly.
+
+We do not run our 24-hour batch sync for SharePoint by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.

@@ -1,0 +1,36 @@
+---
+title: "Event Types"
+---
+
+
+### File Processing
+
+We currently support the following webhook events for file processing:
+1. `FILE_READY`
+    - Sent after a file has been fully processed and added to Carbon.
+2. `FILE_ERROR`
+    - Sent if there was an error during the file processing stage. If an error occurred, the file is requeued for reprocessing
+    up to three times.
+3. `FILE_DELETED`
+    - Sent if a file has been successfully deleted.
+4. `RATE_LIMIT_ERROR`
+    - Sent if the organization has reached the rate limit for file processing. In this case, the file is requeued for reprocessing
+    up to three times.
+
+These are sent *after* a file has been processed.
+
+### Data Source Connections
+
+We currently support the following webhook events for managing user connections to data sources:
+
+1. `ADD` 
+    - This event is fired when a user authenticates their account for a specific data source for the first time.
+
+2. `UPDATE` 
+    - This event is fired when a user selects one or more files for a particular data source. This event is fired once per file selection confirmation, regardless of how many files are selected.
+
+3. `CANCEL` 
+    - This event is fired when a user cancels the authentication flow. It's important to note that this event cannot capture tab-close events, so directly closing a tab is not within our tracking capabilities.
+
+4. `REVOKE`
+    - This event is triggered when a user's data source connection is revoked via the `/revoke_access_token` endpoint.

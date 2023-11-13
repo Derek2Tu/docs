@@ -1,0 +1,77 @@
+---
+title: 'Box'
+description: 'The Carbon Connect `enabledIntegrations` value for Box is `BOX`.'
+---
+
+## Authorization Type
+
+Carbon uses **[OAuth 2.0](https://developer.box.com/guides/authentication/oauth2/)** to connect to Box.
+
+## Authorization Flow
+
+Log into your Box account.
+
+![](https://i.ibb.co/8gGpBdg/Screen-Shot-2023-09-08-at-1-34-42-PM.png)
+
+Click the "Select Files from Box" button to open up the Box file selector.
+![](https://i.ibb.co/K55H1rp/Screen-Shot-2023-09-08-at-1-38-15-PM.png)
+
+Click the checkmark after selecting files to grant Carbon access to files.
+
+*Limitations*: You can currently only upload individual file(s) via Box's file selector. If you'd like the ability the upload entire folders, please reach out to us on Slack. 
+
+![](https://i.ibb.co/Zz2pDPm/Screen-Shot-2023-09-08-at-1-33-30-PM.png)
+
+You'll receive a confirmation that your file(s) has been uploaded.
+
+![](https://i.ibb.co/ZTZQw03/Screen-Shot-2023-09-08-at-2-03-48-PM.png)
+
+
+## Configuration
+
+### Custom OAuth Credentials
+
+1. Sign up for an account under [Box Developer](https://developer.box.com/).
+
+2. Go to `My Apps`, then `Create New App` -> `Choose Custom App`.
+
+![](https://i.ibb.co/cQw41M9/Screen-Shot-2023-09-08-at-2-12-34-PM.png)
+
+2. Fill out the app details in the modal that opens.
+
+![](https://i.ibb.co/TPJpqny/Screen-Shot-2023-09-08-at-2-14-32-PM.png)
+
+3. Select User Auth with OAuth 2.0 in the following step.
+
+![](https://i.ibb.co/Hr3SJJ8/Screen-Shot-2023-09-08-at-2-20-26-PM.png)
+
+4. In the `Configuration` tab copy and paste the `Client ID` and `Client Secret` and share it with us.
+
+![](https://i.ibb.co/1mm1PWM/Screen-Shot-2023-09-08-at-2-22-53-PM.png)
+
+5. Add https://api.carbon.ai/integrations/box as a `Redirect URIs` and https://api.carbon.ai as a `CORS Domains`
+
+![](https://i.ibb.co/374946D/Screen-Shot-2023-09-08-at-2-30-28-PM.png)
+![](https://i.ibb.co/HdtDqfd/Screen-Shot-2023-09-08-at-2-31-14-PM.png)
+
+7. For scopes, select `Read all files and folders stored in Box` and `Write all files and folders stored in Box`.
+
+![](https://i.ibb.co/9wRrqKX/Screen-Shot-2023-09-08-at-2-27-44-PM.png)
+
+8. In the `App Center` tab, you can edit your branding.
+
+![](https://i.ibb.co/GsHQq2g/Screen-Shot-2023-09-08-at-2-34-26-PM.png)
+
+9. Once you're ready, you can also submit your app for approval.
+
+![](https://i.ibb.co/XVg2skh/Screen-Shot-2023-09-08-at-2-37-05-PM.png)
+
+## Functionality
+
+Carbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `tsv`, `xlsx`, `jpeg` and `md` files directly from Box.
+
+## Synchronization
+
+Syncs are triggered when end-users select files to upload via the Box file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific Box files. To delete Box files from Carbon, you can use the `deletefile` endpoint directly.
+
+We do not run our 24-hour batch sync for Box by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.
