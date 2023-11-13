@@ -75,7 +75,7 @@
     },
     {
       "group": "Health",
-      "pages": ["health/health"]
+      "pages": ["api-reference/endpoint/health/health"]
     },
     {
       "group": "Auth",
