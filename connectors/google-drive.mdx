@@ -1,0 +1,72 @@
+---
+title: 'Google Drive'
+description: 'The Carbon Connect `enabledIntegrations` value for Google Drive is `GOOGLE_DRIVE`.'
+---
+
+Google Slides, Google Docs and Google Sheets are supported with our Google Drive integration, along with regular text, audio and image files.
+
+## Authorization Type
+
+Carbon uses **[OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)** to connect to Google workspace.
+
+## Authorization Flow
+
+**Carbon's Google Drive integration is still pending approval from Google. In the meantime, end users are required to take a couple additional steps to connect their accounts (see gif below).**
+
+![](https://files.readme.io/19f57f6-Carbon_-_Google_OAuth_Flow.gif)
+
+Log into your Google Drive account.
+![](https://i.ibb.co/wQsyjrV/Screen-Shot-2023-08-11-at-2-04-49-PM.png)
+
+Once you've successfully authenticated your account, you can select files directly.
+![](https://i.ibb.co/wYs9Xbp/image.png)
+
+Click \"Select\" after selecting files to grant Carbon access to files.
+![](https://i.ibb.co/1fSzKHS/image.png)
+
+
+## Configuration
+
+### Custom OAuth Credentials
+
+1. Go to `APIs and Services` > `Enabled APIs and Services` in your Google Cloud console, then click on the button titled `ENABLE APIS AND SERVICES` and enable `Google Drive API` and `Google Picker API`.
+2. Then create an `OAuth Client ID` in the `Credentials section` under `Google Drive API`. Select `Web Application` as the Application type and give it an identifiable name for your reference.
+
+![](https://files.readme.io/e7f42e5-image.png)
+
+3. Add [https://api.carbon.ai](https://api.carbon.ai) as the `Authorized JS origin` and [https://api.carbon.ai/integrations/google](https://api.carbon.ai/integrations/google) as an `Authorized redirect URI`.
+
+![](https://files.readme.io/60d16d3-image.png)
+
+4. Save the credentials. Download the credentials.json file once you save the OAuth Client ID data and share the file with Carbon.
+
+![](https://files.readme.io/f265775-image.png)
+
+5. Then create an `API key` in the `Credentials section` under `Google Picker API`. Restrict the application to websites and then add [https://api.carbon.ai](https://api.carbon.ai/) to the list under website restrictions. For `API Restrictions`, pick `Restrict key` and select `Google Picker API` from the list.
+
+6. Save the API key. Copy the API key and share it with Carbon.
+
+7. Configure your consent screen in the OAuth Consent Screen. Provide your **App name**, **support email address**, and **brand logo**. Add [carbon.ai](http://carbon.ai/) to `Authorized domain`.
+
+![](https://files.readme.io/33ebd01-image.png)
+
+![](https://files.readme.io/6d7f247-image.png)
+
+
+8. Click on `Add or Remove Scopes` button to add the following scopes: `userinfo.profile`, `userinfo.email`, `drive.readonly`, `drive.metadata.readonly`
+
+![](https://files.readme.io/6649d66-image.png)
+![](https://i.ibb.co/PNRnYwV/Screen-Shot-2023-08-11-at-2-11-51-PM.png)
+
+9. If you wish to add test users, you can do so. These users will not see the "App is unverified" notification. Other users will see this alert.
+10. Click `Publish App` to make this app available to your end-users.
+
+![](https://files.readme.io/d24c355-image.png)
+
+## Synchronization
+
+Syncs are triggered when end-users add or remove Google Drive files and folders via the Google Drive picker. When a user selects a folder to be synced, we auto-sync all files added to the folder as well.
+
+You can use the `resync_file` API endpoint to programmatically resync specific Google Drive files.
+
+In addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.

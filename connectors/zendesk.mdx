@@ -1,0 +1,58 @@
+---
+title: 'Zendesk'
+description: 'The Carbon Connect `enabledIntegrations` value for Zendesk is `ZENDESK`.'
+---
+
+## Authorization Type
+
+Carbon uses **[OAuth 2.0](https://developers.Zendesk.com/building-apps/docs/setting-up-oauth)** to connect to Zendesk workspaces.
+
+## Authorization Flow
+
+![](https://i.ibb.co/Zc1sh5Q/Screen-Shot-2023-09-14-at-5-25-02-PM.png)
+
+![](https://i.ibb.co/DKqsbFC/Screen-Shot-2023-09-14-at-10-40-28-AM.png)
+
+![](https://i.ibb.co/Vw6bF82/Screen-Shot-2023-09-14-at-10-37-47-AM.png)
+
+## Functionality
+
+Carbon syncs all `Published` articles under a single Zendesk workspace. Any `Draft` article won't be synced. We currently support only having a single Zendesk workspace connected per `customer_id`.
+
+## Configuration
+
+### Custom OAuth Credentials
+
+1. In Admin Center, click the `Apps and integrations` icon and then in the sidebar, select `APIs` > `Zendesk` APIs.
+
+![](https://i.ibb.co/3cXNwRj/Screen-Shot-2023-09-14-at-9-05-14-AM.png)
+
+![](https://i.ibb.co/wzvZ9jS/Screen-Shot-2023-09-13-at-5-08-26-PM.png)
+
+2. Click the `OAuth Clients` tab on the Zendesk API page, and then click `Add OAuth client` on the right side of the OAuth client list.
+
+![](https://i.ibb.co/djnzwcx/Screen-Shot-2023-09-13-at-5-06-46-PM.png)
+
+3. Complete the following fields to create a client:
+- Client Name - Enter a name for your app. This is the name that users will see when asked to grant access to your application, and when they check the list of third-party apps that have access to their Zendesk.
+Description - Optional. This is a short description of your app that users will see when asked to grant access to it.
+- Company - Optional. This is the company name that users will see when asked to grant access to your application. The information can help them understand who they're granting access to.
+- Logo - Optional. This is the logo that users will see when asked to grant access to your application. The image can be a JPG, GIF, or PNG. For best results, upload a square image. It will be resized for the authorization page.
+- Unique Identifier - The field is auto-populated with a reformatted version of the name you entered for your app. You can change it if you want.
+- Redirect URLs - Enter https://api.carbon.ai/integrations/zendesk here. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/zendesk`.
+
+![](https://i.ibb.co/yPqPzbD/Screen-Shot-2023-09-13-at-5-15-35-PM.png)
+
+4. Click Save. After the page refreshes, a new pre-populated Secret field appears on the lower side. This is the `client_secret` value specified in the OAuth2 spec. Send us the `client_secret` value over Slack.
+6. Copy the Secret value to your clipboard and save it somewhere safe. Note: The characters may extend past the width of the text box, so make sure to select everything before copying.
+
+![](https://i.ibb.co/Db8TQDJ/Screen-Shot-2023-09-13-at-5-21-34-PM.png)
+
+7. Copy the `Unique Identifier` of the OAuth app and share that value over Slack as well.
+8. In order for us to white-label your OAuth app, you need to request approval first to convert the app from a **local OAuth client** to **global OAuth client**. You can follow the instructions [here](https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client) to do so.
+
+## Synchronization
+
+Syncs are triggered when end-users add or remove pages via the Zendesk OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Zendesk files.
+
+In addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.

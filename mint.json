@@ -1,17 +1,17 @@
 {
   "$schema": "https://api.carbon.ai/openapi.json",
-  "name": "Starter Kit",
+  "name": "Carbon",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#9563FF",
+    "primary": "#FFFFFF",
     "light": "#AE87FF",
     "dark": "#0D001D",
     "background": {
-      "dark": "#090014"
+      "dark": "#000000"
     },
     "anchors": {
       "from": "#FF7F57",
@@ -21,7 +21,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:team@carbon.ai"
     }
   ],
   "topbarCtaButton": {
@@ -57,20 +57,69 @@
       "pages": ["introduction", "quickstart", "development"]
     },
     {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "group": "Connectors",
+      "pages": ["connectors/google-drive", "connectors/sharepoint", "connectors/onedrive", "connectors/dropbox", "connectors/box","connectors/intercom","connectors/notion","connectors/websites","connectors/zendesk","connectors/zotero","connectors/gmail","connectors/confluence","connectors/slack"]
+    },
+    {
+      "group": "Learn",
+      "pages": [
+        {
+            "group": "File Formats",
+            "pages": ["learn/text","learn/image","learn/audio"]
+        }
+    ]
     },
     {
       "group": "API Documentation",
       "pages": ["api-reference/authentication"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Health",
+      "pages": ["api-reference/endpoint/health/health"]
+    },
+    {
+      "group": "Auth",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/auth/get-access-token",
+        "api-reference/endpoint/auth/refresh-access-token",
+        "api-reference/endpoint/auth/get-white-labeling"
+      ]
+    },
+    {
+      "group": "Files",
+      "pages": [
+        "api-reference/endpoint/files/create-upload-file",
+        "api-reference/endpoint/files/user-files-v2",
+        "api-reference/endpoint/files/delete-files-endpoint",
+        "api-reference/endpoint/files/resync-file"
+      ]
+    },
+    {
+      "group": "Data Sources",
+      "pages": [
+        "api-reference/endpoint/data-sources/revoke-access-token",
+        "api-reference/endpoint/data-sources/user-data-sources"
+      ]
+    },
+    {
+      "group": "Tags",
+      "pages": [
+        "api-reference/endpoint/files/create-file-tags",
+        "api-reference/endpoint/files/delete-file-tags"
+      ]
+    },
+    {
+      "group": "Search",
+      "pages": [
+        "api-reference/endpoint/embeddings/embeddings"
+      ]
+    },
+    {
+      "group": "Webhooks",
+      "pages": [
+        "api-reference/endpoint/webhooks/add-webhook-url",
+        "api-reference/endpoint/webhooks/webhook-urls",
+        "api-reference/endpoint/webhooks/delete-webhook-url"
       ]
     }
   ],

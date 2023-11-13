@@ -5,45 +5,70 @@ description: "Welcome to the home of your new documentation"
 
 <img
   className="block dark:hidden"
-  src="/images/hero-light.svg"
+  src="http://cdn.mcauto-images-production.sendgrid.net/3b277c940596d872/33ed03b3-3f38-485c-a51c-8925f14a7441/1780x1252.png"
   alt="Hero Light"
 />
 <img
   className="hidden dark:block"
-  src="/images/hero-dark.svg"
+  src="http://cdn.mcauto-images-production.sendgrid.net/3b277c940596d872/33ed03b3-3f38-485c-a51c-8925f14a7441/1780x1252.png"
   alt="Hero Dark"
 />
 
-## Setting up
+## What is Carbon?
 
-The first step to world-class documentation is setting up your editing environnments.
+Carbon provides a comprehensive framework designed to streamline the process of connecting external data sources to Large Language Models (LLMs). 
+
+The Carbon search model is purpose-built for Large Language Models (LLMs) because of its fully neural architecture, enabling natural language querying across indexed documents from external data sources. In cases where vector (or neural) search isn't optimal, Carbon also supports keyword-based searches.
+
+Carbon simplifies the process of **retrieval augmented generation** (RAG), allowing you to spend more time using your data, and less time trying to ingest it.
+
+## How Carbon Works
+
+Use **[Carbon Connect](https://api.carbon.ai/redoc#tag/Carbon-Connect)** to connect to your users' data sources and then our **Universal API** to retrieve the data to use with LLMs. Carbon has native integrations with 10+ data sources and supports more than 20+ file formats, encompassing text, audio, and visual data.
+
+Depending on your use case and in-house infrastructure, you can retrieve user data from Carbon in several formats: 
+
+- Parsed plaintext files
+- Embeddings (and chunks) to store in your vector store
+- Direct semantic and keyword search against Carbon's managed vector database
+
+## Products
+
+### 🔗 Connect
+
+A client-side component for users to connect data sources such as Notion, Google Drive, Dropbox, OneDrive, websites, and file uploads. Available as a React component, JavaScript SDK, and soon as a magic link. 
+
+Carbon handles OAuth flows for 10+ sources, transforms the source data, and automates data synchronization.
+
+### 🗄️ Store
+
+Choose between Carbon's managed vector database (hosted on Qdrant Cloud) or your storage solution. The database updates as users modify connected sources and manage chunks alongside embeddings.
+
+### 🔌 Universal API
+
+Access and manage data (documents, chunks, vectors, etc.) from any source using our flexible API suite. Apply custom metadata filters to objects for tailored data retrieval.
+
+## Setup
+
+---
+
+### 🔑 Getting a Carbon API Key
+
+Carbon is free to use up to the first 20 million characters. 
+Book a 15 minute onboarding to get an API key [here](https://cal.com/carbon-ai/15min).
+
+### 🔗 Helpful Links
+To get started with Carbon, follow our guides:
+
+- [Installing Carbon Connect](https://api.carbon.ai/redoc#tag/Carbon-Connect)
+- [Integrating Data Sources](https://api.carbon.ai/redoc#tag/Data-Sources)
+
 
 <CardGroup cols={2}>
   <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
-
-## Make it yours
-
-Update your docs to your brand and add valuable content for the best user conversion.
-
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
+    title="Carbon Connect"
     icon="palette"
-    href="https://mintlify.com/docs/settings/global"
+    href="https://api.carbon.ai/redoc#tag/Carbon-Connect"
   >
     Customize your docs to your company's colors and brands
   </Card>
@@ -55,17 +80,10 @@ Update your docs to your brand and add valuable content for the best user conver
     Automatically generate endpoints from an OpenAPI spec
   </Card>
   <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
+    title="Data Sources"
+    icon="plug"
     href="https://mintlify.com/docs/components/accordion"
   >
     Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/showcase"
-  >
-    Check out our showcase of our favorite documentation
   </Card>
 </CardGroup>

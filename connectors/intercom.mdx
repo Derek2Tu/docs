@@ -1,0 +1,53 @@
+---
+title: 'Intercom'
+description: 'The Carbon Connect `enabledIntegrations` value for Intercom is `INTERCOM`.'
+---
+
+## Authorization Type
+
+Carbon uses **[OAuth 2.0](https://developers.intercom.com/building-apps/docs/setting-up-oauth)** to connect to Intercom workspaces.
+
+## Authorization Flow
+
+![](https://files.readme.io/d72b15d-image.png)
+
+![](https://files.readme.io/c2825e3-image.png)
+
+## Functionality
+
+Carbon syncs all `Published` articles under a single Intercom workspace. Any `Draft` article won't be synced. We currently support only having a single Intercom workspace connected per `customer_id`.
+
+## Configuration
+
+### Custom OAuth Credentials
+
+1. After you create or log into your [Intercom Developer](https://developers.intercom.com/) account, click `New App` to create your own app.
+
+![](https://i.ibb.co/Y3Nmh4r/Screen-Shot-2023-09-11-at-5-06-46-PM.png)
+
+2. Under the `Authentication` tab, click `Edit` -> `Use OAuth` -> `Add redirect URL` and then enter https://api.carbon.ai/integrations/intercom.
+
+![](https://i.ibb.co/pfzG9VJ/Screen-Shot-2023-09-11-at-5-17-47-PM.png)
+
+3. Under the `Authentication` tab, click `Edit` and then add permissions for `Read one admin`, `Read and List Articles`, and `Read and Write Articles`. You can remove access to the other permissions.
+
+![](https://i.ibb.co/L9BxJFK/Screen-Shot-2023-09-11-at-5-21-01-PM.png)
+
+4. Under the `Basic Info` tab, share the `Client ID` and `Client secret` with us via Slack.
+
+![](https://i.ibb.co/wCnVcQq/Screen-Shot-2023-09-11-at-5-25-39-PM.png)
+
+5. Under the `Basic Info` tab, add an `App icon` and `App name`.
+
+![](https://i.ibb.co/HqS9bhk/Screen-Shot-2023-09-11-at-5-47-31-PM.png)
+
+6. Click `Test and publish` -> `Submit for review` and fill in the details require to publish your app. After your app is approved, then we can enable the white labeling.
+
+![](https://i.ibb.co/Cm0xWBF/Screen-Shot-2023-09-11-at-5-51-09-PM.png)
+
+
+## Synchronization
+
+Syncs are triggered when end-users add or remove pages via the Intercom OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Intercom files.
+
+In addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.
