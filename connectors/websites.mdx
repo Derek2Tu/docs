@@ -2,3 +2,17 @@
 title: 'Websites'
 description: 'The Carbon Connect enabledIntegrations value for websites is `WEB_SCRAPE`.'
 ---
+
+## Functionality
+
+Our web scraper executes Puppeteer jobs on a full-featured Chromium web browser, enabling the scraping of dynamic content through client-side JavaScript. This robust approach ensures effective handling of websites with interactive and dynamically rendered content.
+
+Carbon's web scraper supports recursive scraping, allowing for a depth-first exploration of web pages. 
+
+To enhance anonymity and avoid detection, each request is associated with a different IP address, and we regularly rotate these IPs upon detection of potential flags. This strategy helps maintain a discreet and resilient scraping process.
+
+## Synchronization
+
+Syncs are triggered when end-users re-submits an URL via the `web_scrape` endpoint or Carbon Connect. You can also use the `resync_file` API endpoint to programmatically resync specific web pages. To delete websites from Carbon, you can use the `delete_files` endpoint directly.
+
+We do not run our 24-hour batch sync for web scrapes by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.
