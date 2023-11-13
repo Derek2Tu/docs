@@ -1,0 +1,19 @@
+We use DeepGram's [Nova](https://deepgram.com/learn/nova-speech-to-text-whisper-api) model to transcribe audio to text and then the text is embedded via OpenAI's `text-embedding-ada-002` model.
+
+The audio file is stored as the raw file (`raw_file`) and the text transcript is stored as the parsed file (`parsed_text_file`).
+
+Carbon supports the following audio files:
+
+- `mp3`
+- `mp4`
+- `mp2`
+- `aac`
+- `wav`
+- `flac`
+- `pcm`
+- `m4a`
+- `ogg`
+- `opus`
+- `webm`
+
+
