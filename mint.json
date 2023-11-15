@@ -71,7 +71,9 @@
         {
           "group": "Webhooks",
           "pages": ["learn/webhooks/introduction","learn/webhooks/event-types"]
-        }
+        },
+        "learn/filtering"
+      
     ]
     },
     {
