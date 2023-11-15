@@ -102,6 +102,10 @@
       ]
     },
     {
+      "group": "User",
+      "pages": ["api-reference/endpoint/user/user"]
+    },
+    {
       "group": "Web Scrape",
       "pages": [
         "api-reference/endpoint/utilities/web-scrape",
