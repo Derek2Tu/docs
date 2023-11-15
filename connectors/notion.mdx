@@ -17,6 +17,39 @@ Carbon uses **[OAuth 2.0](https://developers.notion.com/docs/authorization)** to
 
 Carbon enables end-users to select top-level pages for synchronization and automatically syncs all sub-pages. For instance, a top-level Company page may contain sub-pages for **`Company Benefits`** and **`PTO Policy`**. Once the end-user selects the Company page in the Authorization flow, Carbon automatically includes the sub-pages **`Company Benefits`** or **`PTO Policy`** to be synced.
 
+## Configuration
+
+### Custom OAuth Credentials
+
+1. After you log into your Notion workspace, click [here](https://www.notion.so/my-integrations) to navigate to the "My Integrations" page.
+
+2. Click the "+ New Integration" button to create your OAuth app.
+
+3. Enter the name for your app and upload an logo image. Click "Submit" afterwards.
+
+![](https://i.ibb.co/WDdJt86/Screen-Shot-2023-11-15-at-9-27-56-AM.png)
+
+4. Navigate to the "Capabilities" tab and select "Read Content" and "Read user information including email address".
+
+![](https://i.ibb.co/x3Q50HG/Screen-Shot-2023-11-15-at-9-29-29-AM.png)
+
+5. Navigate to the "Distribution" tab and enable the app as a public integration.
+
+![](https://i.ibb.co/1ZbV2Xb/Screen-Shot-2023-11-15-at-9-29-14-AM.png)
+
+6. Once the app is enabled as a public integration, enter your organization information.
+
+![](https://i.ibb.co/w6rCpq9/Screen-Shot-2023-11-15-at-10-03-07-AM.png)
+
+7. Add https://api.carbon.ai/integrations/notion as the "Redirect URIs". You can use a custom CNAME record pointing to https://api.carbon.ai but the domain path must still be /integrations/notion.
+
+![](https://i.ibb.co/N6gDtpD/Screen-Shot-2023-11-15-at-10-03-27-AM.png)
+
+8. Share the "OAuth client ID", "OAuth client secret" and "Authorization URL" with us under the "Secrets" tab.
+
+![](https://i.ibb.co/0hRk4Zh/Screen-Shot-2023-11-15-at-11-03-12-AM.png)
+
+
 ## Synchronization
 
 Syncs are triggered when end-users add or remove pages via the Notion OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Notion files.
@@ -24,3 +57,4 @@ Syncs are triggered when end-users add or remove pages via the Notion OAuth flow
 In addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs. 
 
 When a user adds a nested page or database record under a selected Notion page, we auto-sync those documents as well.
+
