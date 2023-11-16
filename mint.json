@@ -66,14 +66,20 @@
       "pages": [
         {
             "group": "File Formats",
-            "pages": ["learn/text","learn/image","learn/audio"]
+            "pages": ["learn/files/text","learn/files/image","learn/files/audio"]
         },
         {
           "group": "Webhooks",
           "pages": ["learn/webhooks/introduction","learn/webhooks/event-types"]
         },
-        "learn/filtering"
-      
+        {
+          "group": "Filtering",
+          "pages": ["learn/webhooks/filtering"]
+        },
+        {
+          "group": "Customize",
+          "pages": ["learn/customize/whitelabel"]
+        }
     ]
     },
     {
