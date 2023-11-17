@@ -159,6 +159,7 @@
   "integrations": {
     "intercom": "l838si0h"
   },
+  "feedback.thumbsRating": true,
   "footerSocials": {
     "twitter": "https://twitter.com/mintlify",
     "github": "https://github.com/mintlify",
