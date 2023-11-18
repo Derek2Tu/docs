@@ -50,45 +50,78 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction",
+      "pages": [
+        "introduction",
         {
           "group": "Carbon Connect",
-          "pages": ["react-component","js-sdk"]
-      }
+          "pages": [
+            "react-component",
+            "js-sdk"
+          ]
+        }
       ]
     },
     {
       "group": "Connectors",
-      "pages": ["connectors/google-drive", "connectors/sharepoint", "connectors/onedrive", "connectors/dropbox", "connectors/box","connectors/intercom","connectors/notion","connectors/websites","connectors/zendesk","connectors/zotero","connectors/gmail","connectors/confluence","connectors/slack"]
+      "pages": [
+        "connectors/google-drive",
+        "connectors/sharepoint",
+        "connectors/onedrive",
+        "connectors/dropbox",
+        "connectors/box",
+        "connectors/intercom",
+        "connectors/notion",
+        "connectors/websites",
+        "connectors/zendesk",
+        "connectors/zotero",
+        "connectors/gmail",
+        "connectors/confluence",
+        "connectors/slack"
+      ]
     },
     {
       "group": "Learn",
       "pages": [
         {
-            "group": "File Formats",
-            "pages": ["learn/files/text","learn/files/image","learn/files/audio"]
+          "group": "File Formats",
+          "pages": [
+            "learn/files/text",
+            "learn/files/image",
+            "learn/files/audio"
+          ]
         },
         {
           "group": "Webhooks",
-          "pages": ["learn/webhooks/introduction","learn/webhooks/event-types"]
+          "pages": [
+            "learn/webhooks/introduction",
+            "learn/webhooks/event-types"
+          ]
         },
         {
           "group": "Filtering",
-          "pages": ["learn/webhooks/filtering"]
+          "pages": [
+            "learn/webhooks/filtering"
+          ]
         },
         {
           "group": "Customize",
-          "pages": ["learn/customize/whitelabel"]
+          "pages": [
+            "learn/customize/whitelabel"
+          ]
         }
-    ]
+      ]
     },
     {
       "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
+      "pages": [
+        "api-reference/authentication"
+      ]
     },
     {
       "group": "Health",
-      "pages": ["api-reference/endpoint/health/health"]
+      "pages": [
+        "api-reference/endpoint/health/health"
+      ]
     },
     {
       "group": "Auth",
@@ -111,7 +144,9 @@
     },
     {
       "group": "User",
-      "pages": ["api-reference/endpoint/user/user"]
+      "pages": [
+        "api-reference/endpoint/user/user"
+      ]
     },
     {
       "group": "Web Scrape",
