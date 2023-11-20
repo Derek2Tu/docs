@@ -127,11 +127,7 @@
     {
       "group": "User",
       "pages": [
-<<<<<<< HEAD
-        "api-reference/endpoint/user/user-endpoint"
-=======
         "api-reference/user/user-endpoint"
->>>>>>> joshcolts18/main
       ]
     },
     {
