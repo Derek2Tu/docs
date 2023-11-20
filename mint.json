@@ -1,5 +1,6 @@
 {
   "$schema": "https://api.carbon.ai/openapi.json",
+  "openapi": "https://api.carbon.ai/openapi.json",
   "name": "Carbon",
   "logo": {
     "dark": "/logo/dark.svg",
