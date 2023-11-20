@@ -1,4 +1,70 @@
 ---
 title: 'Confluence'
-description: ''
+description: 'The Carbon Connect `enabledIntegrations` value for Confluence is `Confluence`.'
 ---
+
+## Authorization Type
+
+Carbon uses **[OAuth 2.0](https://developer.atlassian.com/server/confluence/confluence-oauth2-provider-api/)** to connect to Confluence.
+
+## Authorization Flow
+
+Enter the `subdomain` of your Confluence workspace. For example, if the Confluence workspace URL is `https://carbon-ai.confluence.com`, `carbon-ai` is the subdomain.
+![](https://i.ibb.co/0Byn2Ks/Screen-Shot-2023-11-20-at-2-07-22-PM.png)
+
+Login to authenticate your Confluence account.
+![](https://i.ibb.co/TvSKFG6/Screen-Shot-2023-11-20-at-2-22-08-PM.png)
+
+You should see the following confirmation screen once your account has been connected:
+![](https://i.ibb.co/bmX1Gk1/Screen-Shot-2023-11-20-at-2-07-11-PM.png)
+
+## Configuration
+
+### Syncing Confluence Pages
+
+We currently don't have a File Selector UI for Confluence (Coming Soon). In the meantime, you can retrieve all Confluence pages for each user using the `list` endpoint and specify specific files to sync via the `sync` endpoint.
+
+### Custom OAuth Credentials
+
+1. Sign up on [Confluence](https://developer.atlassian.com/console/myapps/).
+![](https://i.ibb.co/ZMYnyCm/Screen-Shot-2023-11-20-at-12-36-43-PM.png)
+
+2. Click "Create" and select "OAuth 2.0 integration".
+![](https://i.ibb.co/BrQ1ht0/Screen-Shot-2023-11-20-at-10-51-21-AM.png)
+
+3. Name your app and confirm creating the integration.
+![](https://i.ibb.co/8KtGvnm/Screen-Shot-2023-11-20-at-10-51-34-AM.png)
+
+4. In the "Permissions" tab, add the following scopes and permissions:
+
+- Add the "User identity API" scope and check the `read:me` permission.
+
+- Add "Confluence API" scope and, under "Granular scopes", check `read:page:confluence` and `read:space:confluence` permissions.
+
+![](https://i.ibb.co/MfWt5qW/Screen-Shot-2023-11-20-at-12-39-30-PM.png)
+
+5. In the "Authorization" tab, add https://api.carbon.ai/integrations/confluence to the `Callback URL`. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain paths must still be `/integrations/conflence`.
+
+![](https://i.ibb.co/N2ZYmbX/Screen-Shot-2023-11-20-at-10-54-17-AM.png)
+
+6. In the "Distribution" tab, set "Distribution Status" to "Sharing" and fill in the required details.
+![](https://i.ibb.co/tbcrr69/Screen-Shot-2023-11-20-at-11-55-57-AM.png)
+
+7. Confirm your app does store personal data before saving the changes.
+![](https://i.ibb.co/8j1Yx3G/Screen-Shot-2023-11-20-at-11-56-15-AM.png)
+
+8. In the "Settings" tab, upload an Avatar image and enter an app description.
+![](https://i.ibb.co/JxT6x1b/Screen-Shot-2023-11-20-at-12-03-02-PM.png)
+
+9. Share the "Client ID" and "Secret" with us via Slack.
+![](https://i.ibb.co/b70nnM9/Screen-Shot-2023-11-20-at-12-54-42-PM.png)
+
+## Functionality
+
+Carbon syncs Confluence pages from all personal and shared spaces.
+
+## Synchronization
+
+You can also use the `resync_file` API endpoint to programmatically resync specific Confluence pages. To delete Confluence pages from Carbon, you can use the `deletefile` endpoint directly.
+
+We do not run our 24-hour batch sync for Confluence by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.
