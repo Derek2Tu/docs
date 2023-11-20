@@ -191,6 +191,14 @@
       ]
     }
   ],
+  "analytics": {
+    "clearbit": {
+        "publicApiKey": "sk_42e336d49d8cf3f0c64d8987d5d4ded6"
+    }
+  },
+  "integrations": {
+    "intercom": "l838si0h"
+  },
   "footerSocials": {
     "twitter": "https://twitter.com/mintlify",
     "github": "https://github.com/mintlify",
