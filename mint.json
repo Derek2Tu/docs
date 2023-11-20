@@ -1,6 +1,5 @@
 {
   "$schema": "https://api.carbon.ai/openapi.json",
-  "openapi": "https://api.carbon.ai/openapi.json",
   "name": "Carbon",
   "logo": {
     "dark": "/logo/dark.svg",
@@ -112,82 +111,72 @@
       ]
     },
     {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/authentication"
-      ]
-    },
-    {
-      "group": "Health",
-      "pages": [
-        "api-reference/endpoint/health/health"
-      ]
-    },
-    {
       "group": "Auth",
       "pages": [
-        "api-reference/endpoint/auth/get-access-token",
-        "api-reference/endpoint/auth/refresh-access-token",
-        "api-reference/endpoint/auth/get-white-labeling"
+        "api-reference/auth/get-access-token",
+        "api-reference/auth/get-white-labeling"
       ]
     },
     {
-      "group": "Files",
+      "group": "Embeddings",
       "pages": [
-        "api-reference/endpoint/files/create-upload-file",
-        "api-reference/endpoint/files/create-raw-text",
-        "api-reference/endpoint/files/create-upload-file-from-url",
-        "api-reference/endpoint/files/user-files-v2",
-        "api-reference/endpoint/files/delete-files-endpoint",
-        "api-reference/endpoint/files/resync-file"
+        "api-reference/embeddings/embeddings",
+        "api-reference/embeddings/retrieve-embeddings-and-content"
       ]
     },
     {
       "group": "User",
       "pages": [
-        "api-reference/endpoint/user/user"
+        "api-reference/user/user-endpoint"
       ]
     },
     {
-      "group": "Web Scrape",
+      "group": "Files",
       "pages": [
-        "api-reference/endpoint/utilities/web-scrape",
-        "api-reference/endpoint/utilities/scrape-sitemap",
-        "api-reference/endpoint/utilities/fetch-urls",
-        "api-reference/endpoint/utilities/sitemap",
-        "api-reference/endpoint/utilities/fetch-youtube-transcripts",
-        "api-reference/endpoint/utilities/search-urls"
-      ]
-    },
-    {
-      "group": "Data Source",
-      "pages": [
-        "api-reference/endpoint/data-sources/revoke-access-token",
-        "api-reference/endpoint/data-sources/user-data-sources"
-      ]
-    },
-    {
-      "group": "Tags",
-      "pages": [
-        "api-reference/endpoint/files/create-file-tags",
-        "api-reference/endpoint/files/delete-file-tags"
-      ]
-    },
-    {
-      "group": "Retrieval",
-      "pages": [
-        "api-reference/endpoint/embeddings/embeddings",
-        "api-reference/endpoint/embeddings/retrieve-embeddings-and-content",
-        "api-reference/endpoint/files/parsed-file",
-        "api-reference/endpoint/files/raw-file"
+        "api-reference/files/create-upload-file",
+        "api-reference/files/create-upload-file-from-url",
+        "api-reference/files/create-raw-text",
+        "api-reference/files/delete-file-endpoint",
+        "api-reference/files/delete-files-endpoint",
+        "api-reference/files/raw-file",
+        "api-reference/files/parsed-file",
+        "api-reference/files/user-files",
+        "api-reference/files/user-files-v2",
+        "api-reference/files/create-file-tags",
+        "api-reference/files/delete-file-tags",
+        "api-reference/files/resync-file"
       ]
     },
     {
       "group": "Webhooks",
       "pages": [
-        "api-reference/endpoint/webhooks/add-webhook-url",
-        "api-reference/endpoint/webhooks/webhook-urls",
-        "api-reference/endpoint/webhooks/delete-webhook-url"
+        "api-reference/webhooks/webhook-urls",
+        "api-reference/webhooks/add-webhook-url",
+        "api-reference/webhooks/delete-webhook-url"
+      ]
+    },
+    {
+      "group": "Data Sources",
+      "pages": [
+        "api-reference/data-sources/user-data-sources",
+        "api-reference/data-sources/revoke-access-token"
+      ]
+    },
+    {
+      "group": "Utilities",
+      "pages": [
+        "api-reference/utilities/web-scrape",
+        "api-reference/utilities/sitemap",
+        "api-reference/utilities/scrape-sitemap",
+        "api-reference/utilities/fetch-urls",
+        "api-reference/utilities/search-urls",
+        "api-reference/utilities/fetch-youtube-transcripts"
+      ]
+    },
+    {
+      "group": "Health",
+      "pages": [
+        "api-reference/health/health"
       ]
     }
   ],
