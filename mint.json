@@ -194,6 +194,9 @@
   "analytics": {
     "clearbit": {
         "publicApiKey": "pk_5b7f5614cf4ce488c09fe729dd69d8b8"
+    },
+    "ga4": {
+      "measurementId": "G-RRL23VTVXV"
     }
   },
   "integrations": {
