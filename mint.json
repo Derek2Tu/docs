@@ -145,7 +145,7 @@
     {
       "group": "User",
       "pages": [
-        "api-reference/endpoint/user/user"
+        "api-reference/endpoint/user/user-endpoint"
       ]
     },
     {
