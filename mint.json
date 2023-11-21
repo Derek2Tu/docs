@@ -162,7 +162,9 @@
       "group": "Data Source",
       "pages": [
         "api-reference/endpoint/data-sources/revoke-access-token",
-        "api-reference/endpoint/data-sources/user-data-sources"
+        "api-reference/endpoint/data-sources/user-data-sources",
+        "api-reference/endpoint/data-sources/list",
+        "api-reference/endpoint/data-sources/sync"
       ]
     },
     {
