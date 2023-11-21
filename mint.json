@@ -127,7 +127,6 @@
       "group": "Auth",
       "pages": [
         "api-reference/endpoint/auth/get-access-token",
-        "api-reference/endpoint/auth/refresh-access-token",
         "api-reference/endpoint/auth/get-white-labeling"
       ]
     },
@@ -145,7 +144,7 @@
     {
       "group": "User",
       "pages": [
-        "api-reference/endpoint/user/user"
+        "api-reference/endpoint/user/user-endpoint"
       ]
     },
     {
