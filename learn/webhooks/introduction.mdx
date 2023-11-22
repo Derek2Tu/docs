@@ -62,4 +62,4 @@ The value of `payload` (which is a stringified json object) will always have the
 Note that `WebhookType` is one of the webhook events described above. `WebhookObjectType` is limited to `FILE` currently.
 `additional_information` is always a dictionary of string-string key-value pairs, unless it's empty, in which case it is
 the string value "null". Finally, `timestamp` is an int POSIX timestamp as a string. Note that to use `object_id` in
-subsequent API requests, you'll likely need to convert it to an int.
+subsequent API requests, you'll likely need to convert it to an int. `object_id` corresponds to the `file_id` of the file.

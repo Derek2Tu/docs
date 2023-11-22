@@ -81,7 +81,14 @@
     },
     {
       "group": "Learn",
+      
       "pages": [
+        {
+          "group": "Models",
+          "pages": [
+            "learn/models/models"
+          ]
+        },
         {
           "group": "File Formats",
           "pages": [
