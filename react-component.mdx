@@ -9,7 +9,7 @@ description: "Welcome to the home of your new documentation"
 
 ---
 
-To install Carbon Connect as a prebuilt React component, use npm as follows:
+To install Carbon Connect as a pre-built React component, use `npm` as follows:
 
 ```bash
 npm install carbon-connect
@@ -64,12 +64,9 @@ The `CarbonConnect` component accepts the following properties:
 | `privacyPolicyURL`         | String          | No        | A URL to your organization's privacy policy. Defaults to `https://carbon.ai/privacy`.                                   |
 | `navigateBackURL`          | String          | No        | A URL to your intended destination. Defaults to `None`.                                                                 |
 | `backButtonText`           | String          | No        | The label that you want to show on the back button. Defaults to `Go back`                                               |
+| `zIndex`                   | Number          | No        | Update the z-index of the Carbon Connect modal                                                                          |
 
-When you do not pass `open` or `setOpen`, CC will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
-
-### Note about Google Drive
-
-Our oAuth app is in approval phase. your users will see a warning message when they try to connect their Google account. Please ignore the warning and proceed to connect your account. We will update this section once our app is approved.
+When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
 ## Usage
 
@@ -184,7 +181,7 @@ if (response.status === 200 && response.data) {
 }
 ```
 
-### Return Value Expectation:
+### Return Value
 
 Ensure that your tokenFetcher returns an object structured as:
 
@@ -194,11 +191,19 @@ Ensure that your tokenFetcher returns an object structured as:
 }
 ```
 
-## Enable Data Sources
+## Enabling Connectors
 
 ---
 
-Another important prop is `enabledIntegrations`. This prop lets you choose which integrations to show in the component. You can also pass additional configuration for each integration. We have provided an example in the above code snippet. Here is the list of all the integrations that you can enable:
+<Warning>
+
+Our _*Google Drive*_ connector is under review by Google. If you see a warning message when connecting your account, please ignore it and proceed.
+
+</Warning>
+
+You can enable connectors users can access via the `enabledIntegrations` property. The property also allows additional configuration per connector. 
+
+Here's the list of connectors available for activation:
 
 1. `LOCAL_FILES`: This integration lets you upload files from your local machine. You can pass the following configuration for this integration:
 
@@ -227,6 +232,7 @@ Another important prop is `enabledIntegrations`. This prop lets you choose which
     - `recursionDepth`: This is the depth of recursion. Defaults to 3. If you do not want recursion to happen, please pass 1. Passing 0 will scrape recursively until the maxPagesToScrape limit is reached.
     - `maxPagesToScrape`: This is the maximum no.of pages to scrape. Defaults to 100.
     - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+   - `enableAutoSync`: Whether or not you want to enable scheduled syncs. Defaults to `false`.
 
 4. `GOOGLE_DRIVE`: This integration lets you upload files from your Google Drive. You can pass the following configuration for this integration:
    - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
@@ -244,30 +250,40 @@ Another important prop is `enabledIntegrations`. This prop lets you choose which
    - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
    - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
 
-7. `ONEDRIVE`: This integration lets you upload files from your Onedrive. You can pass the following configuration for this integration:
+7. `ONEDRIVE`: This integration lets you upload files from your OneDrive. You can pass the following configuration for this integration:
    - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
    - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
    - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
 
-## Callback Function Props
+8. `ZOTERO`: This integration lets you upload files from your Zotero. You can pass the following configuration for this integration:
+   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
+   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
+   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+
+9. `SharePoint`: This integration lets you upload files from your SharePoint. You can pass the following configuration for this integration:
+   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
+   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
+   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+
+10. `Confluence`: This integration lets you upload files from your Confluence. You can pass the following configuration for this integration:
+   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
+   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
+   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+
+7. `ZENDESK`: This integration lets you upload files from your Zendesk. You can pass the following configuration for this integration:
+   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
+   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
+   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+
+# Callback Function Props
 
 ---
 
-1.  `onError`: CC will also call another call back method if there is an error while uploading file. This function will pass data in the following format:
+## onSuccess 
 
-```js
-{
-  status: 400,
-  action: 'UPDATE',
-  event: 'UPDATE',
-  integration: `<INTEGRATION_NAME>`, // 'LOCAL_FILES' or 'WEB_SCRAPER',
-  data: `<data_object>`, // This field will be present only if the error is related to a file or web scraper
-}
-```
+Responds to successful events: file upload, 3rd party account connection, file selection, and web scraping initiation.
 
-2. `onSuccess`: You can let CC trigger a callback function upon successful file upload, 3rd party account connection and file selection, Webscraping request initiation.
-
-  ### `onSuccess` Event Types
+### Event Types
 
   1. `INITIATE`: This event type is triggered when a user enters the integration flow (either for auth or file selection)
   2. `ADD`: This event type is triggered when a user authenticates an account under an integration.
@@ -275,11 +291,10 @@ Another important prop is `enabledIntegrations`. This prop lets you choose which
   4. `CANCEL`: This event type is triggered when when a user exits the integration flow without taking any action.
 
 
-  ### Data passed to `onSuccess` callback
-
+### Callback Response
   The data passed to the onSuccess callback prop will be:
 
-  1. For `LOCAL_FILES`: 
+ `LOCAL_FILES`: 
 
   ```js
   {
@@ -295,7 +310,7 @@ Another important prop is `enabledIntegrations`. This prop lets you choose which
   }
   ```
 
-  2. For `WEB_SCRAPER`: An array containing only one object in the following format
+`WEB_SCRAPER`:
 
   ```js
   {
@@ -312,7 +327,7 @@ Another important prop is `enabledIntegrations`. This prop lets you choose which
 
   ```
 
-  3. For third party integrations: An array of objects. Each object will be in the following format:
+_*3rd Party Connectors*_
 
   ```js
   {
@@ -328,7 +343,7 @@ Another important prop is `enabledIntegrations`. This prop lets you choose which
   }
   ```
 
-  Each file object will be in the following format:
+  Each `files` object follows this format:
 
   ```js
   {
@@ -336,7 +351,7 @@ Another important prop is `enabledIntegrations`. This prop lets you choose which
       "source": `<integration_name>`, // One among `LOCAL_FILES`, `NOTION`, `WEB_SCRAPER`, `GOOGLE_DRIVE`, `INTERCOM`, `DROPBOX`, `ONEDRIVE`
       "organization_id": `<organization_id>`, // This is your unique organization id in carbon
       "organization_supplied_user_id": `<organization_supplied_user_id>`, // This is the unique user id that you pass to CC
-      "organization_user_data_source_id": `<organization_user_data_source_id>`, // This is the unique user data source id that CC creates for each user for each integration
+      "organization_user_data_source_id": `<organization_user_data_source_id>`, // This is the unique user data source id that Carbon Connect creates for each user for each integration
       "external_file_id": `<external_file_id>`, // This is the unique file id in the 3rd party integration
       "external_url": `<external_url>`, // This is the unique url of the file in the 3rd party integration
       "sync_status": `<sync_status>`, // This is the sync status of the file. It can be one of the following: `READY`, `QUEUED_FOR_SYNCING`, `SYNCING`, `SYNC_ERROR`
@@ -356,3 +371,20 @@ Another important prop is `enabledIntegrations`. This prop lets you choose which
       "action": `<action>`, // This is the action type. It can be one of the following: `ADD`, `UPDATE`, `REMOVE`
   }
   ```
+
+## onError
+
+Triggered during file upload errors.
+
+Structure:
+```js
+{
+  status: 400,
+  action: 'UPDATE',
+  event: 'UPDATE',
+  integration: `<INTEGRATION_NAME>`, // 'LOCAL_FILES' or 'WEB_SCRAPER',
+  data: `<data_object>`, // This field will be present only if the error is related to a file or web scraper
+}
+```
+
+
