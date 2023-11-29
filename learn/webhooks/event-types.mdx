@@ -34,3 +34,11 @@ We currently support the following webhook events for managing user connections 
 
 4. `REVOKE`
     - This event is triggered when a user's data source connection is revoked via the `/revoke_access_token` endpoint.
+
+### Example Payload
+Our webhook payload returns stringified JSON.
+```
+{
+    "payload": "{\"webhook_type\": \"FILE_READY\", \"obj\": {\"object_type\": \"FILE\", \"object_id\": \"78687\", \"additional_information\": \"null\"}, \"customer_id\": \"FAKE_ID\", \"timestamp\": \"1700508942\"}"
+}
+```
