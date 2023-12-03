@@ -34,7 +34,9 @@ Click \"Select\" after selecting files to grant Carbon access to files.
 
 ![](https://files.readme.io/e7f42e5-image.png)
 
-3. Add [https://api.carbon.ai](https://api.carbon.ai) as the `Authorized JS origin` and [https://api.carbon.ai/integrations/google](https://api.carbon.ai/integrations/google) as an `Authorized redirect URI`.
+3. Add [https://api.carbon.ai](https://api.carbon.ai) as the `Authorized JS origin` and [https://api.carbon.ai/integrations/google](https://api.carbon.ai/integrations/google) as an `Authorized redirect URI`. 
+You can also opt to use a custom CNAME record pointing to https://api.carbon.ai for the `Authorized JS Origin` and `Authorized redirect URI`. However, for the `Authorized redirect URI` the domain paths must still be `/integrations/google`.
+
 
 ![](https://files.readme.io/60d16d3-image.png)
 
@@ -42,11 +44,11 @@ Click \"Select\" after selecting files to grant Carbon access to files.
 
 ![](https://files.readme.io/f265775-image.png)
 
-5. Then create an `API key` in the `Credentials section` under `Google Picker API`. Restrict the application to websites and then add [https://api.carbon.ai](https://api.carbon.ai/) to the list under website restrictions. For `API Restrictions`, pick `Restrict key` and select `Google Picker API` from the list.
+5. Then create an `API key` in the `Credentials section` under `Google Picker API`. Restrict the application to websites and then add [https://api.carbon.ai](https://api.carbon.ai/) (or your custom CNAME) to the list under website restrictions. For `API Restrictions`, pick `Restrict key` and select `Google Picker API` from the list.
 
 6. Save the API key. Copy the API key and share it with Carbon.
 
-7. Configure your consent screen in the OAuth Consent Screen. Provide your **App name**, **support email address**, and **brand logo**. Add [carbon.ai](http://carbon.ai/) to `Authorized domain`.
+7. Configure your consent screen in the OAuth Consent Screen. Provide your **App name**, **support email address**, and **brand logo**. Add [carbon.ai](http://carbon.ai/) (or your custom CNAME) to `Authorized domain`.
 
 ![](https://files.readme.io/33ebd01-image.png)
 
