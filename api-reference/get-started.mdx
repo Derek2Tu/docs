@@ -1,0 +1,76 @@
+---
+title: "Get Started"
+description: "Understand general concepts, response codes, and authentication strategies."
+---
+
+## Base URL
+
+The Carbon API is built on REST principles, enforcing HTTPS in every request to enhance data security, integrity, and privacy. Please note that the API does not support HTTP.
+
+All requests should be directed to the following base URL:
+
+```
+https://api.carbon.ai
+```
+
+## Authentication 
+
+<Note>Please schedule a [15-minute call](https://cal.com/carbon-ai/15min?date=2023-11-13&month=2023-11) to get your _*free*_ Carbon API key.</Note>
+
+Our API supports two header-based authentication methods: 
+
+### Carbon API Key and Customer ID
+For API key-based authentication, you can pass in your API key and `customer-id`. The `customer-id` is a unique identifier that denotes an individual user in your system.
+
+```
+Content-Type: application/json
+authorization: Bearer <API KEY>
+customer-id: <customer-id>
+```
+
+### Access Token
+You can generate an access token via the `/auth/v1/access_token` endpoint, and the access token can be used without needing to pass in a separate `customer-id` in the header.
+
+Access tokens are valid for 10 hours, after which you need to generate a new token.
+
+```
+Content-Type: application/json
+authorization: Token <TOKEN>
+```
+
+## Rate Limit
+
+The maximum number of file upload requests that users can send is 20 requests per minute. 
+
+After that, you’ll hit the rate limit and receive a 429 response error code.
+
+To prevent this, we recommend reducing the rate at which you request the API. This can be done by introducing a queue mechanism or reducing the number of concurrent requests per second. If you have specific requirements, contact support to request a rate increase.
+
+## Response Codes
+
+Resend uses standard HTTP codes to indicate the success or failure of your requests.
+
+In general, `2xx` HTTP codes correspond to success, `4xx` codes are for user-related failures, and `5xx` codes are for infrastructure issues.
+
+
+| Status | Description                                  |
+|--------|----------------------------------------------|
+| `200`    | Successful request.                           |
+| `400`    | Check that the parameters were correct.       |
+| `401`    | User doesn't have access to the resource.        |
+| `403`    | User authorization issue.                 |
+| `404`    | The resource was not found.                   |
+| `429`    | The rate limit was exceeded.                  |
+| `5xx`    | Indicates an error with Carbon servers.       |
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How does pagination work with the API?">
+    You can use `limit-offset` pagination to paginate data by limit and offset.
+  </Accordion>
+
+  <Accordion title="How do you handle API versioning?">
+    Currently, there’s no versioning system in place. We plan to add versioning via calendar-based headers in the future.
+  </Accordion>
+</AccordionGroup>

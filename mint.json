@@ -121,7 +121,7 @@
     {
       "group": "API Documentation",
       "pages": [
-        "api-reference/authentication",
+        "api-reference/get-started",
         "api-reference/errors"
       ]
     },
