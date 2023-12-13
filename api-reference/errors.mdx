@@ -1,0 +1,72 @@
+---
+title: "Errors"
+description: "Troubleshoot problems with this comprehensive breakdown of errors."
+---
+
+
+
+# Error Handling Guide
+
+This guide provides a breakdown of common errors you might encounter while using the Carbon API. If you encounter an error message not listed here, don't hesitate to contact our support team for assistance.
+
+## Sync Errors
+
+### Embeddings
+
+- `Failed to upsert vectors`
+  - _*Description*_: Unable to insert vector embeddings into our database.
+  - _*Suggested Action*_: Manually trigger a resync for the file.
+
+- `Failed to generate embeddings`
+  - _*Description*_: Failed to create vector embeddings using the embedding model.
+  - _*Suggested Action*_: Manually trigger a resync for the file.
+
+- `File chunking failed: encountered text corresponding to disallowed special token`
+  - _*Description*_: Unable to segment text due to unrecognized characters.
+  - _*Suggested Action*_: Review the uploaded file.
+
+- `Mismatch between chunks and embeddings`
+  - _*Description*_: Discrepancy in the count of text chunks and embeddings.
+  - _*Suggested Action*_: Contact support for further investigation.
+
+### Parsing
+
+- `No text was retrieved from file`
+  - _*Description*_: Unable to extract text from the file.
+  - _*Suggested Action*_: Review the uploaded file to ensure text is present.
+
+### Data Connectors
+
+- `Failed to decode Notion response`
+  - _*Description*_: Unable to properly process Notion's response.
+  - _*Suggested Action*_: Review the Notion page.
+
+- `Failed to get Notion files for updating the data source`
+  - _*Description*_: Possible permission issue.
+  - _*Suggested Action*_: Verify user access to and content of the Notion page.
+
+- `Notion failed to return the requested blocks`
+  - _*Description*_: Possible permission issue or deleted block.
+  - _*Suggested Action*_: Verify user access to the Notion page.
+
+- `Failed to retrieve and parse file`
+  - _*Description*_: Notion error due to elements that cannot be parsed.
+  - _*Suggested Action*_: Review the content of Notion page.
+
+- `Failed to auto-sync during scheduled sync`
+  - _*Description*_: Unsuccessful file re-sync.
+  - _*Suggested Action*_: Verify the file(s) being synced.
+
+### Rate Limit
+
+- `You have hit one or more rate limits, please try again later`
+  - _*Description*_: Exceeded rate limits for the API or a data connector.
+  - _*Suggested Action*_: Implement proper rate limiting practices or wait before retrying.
+
+### Authentication
+
+- `Your auth token has been revoked`
+  - _*Description*_: Expired authentication token.
+  - _*Suggested Action*_: Generate a new refresh token for use.
+
+
