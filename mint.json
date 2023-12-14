@@ -173,8 +173,9 @@
       "pages": [
         "api-reference/endpoint/data-sources/revoke-access-token",
         "api-reference/endpoint/data-sources/user-data-sources",
-        "api-reference/endpoint/data-sources/list",
-        "api-reference/endpoint/data-sources/sync"
+        "api-reference/endpoint/data-sources/sync-data-source-items",
+        "api-reference/endpoint/data-sources/list-data-source-items",
+        "api-reference/endpoint/data-sources/sync-files"
       ]
     },
     {
