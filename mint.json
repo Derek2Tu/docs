@@ -76,7 +76,8 @@
         "connectors/zotero",
         "connectors/gmail",
         "connectors/confluence",
-        "connectors/slack"
+        "connectors/slack",
+        "connectors/s3"
       ]
     },
     {

@@ -1,0 +1,18 @@
+---
+title: 'S3'
+description: 'The Carbon Connect `enabledIntegrations` value for AWS S3 is `S3`.'
+---
+
+## Authorization Type
+
+Carbon uses [Access Key based](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) authentication to connect to S3.
+
+## Functionality
+
+Carbon allows users to upload `pdf`, `docx`, `pptx`, `txt`, `csv`, `rtf`, `tsv`, `xlsx` and `md` files directly from S3.
+
+## Synchronization
+
+Syncs are triggered when end-users select files to upload via the S3 file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific S3 files. To delete S3 files from Carbon, you can use the `deletefile` endpoint directly.
+
+We do not run our 24-hour batch sync for S3 by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.
