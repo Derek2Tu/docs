@@ -11,8 +11,55 @@ Carbon uses [Access Key based](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 
 Carbon allows users to upload `pdf`, `docx`, `pptx`, `txt`, `csv`, `rtf`, `tsv`, `xlsx` and `md` files directly from S3.
 
+
 ## Synchronization
 
-Syncs are triggered when end-users select files to upload via the S3 file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific S3 files. To delete S3 files from Carbon, you can use the `deletefile` endpoint directly.
+#### Step 1: Generate IAM User and Access Key
+
+Create an IAM user in AWS with the following permissions:
+
+- **List all buckets:** Grant permissions to list all S3 buckets.
+- **Read access to specific buckets and objects:** Allow read access to the buckets and objects intended for synchronization in Carbon. Ensure that new buckets added in the future grant access to this IAM user for object retrieval.
+
+#### Step 2: Provide Credentials to Carbon
+
+`POST` the generated credentials to the `/integrations/s3` endpoint in this format:
+
+```json
+{
+    "access_key": "<<your-access-key>>",
+    "access_key_secret": "<<access-key-secret>>"
+}
+```
+
+#### Step 3: List Files and Buckets
+Optionally load all available S3 buckets and objects by using _*POST*_ `/integrations/items/sync` and list them via _*POST*_ `/integrations/items/list`.
+
+#### Step 4: Sync Files or Buckets
+Use the `/integrations/s3/files` endpoint to sync specific file objects or buckets.
+
+For syncing specific files (multiple files allowed):
+```json
+{
+    "ids": [{"bucket": "bucket-name", "id": "object-key"}],
+    "tags": "...",
+    "chunk_size": "...",
+    "chunk_overlap": "...",
+    "skip_embedding_generation": "..."
+}
+```
+
+For syncing all files from buckets (multiple buckets allowed):
+```json
+{
+    "ids": [{"bucket": "bucket-name"}],
+    "tags": "...",
+    "chunk_size": "...",
+    "chunk_overlap": "...",
+    "skip_embedding_generation": "..."
+}
+```
+
+You can also use the `resync_file` API endpoint to programmatically resync specific S3 files. To delete S3 files from Carbon, you can use the `delete_file` endpoint directly.
 
 We do not run our 24-hour batch sync for S3 by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.
