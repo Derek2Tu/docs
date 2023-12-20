@@ -63,8 +63,9 @@ The `CarbonConnect` component accepts the following properties:
 | `tosURL`                   | String          | No        | A URL to your organization's terms of service. Defaults to `https://carbon.ai/terms`.                                   |
 | `privacyPolicyURL`         | String          | No        | A URL to your organization's privacy policy. Defaults to `https://carbon.ai/privacy`.                                   |
 | `navigateBackURL`          | String          | No        | A URL to your intended destination. Defaults to `None`.                                                                 |
-| `backButtonText`           | String          | No        | The label that you want to show on the back button. Defaults to `Go back`                                               |
-| `zIndex`                   | Number          | No        | Update the z-index of the Carbon Connect modal                                                                          |
+| `backButtonText`           | String          | No        | The label that you want to show on the back button. Defaults to `Go back`.                                               |
+| `zIndex`                   | Number          | No        | Update the z-index of the Carbon Connect modal.                                                                         |
+| `enableToasts`             | Boolean         | No        | Setting to `False` disables Toast notifications by default in Carbon Connect.                                                      |
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
