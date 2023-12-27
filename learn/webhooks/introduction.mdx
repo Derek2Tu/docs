@@ -1,18 +1,32 @@
 ---
 title: "Introduction"
+description: "Use webhooks to notify your application about Carbon events."
 ---
 
-Note: The `customer-id` is required currently but only as a placeholder, and it is on our `TODO` list to remove this requirement. Webhooks are fired for specific files and have no explicit relationship to a specific `customer-id`.
+## What is a webhook?
+Carbon employs webhooks to promptly transmit real-time notifications regarding your Carbon actions. These webhooks consistently utilize HTTPS for secure data transmission and deliver JSON payloads, seamlessly integrable into your application. Leverage webhook feeds to streamline various tasks, including:
 
-Carbon offers a set of webhooks for a variety of events, listed below. Currently, there is no way to choose
-which events to receive webhooks for - it's on our roadmap to allow for more fine-grained filtering. The steps
-in setting up webhooks for your service are:
+- Retrieval of documents, chunks and embeddings.
+- Generation of alerts within messaging or incident management tools, triggered by specific event types.
+- Comprehensive storage of all transmission events in your database for tailored reporting and extended data retention.
+
+## Steps to receive webhooks
+
+<Note>The `customer-id` is required currently but only as a placeholder, and it is on our `TODO` list to remove this requirement. Webhooks are fired for specific files and have no explicit relationship to a specific `customer-id`.</Note>
+
+Currently, there is no way to choose which events to receive webhooks for - it's on our roadmap to allow for more fine-grained filtering. 
+
+The steps in setting up webhooks for your service are:
 1. Add a URL to which webhoooks should be sent. This can be done using the `/add_webhook` endpoint.
 2. Save the `signing_key` in the response somewhere safe - this can't be retrieved again.
 
-At this point, all events will be sent to the URL specified in step 1. An event - sent via an HTTP POST
+<Tip>You can create a tunnel to your localhost server using a tool like ngrok. For example: https://5f9f-98-14-198-85.ngrok-free.app/api/webhook</Tip>
+
+At this point, all events will be sent to the URL specified in Step 1. An event - sent via an HTTP POST
 request - contains two important elements, a `Carbon-Signature` header and a body with a single key-value pair.
-You can validate the authenticity and integrity of the webhook by calculating its signature. To do this, you should:
+You can validate the authenticity and integrity of the webhook by calculating its signature. 
+
+To do this, you should:
 1. Extract the timestamp and signature.
     1. Extract the timestamp and signature from the `Carbon-Signature` header. It will be of the form
 `Carbon-Signature:t=1492774577,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd`.
@@ -59,7 +73,19 @@ The value of `payload` (which is a stringified json object) will always have the
     "timestamp": str
 }
 ```
-Note that `WebhookType` is one of the webhook events described above. `WebhookObjectType` is limited to `FILE` currently.
-`additional_information` is always a dictionary of string-string key-value pairs, unless it's empty, in which case it is
-the string value "null". Finally, `timestamp` is an int POSIX timestamp as a string. Note that to use `object_id` in
-subsequent API requests, you'll likely need to convert it to an int. `object_id` corresponds to the `file_id` of the file.
+Please note that the WebhookType refers to specific events outlined in the [Event Types documentation](learn/webhooks/event-types). Presently, the `WebhookObjectType` is restricted to `FILE`.
+
+The field additional_information consistently contains a dictionary of string-string key-value pairs. If empty, it defaults to the string value "null".
+
+The `timestamp` field is an integer POSIX timestamp presented as a string. To utilize `object_id` in subsequent API requests, it's advisable to convert it into an integer. This `object_id` corresponds to the `file_id` of the file in question.
+
+## FAQ
+<AccordionGroup>
+  <Accordion title="What is the retry schedule?">
+    If Carbon does not receive a 200 response from a webhook server, we will retry the webhooks once more.
+  </Accordion>
+
+  <Accordion title="What happens if the retry fails?">
+    After the conclusion of the above attempts the message will be marked as failed.
+  </Accordion>
+</AccordionGroup>
