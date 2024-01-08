@@ -2,3 +2,65 @@
 title: 'Gmail'
 description: ''
 ---
+
+## Authorization Type
+
+Carbon uses **[OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)** to connect to Gmail.
+
+## Authorization Flow
+
+After the user logs into their Gmail account, Carbon then auto-sync all emails based on the filters set via our API.
+![](https://i.ibb.co/wQsyjrV/Screen-Shot-2023-08-11-at-2-04-49-PM.png)
+
+
+## Configuration
+
+### Custom OAuth Credentials
+
+1. Go to `APIs and Services` > `Enabled APIs and Services` in your Google Cloud console, then click on the button titled `ENABLE APIS AND SERVICES` and enable `Gmail API`.
+2. Then create an `OAuth Client ID` in the `Credentials section` under `Gmail API`. Select `Web Application` as the Application type and give it an identifiable name for your reference.
+
+![](https://files.readme.io/e7f42e5-image.png)
+
+3. Add [https://api.carbon.ai](https://api.carbon.ai) as the `Authorized JS origin` and [https://api.carbon.ai/integrations/gmail](https://api.carbon.ai/integrations/gmail) as an `Authorized redirect URI`. 
+You can also opt to use a custom CNAME record pointing to https://api.carbon.ai for the `Authorized JS Origin` and `Authorized redirect URI`. However, for the `Authorized redirect URI` the domain paths must still be `/integrations/gmail`.
+
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/79685719-faf4-421b-86d1-3e3ff8749800/public)
+
+4. Save the credentials. Download the credentials.json file once you save the OAuth Client ID data and share the file with Carbon.
+
+![](https://files.readme.io/f265775-image.png)
+
+
+5. Configure your consent screen in the OAuth Consent Screen. Provide your **App name**, **support email address**, and **brand logo**. Add [carbon.ai](http://carbon.ai/) (or your custom CNAME) to `Authorized domain`.
+
+![](https://files.readme.io/33ebd01-image.png)
+
+![](https://files.readme.io/6d7f247-image.png)
+
+
+6. Click on `Add or Remove Scopes` button to add the following scopes: `/auth/gmail.readonly`
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/332135f8-1c10-41e4-6c2d-b9d82340b200/public)
+
+9. If you wish to add test users, you can do so. These users will not see the "App is unverified" notification. Other users will see this alert.
+10. Click `Publish App` to make this app available to your end-users.
+
+![](https://files.readme.io/d24c355-image.png)
+
+## Synchronization
+
+When a user connects their Gmail account, we auto-sync all emails based on the applied filters. 
+
+Current filters supported are:
+- Before Date (ie: Emails before Jan 23, 2023)
+- After Date (ie: Emails after May 18, 2018)
+- Specific Labels
+- Starred Emails
+
+The [advanced filtering logic](/learn/filters/filtering) Carbon supports for tags extends to filtering emails from Gmail too.
+
+You can use the `resync_file` API endpoint to programmatically resync specific Gmail emails. To delete specific emails from Carbon, you can use the `delete_files` endpoint directly.
+
+We do not run our 24-hour batch sync for Gmail by default. If you’d like us to enable batch syncs to run in the background, you can request this via Slack.
