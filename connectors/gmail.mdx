@@ -51,15 +51,63 @@ You can also opt to use a custom CNAME record pointing to https://api.carbon.ai 
 
 ## Synchronization
 
-When a user connects their Gmail account, we auto-sync all emails based on the applied filters. 
+After successfully connecting your Gmail account, you gain the ability to selectively sync emails by utilizing the `filters` parameter. This parameter operates as a JSON object comprising key-value pairs, supporting both AND and OR operations. Presently, our system accommodates a specific set of keys as detailed below:
 
-Current filters supported are:
-- Before Date (ie: Emails before Jan 23, 2023)
-- After Date (ie: Emails after May 18, 2018)
-- Specific Labels
-- Starred Emails
+#### `label`
+Represents predefined Gmail labels such as "Important" or custom labels created by the user.
 
-The [advanced filtering logic](/learn/filters/filtering) Carbon supports for tags extends to filtering emails from Gmail too.
+#### `after`
+Accepts a date in the format YYYY/mm/dd (e.g., 2023/12/31), enabling the retrieval of emails after a specified date.
+
+#### `before`
+Accepts a date in the format YYYY/mm/dd (e.g., 2023/12/31), enabling the retrieval of emails before a specified date.
+
+#### `is` 
+Supports values like `starred`, `important`, `snoozed`, and `unread` to filter emails based on these attributes.
+
+It's crucial to adhere to the specified keys and values within the JSON object. Usage of keys or values outside this defined scope might result in unexpected behavior.
+
+An example of a basic query with filters, which lists all emails that have the label `Test`:
+
+```
+{
+    "filters": {
+            "key": "label",
+            "value": "Test"
+        }
+}
+```
+
+You can use AND and OR operation as follows below. 
+
+This setup ensures the retrieval of emails dated after January 7th that satisfy either of the two conditions: having the label "Personal" or being marked as 'starred'. The structure allows for the effective use of AND and OR operations to filter emails based on the defined criteria.
+
+<Note>This example demonstrates the highest level of nesting we support. You can't add more AND/OR filters within the OR filter in the example below.</Note>
+
+```
+{
+    "filters": {
+        "AND": [
+            {
+                "key": "after",
+                "value": "2024/01/07"
+            },
+            {
+                "OR": [
+                    {
+                        "key": "label",
+                        "value": "Personal"
+                    },
+                    {
+                        "key": "is",
+                        "value": "starred"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
 
 You can use the `resync_file` API endpoint to programmatically resync specific Gmail emails. To delete specific emails from Carbon, you can use the `delete_files` endpoint directly.
 

@@ -1,6 +1,6 @@
 ---
 title: React Component
-description: "Welcome to the home of your new documentation"
+description: ""
 ---
 
 ---
@@ -66,6 +66,7 @@ The `CarbonConnect` component accepts the following properties:
 | `backButtonText`           | String          | No        | The label that you want to show on the back button. Defaults to `Go back`.                                               |
 | `zIndex`                   | Number          | No        | Update the z-index of the Carbon Connect modal.                                                                         |
 | `enableToasts`             | Boolean         | No        | Setting to `False` disables Toast notifications by default in Carbon Connect.                                                      |
+| `embeddingModel`             | Boolean         | No      |Specifies the embedding model used for the integration. The options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
@@ -77,14 +78,14 @@ This section demonstrates how to integrate the CarbonConnect component within a 
 
 ### Client Side Configuration
 
-1. Import necessary libraries and components:
+#### 1. Import Libraries and Components:
 
 ```jsx
 import { CarbonConnect } from 'carbon-connect';
 import axios from 'axios';
 ```
 
-2. Token Retrieval:
+#### 2. Token Retrieval:
   The tokenFetcher function is set up to request access tokens from Carbon directly via your backend:
 
 ```js
@@ -97,13 +98,15 @@ const tokenFetcher = async () => {
 ```
   In the example above, tokenFetcher is a helper function that retrieves the necessary tokens for authentication. This function should be implemented in your client-side code and is designed to make a request to an API on your backend server. The API then requests tokens from the Carbon token creation endpoint. The Carbon token creation endpoint is a secure endpoint that requires a valid API key and customer ID. The customer ID is a unique identifier for your end-user, and you can pass any string as the customer ID. The API key is a secret key provided to you by Carbon. Please contact us to obtain your API key.
 
-3. Implement CarbonConnect Component:
+#### 3. Implement CarbonConnect Component:
+
    Here's a concise usage example. Customize according to your requirements:
 
 ```jsx
 <CarbonConnect
   orgName="Your Organization"
   brandIcon="path/to/your/brand/icon"
+  embeddingModel: 'OPENAI',
   tokenFetcher={tokenFetcher}
   tags={{
     tag1: 'tag1_value',
@@ -124,11 +127,13 @@ const tokenFetcher = async () => {
           extension: 'csv',
           chunkSize: 1200,
           overlapSize: 120,
+          embeddingModel: 'OPENAI',
         },
         {
           extension: 'txt',
           chunkSize: 1599,
           overlapSize: 210,
+          embeddingModel: 'AZURE_OPENAI',
         },
         {
           extension: 'pdf',
@@ -139,6 +144,7 @@ const tokenFetcher = async () => {
       id: 'NOTION',
       chunkSize: 1500,
       overlapSize: 20,
+      embeddingModel: 'OPENAI',
     },
     {
       id: 'WEB_SCRAPER',
@@ -164,6 +170,18 @@ const tokenFetcher = async () => {
   // entryPoint="LOCAL_FILES"
 ></CarbonConnect>
 ```
+
+#### 4. Specify an Embedding Model (Optional)
+
+If you are using Carbon to generate embeddings, in the Carbon Connect component, the specification of an Embedding Model ( `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3`, `VERTEX_MULTIMODAL`) can be set at different levels:
+
+_*Global Level*_: Here, the Embedding Model (embeddingModel) prop applies universally across the entire system or application. It serves as the default unless overridden at other levels.
+
+_*Per Connector Level*_: This setting applies to a specific connector (ie: Google Drive), allowing customization for a particular connector's behavior, which takes precedence over the global setting for that connector.
+
+_*Per File Type Level*_: The most specific setting, it applies at the individual file level, allowing granular control over embedding models for particular file types. This setting supersedes both connector and global settings, providing the highest priority. This is applicable for local file uploads only.
+
+The order of precedence is: File Level > Connector Level > Global Level. Meaning, if a specific embedding model is defined at the file level, it takes priority over the connector-level setting, and the connector-level setting takes priority over the global setting. We default to `OPENAI` if no value is provided.
 
 ### Server Side Configuration
 
@@ -202,73 +220,90 @@ Here's the list of connectors available for activation:
 
 1. `LOCAL_FILES`: This integration lets you upload files from your local machine. You can pass the following configuration for this integration:
 
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `maxFileSize`: This is the maximum file size in bytes that is allowed to be uploaded. Defaults to 10 MB.
-   - `allowMultipleFiles`: Whether or not to allow multiple files to be uploaded at once. Defaults to `false`.
-   - `maxFilesCount`: This is the maximum no.of files that can be uploaded at once. Defaults to 10.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Default is 1500.
+    - `overlapSize`: Size of overlap in tokens. Default is 20.
+    - `maxFileSize`: Maximum file size allowed for upload in bytes. Default is 10 MB.
+    - `allowMultipleFiles`: Determines if multiple files can be uploaded simultaneously. Default is `false`.
+    - `maxFilesCount`: Maximum number of files allowed for upload at once. Default is 10.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Default is `false`.
+    - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
+    - `generateSparseVectors`: Toggle to generate sparse vectors for hybrid search. Default is `false`.
+    - `embeddingModel`: Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
    - `allowedFileTypes`: This is an array of objects. Each object represents a file type that is allowed to be uploaded. Each object can have the following properties:
-     - `extension`: The file extension of the file type. This is a required property.
-     - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-     - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-     - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+      - `extension`: File extension of the allowed file type (required property).
+      - `chunkSize`: Number of tokens per chunk for this file type. Defaults to global setting if not specified.
+      - `overlapSize`: Overlap size in tokens for this file type. Defaults to global setting if not specified.
+      - `skipEmbeddingGeneration`: Toggle to skip embedding generation for this file type. Defaults to global setting if not specified.
+      - `embeddingModel`: Specifies the embedding model for this file type. Options same as global but specific to this file type. Defaults to global setting if not specified.
+      - `useOcr`: Toggle to enable OCR for PDF files. Defaults to global setting if not specified.
+      - `generateSparseVectors`: Toggle to generate sparse vectors for hybrid search for this file type. Defaults to global setting if not specified.
+
 
 2. `NOTION`: This integration lets you upload files from your notion account. You can pass the following configuration for this integration
 
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
 
 3. `WEB_SCRAPER`: This integration lets you scrape URLs. You can pass the following configuration for this integration:
-
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-    - `recursionDepth`: This is the depth of recursion. Defaults to 3. If you do not want recursion to happen, please pass 1. Passing 0 will scrape recursively until the maxPagesToScrape limit is reached.
-    - `maxPagesToScrape`: This is the maximum no.of pages to scrape. Defaults to 100.
-    - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
-   - `enableAutoSync`: Whether or not you want to enable scheduled syncs. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `recursionDepth`: Depth of recursion for scraping. Defaults to 3. Use 1 to disable recursion and 0 to scrape recursively until reaching the `maxPagesToScrape` limit.
+    - `maxPagesToScrape`: Maximum number of pages to scrape. Defaults to 100.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `enableAutoSync`: Toggle to enable scheduled syncs. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
 
 4. `GOOGLE_DRIVE`: This integration lets you upload files from your Google Drive. You can pass the following configuration for this integration:
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
 
 5. `INTERCOM`: This integration lets you select pages from your Intercom. You can pass the following configuration for this integration:
 
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
 
 6. `DROPBOX`: This integration lets you upload files from your Dropbox. You can pass the following configuration for this integration:
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
 
 7. `ONEDRIVE`: This integration lets you upload files from your OneDrive. You can pass the following configuration for this integration:
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
 
 8. `ZOTERO`: This integration lets you upload files from your Zotero. You can pass the following configuration for this integration:
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
 
 9. `SharePoint`: This integration lets you upload files from your SharePoint. You can pass the following configuration for this integration:
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+
 
 10. `Confluence`: This integration lets you upload files from your Confluence. You can pass the following configuration for this integration:
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
 
-7. `ZENDESK`: This integration lets you upload files from your Zendesk. You can pass the following configuration for this integration:
-   - `chunkSize`: This is the no.of tokens per chunk. Defaults to 1500.
-   - `overlapSize`: This is the size of the overlap in tokens. Defaults to 20.
-   - `skipEmbeddingGeneration`: Whether or not to skip embeddings generation. Defaults to `false`.
+11. `ZENDESK`: This integration lets you upload files from your Zendesk. You can pass the following configuration for this integration:
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
 
 # Callback Function Props
 

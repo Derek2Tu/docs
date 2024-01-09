@@ -1,9 +1,7 @@
 ---
 title: JavaScript SDK
-description: ""
+description: "A vanilla JavaScript with TypeScript support designed to facilitate seamless integration of the Carbon API into various products or systems."
 ---
-
-Carbon Connect JS is a vanilla JS wrapper and a headless offering to integrate Carbon API into your product.
 
 <Card title="Github Repo" icon="lightbulb" iconType="duotone" color="#ca8b04" href="https://github.com/hubbleai/sdk-example">
   You can reference this example repo with our Javascript SDK implemented.
@@ -83,8 +81,26 @@ If the user hasn't authenticated their account, the OAuth URL directs them to th
 If the user has already authenticated their account, the OAuth URL navigates them to the file selection flow.
 ![](https://i.ibb.co/wYs9Xbp/image.png)
 
-## Methods
+## Custom Types 
+---
 
+Types that are used in the helper methods provided by the SDK.
+
+| TextEmbeddingModel |
+| -------- | 
+|  `OPENAI`    | 
+| `AZURE_OPENAI`      | 
+| `COHERE_MULTILINGUAL_V3`   | 
+
+| EmbeddingModel |
+| -------- | 
+|  `OPENAI`    | 
+| `AZURE_OPENAI`      | 
+| `COHERE_MULTILINGUAL_V3`   | 
+| `VERTEX_MULTIMODAL`   | 
+
+
+## Methods
 
 ---
 ### Health
@@ -429,6 +445,9 @@ fetchUserIntegrations();
   - `chunkSize` (number, optional): Defines the chunk size. Defaults to 1500.
   - `chunkOverlap` (number, optional): Defines the chunk overlap. Defaults to 20.
   - `skipEmbeddingGeneration` (boolean, optional): If set to true, embedding generation will be skipped. Defaults to false.
+    - `useOcr` (boolean, optional): Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
+    - `generateSparseVectors` (boolean, optional): Toggle to generate sparse vectors for hybrid search. Default is `false`.
+    - `embeddingModel` (type:`EmbeddingModel`, optional): Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
 
 - **Returns**: A promise that resolves to an UploadFilesResponse object:
 
@@ -575,6 +594,7 @@ fetchUserIntegrations();
   - `chunkOverlap` (number, optional): The overlapping size between chunks. The default value is 20.
   - `skipEmbeddingGeneration` (boolean, optional): An indicator of whether to skip embedding generation during the upload. The default is set to false.
   - `overWriteFileId` (number or null, optional): If provided, the uploaded content will overwrite an existing file with the specified ID.
+  - `embeddingModel` (type:`TextEmbeddingModel`, optional): Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
 
 - **Returns**: A promise that resolves to an `UploadTextResponse` object containing the following properties:
 
@@ -668,6 +688,7 @@ fetchUserIntegrations();
   - `chunkSize` (number, optional): The size of data chunks during the upload process. Default is set to 1500.
   - `chunkOverlap` (number, optional): The overlap size between chunks. Default is set to 20.
   - `skipEmbeddingGeneration` (boolean, optional): Indicates whether to skip embedding generation during the upload. Default is set to false.
+  - `embeddingModel` (type:`EmbeddingModel`, optional): Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
 
 - **Returns**: A promise that resolves to an `UploadFileFromUrlResponse` object with the following properties:
 
