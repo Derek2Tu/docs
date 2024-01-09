@@ -155,7 +155,8 @@
     {
       "group": "User",
       "pages": [
-        "api-reference/endpoint/user/user-endpoint"
+        "api-reference/endpoint/user/user",
+        "api-reference/endpoint/user/toggle-user-features"
       ]
     },
     {
