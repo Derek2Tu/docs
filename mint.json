@@ -179,7 +179,14 @@
         "api-reference/endpoint/data-sources/list-data-source-items",
         "api-reference/endpoint/data-sources/sync-files",
         "api-reference/endpoint/data-sources/s3-auth",
-        "api-reference/endpoint/data-sources/s3-files"
+        "api-reference/endpoint/data-sources/s3-files",
+        "api-reference/endpoint/data-sources/gmail-sync"
+      ]
+    },
+    {
+      "group": "Organizations",
+      "pages": [
+        "api-reference/endpoint/organizations/organization"
       ]
     },
     {

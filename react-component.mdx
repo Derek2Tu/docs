@@ -66,7 +66,8 @@ The `CarbonConnect` component accepts the following properties:
 | `backButtonText`           | String          | No        | The label that you want to show on the back button. Defaults to `Go back`.                                               |
 | `zIndex`                   | Number          | No        | Update the z-index of the Carbon Connect modal.                                                                         |
 | `enableToasts`             | Boolean         | No        | Setting to `False` disables Toast notifications by default in Carbon Connect.                                                      |
-| `embeddingModel`             | Boolean         | No      |Specifies the embedding model used for the integration. The options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
+| `embeddingModel`             | String         | No      |Specifies the embedding model used for the integration. The options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
+| `filePickerMode`             | String         | No      |Specifies whether users can locally upload files, folders, or both. The options are `FILES`, `FOLDERS`, or `BOTH`.
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
