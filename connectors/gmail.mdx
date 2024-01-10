@@ -9,7 +9,7 @@ Carbon uses **[OAuth 2.0](https://developers.google.com/identity/protocols/oauth
 
 ## Authorization Flow
 
-After the user logs into their Gmail account, Carbon then auto-sync all emails based on the filters set via our API.
+After the user logs into their Gmail account, Carbon auto-syncs all emails based on the filters set via our API.
 ![](https://i.ibb.co/wQsyjrV/Screen-Shot-2023-08-11-at-2-04-49-PM.png)
 
 
@@ -51,7 +51,7 @@ You can also opt to use a custom CNAME record pointing to https://api.carbon.ai 
 
 ## Synchronization
 
-After successfully connecting your Gmail account, you gain the ability to selectively sync emails by utilizing the `filters` parameter. This parameter operates as a JSON object comprising key-value pairs, supporting both AND and OR operations. Presently, our system accommodates a specific set of keys as detailed below:
+After successfully connecting your Gmail account, you gain the ability to selectively sync emails by utilizing the `filters` parameter via the `/integrations/gmail/sync` endpoint. This parameter operates as a JSON object comprising key-value pairs, supporting both AND and OR operations. Presently, our system accommodates a specific set of keys as detailed below:
 
 #### `label`
 Represents predefined Gmail labels such as "Important" or custom labels created by the user.
@@ -78,7 +78,7 @@ An example of a basic query with filters, which lists all emails that have the l
 }
 ```
 
-You can use AND and OR operation as follows below. 
+You can use AND and OR operation as follows. 
 
 This setup ensures the retrieval of emails dated after January 7th that satisfy either of the two conditions: having the label "Personal" or being marked as 'starred'. The structure allows for the effective use of AND and OR operations to filter emails based on the defined criteria.
 
