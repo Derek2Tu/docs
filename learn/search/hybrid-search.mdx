@@ -22,4 +22,13 @@ Send the following payload to enable sparse vectors for the customer:
 
 _*For files via API:*_ Set the query parameter `generate_sparse_vectors` to `true` when using the `/uploadfile` endpoint. [Find more details](/api-reference/endpoint/files/create-upload-file).
 
-_*For Connectors via Carbon Connect:*_ Set `generateSparseVectors` to `true` for each `enabledIntegrations`. [Find more details](/react-component).
+_*For Carbon Connect:*_ 
+
+[React Component](/react-component): Set `generateSparseVectors` to `TRUE` for each `enabledIntegrations`.
+[Javascript SDK](/js-sdk): Set the `generateSparseVectors` prop to `TRUE` for any of the helper methods:
+- `GenerateOAuthURL`
+- `UploadFileFromUrl`
+- `UploadText`
+- `SubmitScrapeRequest`
+
+.
