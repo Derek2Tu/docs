@@ -44,7 +44,7 @@
     {
       "name": "Carbon Connect",
       "icon": "palette",
-      "url": "js-sdk"
+      "url": "react-component"
     }
   ],
   "navigation": [
@@ -88,6 +88,12 @@
           "group": "Models",
           "pages": [
             "learn/models/models"
+          ]
+        },
+        {
+          "group": "Search",
+          "pages": [
+            "learn/search/hybrid-search"
           ]
         },
         {
