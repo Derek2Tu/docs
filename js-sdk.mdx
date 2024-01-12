@@ -298,6 +298,8 @@ fetchUserIntegrations();
   - `chunkOverlap` (number, optional): Defines the chunk overlap. Defaults to 20.
   - `skipEmbeddingGeneration` (boolean, optional): If set to true, embedding generation will be skipped. Defaults to false.
   - `tags` (object, optional): Tags that can be passed for additional information. Defaults to an empty object.
+  -  `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search for a specified integration. Default is `false`.
+
 
 - **Returns**: A promise that resolves to a `GenerateOAuthURLResponse` object:
 
@@ -445,9 +447,10 @@ fetchUserIntegrations();
   - `chunkSize` (number, optional): Defines the chunk size. Defaults to 1500.
   - `chunkOverlap` (number, optional): Defines the chunk overlap. Defaults to 20.
   - `skipEmbeddingGeneration` (boolean, optional): If set to true, embedding generation will be skipped. Defaults to false.
-    - `useOcr` (boolean, optional): Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
-    - `generateSparseVectors` (boolean, optional): Toggle to generate sparse vectors for hybrid search. Default is `false`.
-    - `embeddingModel` (type:`EmbeddingModel`, optional): Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
+  - `useOcr` (boolean, optional): Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
+  - `generateSparseVectors` (boolean, optional): Toggle to generate sparse vectors for hybrid search. Default is `false`.
+  - `embeddingModel` (type:`EmbeddingModel`, optional): Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
+  - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
 
 - **Returns**: A promise that resolves to an UploadFilesResponse object:
 
@@ -689,6 +692,7 @@ fetchUserIntegrations();
   - `chunkOverlap` (number, optional): The overlap size between chunks. Default is set to 20.
   - `skipEmbeddingGeneration` (boolean, optional): Indicates whether to skip embedding generation during the upload. Default is set to false.
   - `embeddingModel` (type:`EmbeddingModel`, optional): Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
+  - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
 
 - **Returns**: A promise that resolves to an `UploadFileFromUrlResponse` object with the following properties:
 
@@ -893,6 +897,7 @@ fetchUserIntegrations();
   - `chunkOverlap` (number, optional): Overlapping size between chunks. Defaults to 20.
   - `skipEmbeddingGeneration` (boolean, optional): Indicates whether to skip embedding generation during scraping. Defaults to false.
   - `enableAutoSync`: Enables scheduled syncs of the submitted URL. Defaults to `false`.
+  - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
 
 - **Returns**: A promise that resolves to a `SubmitScrapeRequestResponse` object:
 
