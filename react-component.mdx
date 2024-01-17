@@ -219,7 +219,9 @@ You can enable connectors users can access via the `enabledIntegrations` propert
 
 Here's the list of connectors available for activation:
 
-1. `LOCAL_FILES`: This integration lets you upload files from your local machine. You can pass the following configuration for this integration:
+<AccordionGroup>
+  <Accordion title="Local Files">
+  `LOCAL_FILES`: This integration lets you upload files from your local machine. You can pass the following configuration for this integration:
 
     - `chunkSize`: Number of tokens per chunk. Default is 1500.
     - `overlapSize`: Size of overlap in tokens. Default is 20.
@@ -240,7 +242,10 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search for this file type. Default is `false`.
 
 
-2. `NOTION`: This integration lets you upload files from your notion account. You can pass the following configuration for this integration
+  </Accordion>
+
+  <Accordion title="Notion">
+    `NOTION`: This integration lets you upload files from your notion account. You can pass the following configuration for this integration
 
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
@@ -248,7 +253,10 @@ Here's the list of connectors available for activation:
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
 
-3. `WEB_SCRAPER`: This integration lets you scrape URLs. You can pass the following configuration for this integration:
+  </Accordion>
+
+  <Accordion title="Web Scraper">
+    `WEB_SCRAPER`: This integration lets you scrape URLs. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `recursionDepth`: Depth of recursion for scraping. Defaults to 3. Use 1 to disable recursion and 0 to scrape recursively until reaching the `maxPagesToScrape` limit.
@@ -257,64 +265,94 @@ Here's the list of connectors available for activation:
     - `enableAutoSync`: Toggle to enable scheduled syncs. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `skipHTMLTags`: Define HTML tags to exclude when converting HTML to plaintext. Defaults to `null`.
+    - `skipCSSClasses`: Define CSS Classes to exclude when converting HTML to plaintext. Defaults to `null`.
+  </Accordion>
+  <Accordion title="Google Drive">
+    `GOOGLE_DRIVE`: This integration lets you upload files from your Google Drive. You can pass the following configuration for this integration:
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+  </Accordion>
+  <Accordion title="Intercom">
+   `INTERCOM`: This integration lets you select pages from your Intercom. You can pass the following configuration for this integration:
 
-4. `GOOGLE_DRIVE`: This integration lets you upload files from your Google Drive. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
 
-5. `INTERCOM`: This integration lets you select pages from your Intercom. You can pass the following configuration for this integration:
-
+  </Accordion>
+  <Accordion title="Dropbox">
+  `DROPBOX`: This integration lets you upload files from your Dropbox. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
-
-6. `DROPBOX`: This integration lets you upload files from your Dropbox. You can pass the following configuration for this integration:
+  </Accordion>
+  <Accordion title="OneDrive">
+   `ONEDRIVE`: This integration lets you upload files from your OneDrive. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
-
-7. `ONEDRIVE`: This integration lets you upload files from your OneDrive. You can pass the following configuration for this integration:
+  </Accordion>
+  <Accordion title="Zotero">
+  `ZOTERO`: This integration lets you upload files from your Zotero. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
-
-8. `ZOTERO`: This integration lets you upload files from your Zotero. You can pass the following configuration for this integration:
+  </Accordion>
+  <Accordion title="Sharepoint">
+  `SharePoint`: This integration lets you upload files from your SharePoint. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
-
-9. `SharePoint`: This integration lets you upload files from your SharePoint. You can pass the following configuration for this integration:
+  </Accordion>
+  <Accordion title="Confluence">
+  `Confluence`: This integration lets you upload files from your Confluence. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
-
-
-10. `Confluence`: This integration lets you upload files from your Confluence. You can pass the following configuration for this integration:
+  </Accordion>
+  <Accordion title="Zendesk">
+  `ZENDESK`: This integration lets you upload files from your Zendesk. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
-
-11. `ZENDESK`: This integration lets you upload files from your Zendesk. You can pass the following configuration for this integration:
+  </Accordion>
+  <Accordion title="Gmail">
+  `GMAIL`: This integration lets you upload emails from Gmail.
+  
+   Once a user has connected their Gmail account, you can select which emails to upload via the `/integrations/gmail/sync` endpoint.
+  </Accordion>
+  <Accordion title="RSS">
+  `RSS`: This integration lets you upload content from a RSS or Atom feed. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+  </Accordion>
+</AccordionGroup>
+
+
+
+
+
 
 # Callback Function Props
 
