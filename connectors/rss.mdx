@@ -5,12 +5,20 @@ description: 'The Carbon Connect `enabledIntegrations` value for RSS is `RSS`.'
 
 ## Functionality
 
-Our RSS connector parses content from cloud-hosted RSS feeds, treating each `<item>` as a separate file. The `<content>` is parsed and made retrievable in plain text, chunks, and embeddings via Carbon's API.
+Our RSS connector parses content from web-hosted RSS and Atom feeds (all versions), treating each `<item>` as a separate file. 
+
+The `<content>` or `<entry>` is parsed and made retrievable in plain text, chunks, and embeddings via Carbon's API. 
+
+If neither `<content>` or `<entry>` isn't available, we first fallback to `<summary>` and then to `<description>`. If none of these values exist, then the request will fail.
 
 The `<title>` of the `<item>` becomes the file's name, and the `<link>` serves as the external_url. Uniqueness is determined by the `<link>`, falling back to the `<title>` if no `<link>` is present for the `<item>`.
 
 ## Synchronization
 
-Syncs are triggered when end-users re-submits an URL via the `rss_scrape` endpoint or Carbon Connect. You can also use the `resync_file` API endpoint to programmatically resync the file for a specific RSS `<item>`. To delete the file corresponding to a RSS `<item>` from Carbon, you can use the `delete_files` endpoint directly.
+Syncs are triggered when end-users re-submits an URL via the `/integrations/rss_feed` endpoint or Carbon Connect. You can also use the `resync_file` API endpoint to programmatically resync the file for a specific RSS `<item>`. 
+
+To delete the file corresponding to a RSS `<item>` from Carbon, you can use the `delete_files` endpoint directly.
+
+A `<pubDate>` value is necessary for re-syncs to update existing files. Without this value, re-syncs will only add new items that are introduced to the feed.
 
 We do not run our 24-hour batch sync for RSS feeds by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.
