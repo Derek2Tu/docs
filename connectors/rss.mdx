@@ -11,7 +11,9 @@ The `<content>` or `<entry>` is parsed and made retrievable in plain text, chunk
 
 If neither `<content>` or `<entry>` isn't available, we first fallback to `<summary>` and then to `<description>`. If none of these values exist, then the request will fail.
 
-The `<title>` of the `<item>` becomes the file's name, and the `<link>` serves as the external_url. Uniqueness is determined by the `<link>`, falling back to the `<title>` if no `<link>` is present for the `<item>`.
+Here's a refined version:
+
+The `<title>` of the `<item>` is assigned as the file's name, and the `<link>` is used as the external URL. Uniqueness is determined by the `<link>`, with a fallback to a slugified version of the `<title>` if no `<link>` is provided for the `<item>`.
 
 ## Synchronization
 
