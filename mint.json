@@ -70,6 +70,7 @@
         "connectors/dropbox",
         "connectors/box",
         "connectors/intercom",
+        "connectors/rss",
         "connectors/notion",
         "connectors/websites",
         "connectors/zendesk",

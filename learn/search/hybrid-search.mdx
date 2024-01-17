@@ -18,9 +18,11 @@ Send the following payload to enable sparse vectors for the customer:
 }
 ```
 
-#### 2. Enable hybrid search for specific files and connectors
+### 2. Generate Sparse Vectors for Content
 
-_*For files via API:*_ Set the query parameter `generate_sparse_vectors` to `true` when using the `/uploadfile` endpoint. [Find more details](/api-reference/endpoint/files/create-upload-file).
+_*For Files via API:*_ 
+
+Set the query parameter `generate_sparse_vectors` to `true` when using the `/uploadfile`, `/upload_text`, and `/upload_file_from_url` endpoints.
 
 _*For Carbon Connect:*_ 
 
@@ -31,4 +33,14 @@ _*For Carbon Connect:*_
 - `UploadText`
 - `SubmitScrapeRequest`
 
-.
+
+### 3. Enable hybrid search on `/embeddings` endpoint
+
+To enable hybird search, you must set the `hybrid_search` paramemter in the `/embeddings` request body to `TRUE`. 
+
+When hybrid search is enabled, a combination of keyword search and semantic search are used to rank and select candidate embeddings during information retrieval. By default, these search methods are weighted equally during the ranking process. To adjust the weight (or "importance") of each search method, you can use the hybrid_search_tuning_parameters property. The description for the different tuning parameters are:
+
+- `weight_a`: weight to assign to semantic search
+- `weight_b`: weight to assign to keyword search
+
+You must ensure that `sum(weight_a, weight_b,..., weight_n)` for all n weights is equal to 1. The equality has an error tolerance of `0.001` to account for possible floating point issues.
