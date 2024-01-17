@@ -5,13 +5,11 @@ description: 'The Carbon Connect `enabledIntegrations` value for RSS is `RSS`.'
 
 ## Functionality
 
-Our RSS connector parses content from web-hosted RSS and Atom feeds (all versions), treating each `<item>` as a separate file. 
+Our RSS connector parses content from web-hosted RSS and Atom feeds (all versions), treating each `<item>` (or `<entry>`) as a separate file. 
 
-The `<content>` or `<entry>` is parsed and made retrievable in plain text, chunks, and embeddings via Carbon's API. 
+The `<content>` is parsed and made retrievable in plain text, chunks, and embeddings via Carbon's API. 
 
-If neither `<content>` or `<entry>` isn't available, we first fallback to `<summary>` and then to `<description>`. If none of these values exist, then the request will fail.
-
-Here's a refined version:
+If `<content>` isn't available, we first fallback to `<summary>` and then to `<description>`. If none of these values exist, then the request will fail.
 
 The `<title>` of the `<item>` is assigned as the file's name, and the `<link>` is used as the external URL. Uniqueness is determined by the `<link>`, with a fallback to a slugified version of the `<title>` if no `<link>` is provided for the `<item>`.
 
