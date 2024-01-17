@@ -107,7 +107,7 @@ const tokenFetcher = async () => {
 <CarbonConnect
   orgName="Your Organization"
   brandIcon="path/to/your/brand/icon"
-  embeddingModel: 'OPENAI',
+  embeddingModel: {'OPENAI'},
   tokenFetcher={tokenFetcher}
   tags={{
     tag1: 'tag1_value',
@@ -336,7 +336,7 @@ Here's the list of connectors available for activation:
   </Accordion>
   <Accordion title="Gmail">
   `GMAIL`: This integration lets you upload emails from Gmail.
-  
+
    Once a user has connected their Gmail account, you can select which emails to upload via the `/integrations/gmail/sync` endpoint.
   </Accordion>
   <Accordion title="RSS">
