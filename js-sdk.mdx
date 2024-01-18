@@ -298,7 +298,8 @@ fetchUserIntegrations();
   - `chunkOverlap` (number, optional): Defines the chunk overlap. Defaults to 20.
   - `skipEmbeddingGeneration` (boolean, optional): If set to true, embedding generation will be skipped. Defaults to false.
   - `tags` (object, optional): Tags that can be passed for additional information. Defaults to an empty object.
-  -  `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search for a specified integration. Default is `false`.
+  - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search for a specified integration. Default is `false`.
+  - `prependFilenameToChunks`: Adds the file title to each chunk. Defaults to `false`. 
 
 
 - **Returns**: A promise that resolves to a `GenerateOAuthURLResponse` object:
@@ -451,6 +452,7 @@ fetchUserIntegrations();
   - `generateSparseVectors` (boolean, optional): Toggle to generate sparse vectors for hybrid search. Default is `false`.
   - `embeddingModel` (type:`EmbeddingModel`, optional): Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
   - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+  - `prependFilenameToChunks`: Adds the file title to each chunk. Defaults to `false`. 
 
 - **Returns**: A promise that resolves to an UploadFilesResponse object:
 
@@ -693,6 +695,7 @@ fetchUserIntegrations();
   - `skipEmbeddingGeneration` (boolean, optional): Indicates whether to skip embedding generation during the upload. Default is set to false.
   - `embeddingModel` (type:`EmbeddingModel`, optional): Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
   - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+  - `prependFilenameToChunks`: Adds the file title to each chunk. Defaults to `false`. 
 
 - **Returns**: A promise that resolves to an `UploadFileFromUrlResponse` object with the following properties:
 
@@ -900,6 +903,7 @@ fetchUserIntegrations();
   - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
   - `skipHTMLTags`: Define HTML tags to exclude when converting HTML to plaintext. Defaults to `null`.
   - `skipCSSClasses`: Define CSS Classes to exclude when converting HTML to plaintext. Defaults to `null`.
+  - `prependFilenameToChunks`: Adds the file title to each chunk. Defaults to `false`. 
 
 - **Returns**: A promise that resolves to a `SubmitScrapeRequestResponse` object:
 

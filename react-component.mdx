@@ -68,6 +68,7 @@ The `CarbonConnect` component accepts the following properties:
 | `enableToasts`             | Boolean         | No        | Setting to `False` disables Toast notifications by default in Carbon Connect.                                                      |
 | `embeddingModel`             | String         | No      |Specifies the embedding model used for the integration. The options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
 | `filePickerMode`             | String         | No      |Specifies whether users can locally upload files, folders, or both. The options are `FILES`, `FOLDERS`, or `BOTH`.
+| `prependFilenameToChunks`| String | No | Adds the file title to each chunk. Defaults to `false`. 
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
@@ -232,6 +233,7 @@ Here's the list of connectors available for activation:
     - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `embeddingModel`: Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
    - `allowedFileTypes`: This is an array of objects. Each object represents a file type that is allowed to be uploaded. Each object can have the following properties:
       - `extension`: File extension of the allowed file type (required property).
       - `chunkSize`: Number of tokens per chunk for this file type. Defaults to global setting if not specified.
@@ -239,7 +241,8 @@ Here's the list of connectors available for activation:
       - `skipEmbeddingGeneration`: Toggle to skip embedding generation for this file type. Defaults to global setting if not specified.
       - `embeddingModel`: Specifies the embedding model for this file type. Options same as global but specific to this file type. Defaults to global setting if not specified.
       - `useOcr`: Toggle to enable OCR for PDF files. Defaults to global setting if not specified.
-    - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search for this file type. Default is `false`.
+      - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search for this file type. Default is `false`.
+      - `prependFilenameToChunks`: Adds the file title to each chunk for the file. Defaults to `false`. 
 
 
   </Accordion>
@@ -252,6 +255,7 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
   </Accordion>
 
@@ -267,6 +271,8 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `skipHTMLTags`: Define HTML tags to exclude when converting HTML to plaintext. Defaults to `null`.
     - `skipCSSClasses`: Define CSS Classes to exclude when converting HTML to plaintext. Defaults to `null`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
   </Accordion>
   <Accordion title="Google Drive">
     `GOOGLE_DRIVE`: This integration lets you upload files from your Google Drive. You can pass the following configuration for this integration:
@@ -275,6 +281,8 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
   </Accordion>
   <Accordion title="Intercom">
    `INTERCOM`: This integration lets you select pages from your Intercom. You can pass the following configuration for this integration:
@@ -284,6 +292,7 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
   </Accordion>
   <Accordion title="Dropbox">
@@ -293,6 +302,8 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
   </Accordion>
   <Accordion title="OneDrive">
    `ONEDRIVE`: This integration lets you upload files from your OneDrive. You can pass the following configuration for this integration:
@@ -301,6 +312,8 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
   </Accordion>
   <Accordion title="Zotero">
   `ZOTERO`: This integration lets you upload files from your Zotero. You can pass the following configuration for this integration:
@@ -309,6 +322,8 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
   </Accordion>
   <Accordion title="Sharepoint">
   `SharePoint`: This integration lets you upload files from your SharePoint. You can pass the following configuration for this integration:
@@ -317,6 +332,8 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
   </Accordion>
   <Accordion title="Confluence">
   `Confluence`: This integration lets you upload files from your Confluence. You can pass the following configuration for this integration:
@@ -325,6 +342,8 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
   </Accordion>
   <Accordion title="Zendesk">
   `ZENDESK`: This integration lets you upload files from your Zendesk. You can pass the following configuration for this integration:
@@ -333,6 +352,8 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
   </Accordion>
   <Accordion title="Gmail">
   `GMAIL`: This integration lets you upload emails from Gmail.
@@ -346,6 +367,10 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
+  </Accordion>
+  <Accordion title="Outlook">
   </Accordion>
 </AccordionGroup>
 
