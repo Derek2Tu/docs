@@ -1,60 +1,57 @@
 ---
 title: 'Outlook'
-description: 'The Carbon Connect `enabledIntegrations` value for Gmail is `OUTLOOK`.'
+description: 'The Carbon Connect `enabledIntegrations` value for Outlook is `OUTLOOK`.'
 ---
 
 ## Authorization Type
 
-Carbon uses **[OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)** to connect to Gmail.
+Carbon uses **[OAuth 2.0](https://learn.microsoft.com/en-us/onedrive/developer/rest-api/getting-started/msa-oauth?view=odsp-graph-online)** to connect to Outlook.
 
 ## Authorization Flow
 
-After the user logs into their Gmail account, Carbon auto-syncs all emails based on the filters set via our API.
-![](https://i.ibb.co/wQsyjrV/Screen-Shot-2023-08-11-at-2-04-49-PM.png)
-
-
-## Configuration
+Log into your Microsoft account.
+![](https://i.ibb.co/86FPknL/Screen-Shot-2023-08-31-at-4-41-48-PM.png)
 
 ### Custom OAuth Credentials
 
-1. Go to `APIs and Services` > `Enabled APIs and Services` in your Google Cloud console, then click on the button titled `ENABLE APIS AND SERVICES` and enable `Gmail API`.
-2. Then create an `OAuth Client ID` in the `Credentials section` under `Gmail API`. Select `Web Application` as the Application type and give it an identifiable name for your reference.
+#### Setting up the OAuth App
 
-![](https://files.readme.io/e7f42e5-image.png)
+1. Create or log into your [Microsoft Azure](https://portal.azure.com/) Account.
 
-3. Add [https://api.carbon.ai](https://api.carbon.ai) as the `Authorized JS origin` and [https://api.carbon.ai/integrations/gmail](https://api.carbon.ai/integrations/gmail) as an `Authorized redirect URI`. 
-You can also opt to use a custom CNAME record pointing to https://api.carbon.ai for the `Authorized JS Origin` and `Authorized redirect URI`. However, for the `Authorized redirect URI` the domain paths must still be `/integrations/gmail`.
+2. Under `Azure Services`, select `App Registration` -> `New registration`.
 
+![](https://i.ibb.co/SPR4ztF/Screen-Shot-2023-09-08-at-2-52-56-PM.png)
 
-![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/79685719-faf4-421b-86d1-3e3ff8749800/public)
+3. Select `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)` as the `Supported account types`.
 
-4. Save the credentials. Download the credentials.json file once you save the OAuth Client ID data and share the file with Carbon.
+![](https://i.ibb.co/qBLpg1r/Screen-Shot-2023-09-12-at-11-09-28-PM.png)
 
-![](https://files.readme.io/f265775-image.png)
+4. Add https://api.carbon.ai/integrations/outlook as the `Redirect URI` and select `Web` under the `Select a platform` dropdown. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/outlook`.
 
+![](https://i.ibb.co/9NTZycz/Screen-Shot-2023-09-08-at-2-59-16-PM.png)
 
-5. Configure your consent screen in the OAuth Consent Screen. Provide your **App name**, **support email address**, and **brand logo**. Add [carbon.ai](http://carbon.ai/) (or your custom CNAME) to `Authorized domain`.
+5. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `offline_access`, `openid`, and `User.Read`.
 
-![](https://files.readme.io/33ebd01-image.png)
+![](https://i.ibb.co/VTGK90Z/Onedrive-1.png)
 
-![](https://files.readme.io/6d7f247-image.png)
+6. Under `Client credentials`, click `Add a certificate or secret` -> `New Client Secret`. Then copy the client secret’s `Value` and share it with us via Slack.
 
+![](https://i.ibb.co/0tghs0p/Screen-Shot-2023-09-08-at-3-13-30-PM.png)
 
-6. Click on `Add or Remove Scopes` button to add the following scopes: `/auth/gmail.readonly`
+7. Navigate to the `Overview` tab then copy the `Application (client) ID` and share it with us via Slack.
 
-![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/332135f8-1c10-41e4-6c2d-b9d82340b200/public)
+![](https://i.ibb.co/KGWzr1H/Screen-Shot-2023-09-12-at-11-14-08-PM.png)
 
-9. If you wish to add test users, you can do so. These users will not see the "App is unverified" notification. Other users will see this alert.
-10. Click `Publish App` to make this app available to your end-users.
+8. Customize your app branding under `Manage` -> `Branding & properties`.
 
-![](https://files.readme.io/d24c355-image.png)
+![](https://i.ibb.co/HrS9Cxj/Screen-Shot-2023-09-08-at-3-24-16-PM.png)
 
 ## Synchronization
 
-After successfully connecting your Gmail account, you gain the ability to selectively sync emails by utilizing the `filters` parameter via the `/integrations/gmail/sync` endpoint. This parameter operates as a JSON object comprising key-value pairs, supporting both AND and OR operations. Presently, our system accommodates a specific set of keys as detailed below:
+After successfully connecting your Outlook account, you gain the ability to selectively sync emails by utilizing the `filters` parameter via the `/integrations/Outlook/sync` endpoint. This parameter operates as a JSON object comprising key-value pairs, supporting both AND and OR operations. Presently, our system accommodates a specific set of keys as detailed below:
 
 #### `label`
-Represents predefined Gmail labels such as "Important" or custom labels created by the user.
+Represents predefined Outlook labels such as "Important" or custom labels created by the user.
 
 #### `after`
 Accepts a date in the format YYYY/mm/dd (e.g., 2023/12/31), enabling the retrieval of emails after a specified date.
@@ -109,6 +106,6 @@ This setup ensures the retrieval of emails dated after January 7th that satisfy 
 }
 ```
 
-You can use the `resync_file` API endpoint to programmatically resync specific Gmail emails. To delete specific emails from Carbon, you can use the `delete_files` endpoint directly.
+You can use the `resync_file` API endpoint to programmatically resync specific Outlook emails. To delete specific emails from Carbon, you can use the `delete_files` endpoint directly.
 
-We do not run our 24-hour batch sync for Gmail by default. If you’d like us to enable batch syncs to run in the background, you can request this via Slack.
+We do not run our 24-hour batch sync for Outlook by default. If you’d like us to enable batch syncs to run in the background, you can request this via Slack.
