@@ -898,6 +898,8 @@ fetchUserIntegrations();
   - `skipEmbeddingGeneration` (boolean, optional): Indicates whether to skip embedding generation during scraping. Defaults to false.
   - `enableAutoSync`: Enables scheduled syncs of the submitted URL. Defaults to `false`.
   - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+  - `skipHTMLTags`: Define HTML tags to exclude when converting HTML to plaintext. Defaults to `null`.
+  - `skipCSSClasses`: Define CSS Classes to exclude when converting HTML to plaintext. Defaults to `null`.
 
 - **Returns**: A promise that resolves to a `SubmitScrapeRequestResponse` object:
 
