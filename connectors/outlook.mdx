@@ -30,7 +30,7 @@ Log into your Microsoft account.
 
 ![](https://i.ibb.co/9NTZycz/Screen-Shot-2023-09-08-at-2-59-16-PM.png)
 
-5. Under `Manage` -> `API permissions` add the permissions `Files.Read.All`, `offline_access`, `openid`, and `User.Read`.
+5. Under `Manage` -> `API permissions` add the permissions `Mail.Read`, `offline_access`, `openid`, and `User.Read`.
 
 ![](https://i.ibb.co/VTGK90Z/Onedrive-1.png)
 
@@ -48,40 +48,54 @@ Log into your Microsoft account.
 
 ## Synchronization
 
-After successfully connecting your Outlook account, you gain the ability to selectively sync emails by utilizing the `filters` parameter via the `/integrations/Outlook/sync` endpoint. This parameter operates as a JSON object comprising key-value pairs, supporting both AND and OR operations. Presently, our system accommodates a specific set of keys as detailed below:
+After successfully connecting your Outlook account, you have the flexibility to choose which emails to sync using the filters and folder parameters.
 
-#### `label`
-Represents predefined Outlook labels such as "Important" or custom labels created by the user.
+#### Filters Parameter
+The filters parameter is a JSON object with key-value pairs, supporting AND and OR operations. 
 
-#### `after`
-Accepts a date in the format YYYY/mm/dd (e.g., 2023/12/31), enabling the retrieval of emails after a specified date.
+Below are the supported filter keys:
 
-#### `before`
-Accepts a date in the format YYYY/mm/dd (e.g., 2023/12/31), enabling the retrieval of emails before a specified date.
+- _*`category`*_: Custom categories created in Outlook.
 
-#### `is` 
-Supports values like `starred`, `important`, `snoozed`, and `unread` to filter emails based on these attributes.
+- _*`after or before`*_: A date in YYYY/mm/dd format (e.g., 2023/12/31) to fetch emails after/before a specific date.
+You can combine these filters for more refined queries. 
 
-It's crucial to adhere to the specified keys and values within the JSON object. Usage of keys or values outside this defined scope might result in unexpected behavior.
+Here are some examples:
 
-An example of a basic query with filters, which lists all emails that have the label `Test`:
-
-```
+```json
 {
     "filters": {
-            "key": "label",
-            "value": "Test"
-        }
+        "key": "category",
+        "value": "Test"
+    }
 }
 ```
 
-You can use AND and OR operation as follows. 
-
-This setup ensures the retrieval of emails dated after January 7th that satisfy either of the two conditions: having the label "Personal" or being marked as 'starred'. The structure allows for the effective use of AND and OR operations to filter emails based on the defined criteria.
-
-<Note>This example demonstrates the highest level of nesting we support. You can't add more AND/OR filters within the OR filter in the example below.</Note>
-
+```json
+{
+    "filters": {
+        "key": "after",
+        "value": "2024/01/07"
+    }
+}
 ```
+#### Folder Parameter
+The folder parameter allows you to specify the folder from which to sync emails. By default, emails are retrieved from the inbox folder. To specify a custom folder, include it in the query:
+
+```json
+{
+    "folder": "Folder Name",
+    "filters": {
+        "key": "category",
+        "value": "Test"
+    }
+}
+```
+
+#### Combining Filters and Operations
+You can use AND and OR operations for more complex queries. Here's an example:
+
+```json
 {
     "filters": {
         "AND": [
@@ -92,19 +106,19 @@ This setup ensures the retrieval of emails dated after January 7th that satisfy 
             {
                 "OR": [
                     {
-                        "key": "label",
+                        "key": "category",
                         "value": "Personal"
                     },
                     {
-                        "key": "is",
-                        "value": "starred"
+                        "key": "category",
+                        "value": "Test"
                     }
                 ]
             }
         ]
     }
 }
-```
+````
 
 You can use the `resync_file` API endpoint to programmatically resync specific Outlook emails. To delete specific emails from Carbon, you can use the `delete_files` endpoint directly.
 
