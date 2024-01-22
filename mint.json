@@ -76,6 +76,7 @@
         "connectors/zendesk",
         "connectors/zotero",
         "connectors/gmail",
+        "connectors/outlook",
         "connectors/confluence",
         "connectors/slack",
         "connectors/s3"
