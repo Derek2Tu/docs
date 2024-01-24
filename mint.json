@@ -189,6 +189,7 @@
         "api-reference/endpoint/data-sources/s3-auth",
         "api-reference/endpoint/data-sources/s3-files",
         "api-reference/endpoint/data-sources/gmail-sync",
+        "api-reference/endpoint/data-sources/outlook-sync",
         "api-reference/endpoint/data-sources/rss-feed"
       ]
     },
