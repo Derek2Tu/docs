@@ -1,4 +1,35 @@
 ---
 title: 'Freshdesk'
-description: 'The Carbon Connect `enabledIntegrations` value for Dropbox is `FRESHDESK`.'
+description: 'The Carbon Connect `enabledIntegrations` value for Freshdesk is `FRESHDESK`.'
 ---
+
+### Authorization Type
+
+Freshdesk uses [API Key-based authentication](`https://developers.freshdesk.com/api/#introduction`). 
+
+### Configuration 
+
+Where can I find my API key?
+1. Log in to your Freshdesk Support Portal
+2. Click on your profile picture on the top right corner of your portal
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/f51809b8-8b76-4af5-3422-f7b550f5d100/public)
+
+3. Go to Profile settings Page
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/0e065a20-1d42-4033-446f-ea9c78315800/public)
+
+4. Your API key will be available below the change password section to your right.
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/ff4c0375-7dc0-4e14-791f-a60604ace200/public)
+
+For more information, please refer to [this solution article]('https://support.freshdesk.com/en/support/solutions/articles/215517') from Freshdesk.
+
+### Functionality
+
+Carbon syncs all `Published` articles under a single Freshdesk workspace. Any Draft article won’t be synced. We currently support only having a single Freshdesk workspace connected per `customer_id`.
+
+### Synchronization
+Syncs are triggered when end-users connects their Freshdesk account. You can use the `resync_file` API endpoint to programmatically resync specific Freshdesk files.
+
+In addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.
