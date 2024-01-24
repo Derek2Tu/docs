@@ -62,24 +62,70 @@
       ]
     },
     {
-      "group": "Connectors",
+      "group": "Source Connectors",
       "pages": [
-        "connectors/google-drive",
-        "connectors/sharepoint",
-        "connectors/onedrive",
-        "connectors/dropbox",
-        "connectors/box",
-        "connectors/intercom",
+
+        {
+          "group": "Cloud Storage",
+          "pages": [
+            "connectors/google-drive",
+            "connectors/sharepoint",
+            "connectors/onedrive",
+            "connectors/dropbox",
+            "connectors/box",
+            "connectors/zotero"
+          ]
+        },
+        {
+          "group": "Customer Support",
+          "pages": [
+            "connectors/intercom",
+            "connectors/zendesk",
+            "connectors/freshdesk"
+          ]
+        },
+        {
+          "group": "Productivity",
+          "pages": [
+            "connectors/notion",
+            "connectors/confluence"
+          ]
+        },
+        {
+          "group": "Email & Communication",
+          "pages": [
+            "connectors/gmail",
+            "connectors/outlook",
+            "connectors/slack"
+          ]
+        },
+        {
+          "group": "Object Storage",
+          "pages": [
+            "connectors/s3"
+          ]
+        },
+
         "connectors/rss",
-        "connectors/notion",
-        "connectors/websites",
-        "connectors/zendesk",
-        "connectors/zotero",
-        "connectors/gmail",
-        "connectors/outlook",
-        "connectors/confluence",
-        "connectors/slack",
-        "connectors/s3"
+        "connectors/websites"
+        
+      ]
+    },
+    {
+      "group": "Destination Connectors",
+      "pages": [
+
+        {
+          "group": "Vector Storage",
+          "pages": [
+            "connectors/qdrant",
+            "connectors/pinecone",
+            "connectors/lancedb",
+            "connectors/turbopuffer",
+            "connectors/weaviate"
+          ]
+        }
+        
       ]
     },
     {
