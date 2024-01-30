@@ -190,7 +190,8 @@
       "group": "Auth",
       "pages": [
         "api-reference/endpoint/auth/get-access-token",
-        "api-reference/endpoint/auth/get-white-labeling"
+        "api-reference/endpoint/auth/get-white-labeling",
+        "api-reference/endpoint/auth/get-oauth-url"
       ]
     },
     {

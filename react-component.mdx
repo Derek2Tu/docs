@@ -355,6 +355,21 @@ Here's the list of connectors available for activation:
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
   </Accordion>
+    <Accordion title="Freshdesk">
+  `FRESHDESK`: This integration lets you upload files from your Freshdesk. You can pass the following configuration for this integration:
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
+  </Accordion>
+  <Accordion title="Outlook">
+  `OUTLOOK`: This integration lets you upload emails from Gmail.
+
+   Once a user has connected their Outlook account, you can select which emails to upload via the `/integrations/outlook/sync` endpoint.
+  </Accordion>
   <Accordion title="Gmail">
   `GMAIL`: This integration lets you upload emails from Gmail.
 
