@@ -3,11 +3,16 @@ title: 'Freshdesk'
 description: 'The Carbon Connect `enabledIntegrations` value for Freshdesk is `FRESHDESK`.'
 ---
 
-### Authorization Type
+## Authorization Type
 
-Freshdesk uses [API Key-based authentication](`https://developers.freshdesk.com/api/#introduction`). 
+Freshdesk uses [API Key-based authentication](`https://developers.freshdesk.com/api/#introduction`) to connect to Freshdesk knowledge bases.
 
-### Configuration 
+## Authorization Flow 
+
+Enter your Freshdesk domain and API key.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/854ffc1c-5c1f-42f8-becf-6b13f3c2c100/public)
+
+## Configuration 
 
 Where can I find my API key?
 1. Log in to your Freshdesk Support Portal
@@ -25,11 +30,11 @@ Where can I find my API key?
 
 For more information, please refer to [this solution article]('https://support.freshdesk.com/en/support/solutions/articles/215517') from Freshdesk.
 
-### Functionality
+## Functionality
 
 Carbon syncs all `Published` articles under a single Freshdesk workspace. Any Draft article won’t be synced. We currently support only having a single Freshdesk workspace connected per `customer_id`.
 
-### Synchronization
+## Synchronization
 Syncs are triggered when end-users connects their Freshdesk account. You can use the `resync_file` API endpoint to programmatically resync specific Freshdesk files.
 
 In addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.
