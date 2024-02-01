@@ -3,19 +3,41 @@ title: 'Models'
 ---
 
 ### Overview
-Carbon supports multiple models for use in generating embeddings for files. 
-- For images, we support Google Vertex AI's multimodal model. 
-- For text, we support OpenAI's `text-embedding-ada-002` and Cohere's `embed-multilingual-v3.0`. 
+Carbon supports multiple embeddings models for various use cases and modalities.
+
+## Supported Models
+<Info>Carbon can help you switch between different embedding models. [Contact Us](emailto:team@carbon.ai)</Info>
+
+#### Text Embeddings
+| Model | Developer  | Embedding Size | Average MTEB Score | Carbon Slug
+| -------- | ------------- | ------ | ------| -------|
+| ada v2     | OpenAI  | 1536 | 61.0 | `TEXT-EMBEDDING-ADA-002`
+| text-embedding-3-small | OpenAI | 512 | 61.6
+|  | OpenAI | 1536 | 62.3
+| text-embedding-3-large   | OpenAI | 256 | 62.0
+|   | OpenAI | 1024 | 64.1
+| Cohere Embed v3 Multilingual | Cohere | 1024 | 64.0 | `COHERE_MULTILINGUAL_V3`
+| jina-embeddings-v2     | Jina  | 768 | 60.4
+
+#### Image Embeddings
+| Model | Developer  | Embedding Size | Carbon Slug
+| -------- | ------------- | ------ | ------|
+| Embeddings for Multimodal     | Google  | 1408 | `VERTEX_MULTIMODAL`
 
 ### Usage
-The embedding model can be defined using the `embedding_model` parameter, present in the POST body for `/embeddings` and as a query parameter in `/uploadfile`. By default, if no specific model is provided, the system defaults to `text-embedding-ada-002`.
+<Warning>Currently do not designate `VERTEX_MULTIMODAL` as an `embedding_model`. This model is automatically employed by Carbon when processing an image file.</Warning>
 
-When a vector search is performed, only files with embeddings generated using the specified model are considered. 
+To define the embedding model, utilize the `embedding_model` parameter in the POST body for the `/embeddings` and other API endpoints. By default, if no specific model is provided, the system will use `text-embedding-ada-002`.
 
-- For instance, if files A and B have embeddings generated with `OPENAI`, and files C and D with  `COHERE_MULTILINGUAL_V3`, then queries will default to considering only files A and B. 
+During a vector search, only files with embeddings generated using the specified model are taken into consideration.
 
-- If `COHERE_MULTILINGUAL_V3` is specified as the `embedding_model` in `/embeddings`, then only files C and D will be considered. 
+For example, if files A and B have embeddings generated with the `TEXT-EMBEDDING-ADA-002` model, and files C and D with `COHERE_MULTILINGUAL_V3`, the system will default to considering only files A and B when a query is executed without `embedding_model` set.
 
-It's crucial that all files intended for a query have embeddings generated using the same model.
+Alternatively, if `COHERE_MULTILINGUAL_V3` is explicitly set as the `embedding_model` in the `/embeddings` endpoint, the search will exclusively consider files C and D.
 
-For now, refrain from setting `VERTEX_MULTIMODAL` as an embedding_model. This model is automatically employed by Carbon when it detects an image file.
+_*It's important that all files intended for a query have embeddings generated using the same model.*_
+
+
+
+
+

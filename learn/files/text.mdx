@@ -1,22 +1,18 @@
-Customers have the option to use either OpenAI's `text-embedding-ada-002` model or Cohere's `Embed v3` model to generate text embeddings.
+You have the option to select from [multiple Embedding models](/learn/models/models#supported-models) based on your use case.
 
-Carbon supports the following text files:
+Carbon supports the following text files formats:
 
-- `pdf`
-- `xlsx`
-- `csv`
-- `docx`
-- `txt`
-- `md`
-- `rtf`
-- `tsv`
-- `pptx`
-- `json` (Coming Soon)
+| File | More Details                           |
+| -------- | ------------------------------------- |
+| `PDF`     | Carbon supports rich metadata such as document `author` and `title`. When chunking PDFs, we can return coordinates points so users can highlight specific blocks of text in the actual PDF document. |
+| `XLSX`     | Each row is split on its own line, and each element within the row has the header of its corresponding column added to it as a prefix. Images and charts aren't supported yet.                        |
+| `CSV`   | Every row is situated on an individual line, and each element within the row is prefixed with the header of its respective column. |
+| `DOCX`     | Text content is extracted and converted to plain text.                     |
+| `TXT`     | Text content is extracted and converted to plain text.                          |
+| `MD`     | Text content is extracted and converted to plain text.                      |
+| `RTF`   | Text content is extracted and converted to plain text. |
+| `TSV`     | Text content is extracted and converted to plain text. |
+| `PPTX`     | Text content is extracted and converted to plain text. Images and charts aren't supported yet.                          |
+| `JSON`   |  |
 
-### pdf
 
-For PDFs, we support rich metadata such as document `author` and `title`. When chunking PDFs, we can return coordinates points so users can highlight specific blocks of text in the actual PDF document.
-
-### csv
-
-For `csv` files, each row resides on its own line, and each element within the row has the header of its corresponding column added to it as a prefix.
