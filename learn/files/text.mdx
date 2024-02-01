@@ -1,3 +1,5 @@
+<Info>The max file size is 20 MB but you can be increased upon request.</Info>
+
 You have the option to select from [multiple Embedding models](/learn/models/models#supported-models) based on your use case.
 
 Carbon supports the following text files formats:
@@ -5,14 +7,42 @@ Carbon supports the following text files formats:
 | File | More Details                           |
 | -------- | ------------------------------------- |
 | `PDF`     | Carbon supports rich metadata such as document `author` and `title`. When chunking PDFs, we can return coordinates points so users can highlight specific blocks of text in the actual PDF document. |
-| `XLSX`     | Each row is split on its own line, and each element within the row has the header of its corresponding column added to it as a prefix. Images and charts aren't supported yet.                        |
-| `CSV`   | Every row is situated on an individual line, and each element within the row is prefixed with the header of its respective column. |
-| `DOCX`     | Text content is extracted and converted to plain text.                     |
+| `XLSX`     | Each row is split on its own line, and each element within the row has the header of its corresponding column added to it as a prefix. Our parser assumes that the first row and only the first row is the header. Images and charts aren't supported yet.                        |
+| `CSV`   | Every row is situated on an individual line, and each element within the row is prefixed with the header of its respective column. Our parser assumes that the first row and only the first row is the header. |
+| `DOCX`     | Text content is extracted and converted to plain text.  Images and charts aren't supported yet.                      |
 | `TXT`     | Text content is extracted and converted to plain text.                          |
 | `MD`     | Text content is extracted and converted to plain text.                      |
 | `RTF`   | Text content is extracted and converted to plain text. |
-| `TSV`     | Text content is extracted and converted to plain text. |
+| `TSV`     | Every row is situated on an individual line, and each element within the row is prefixed with the header of its respective column. Our parser assumes that the first row and only the first row is the header. |
 | `PPTX`     | Text content is extracted and converted to plain text. Images and charts aren't supported yet.                          |
-| `JSON`   |  |
+| `JSON`   |  Carbon iterates through each object in a file and flattens it. Keys on the topmost level remain the same, but nested keys are transformed into the dot separated path to reach the key's value. Each component of the path can either be a string for a nested object or integer for a nested list. |
+
+
+### JSON
+
+The parser iterates through each object in a file and flattens it. Keys on the topmost level remain the same, but nested keys are transformed into the dot separated path to reach the key's value. Each component of the path can either be a string for a nested object or integer for a nested list. 
+
+For example, given this object
+```json
+{
+  key: value,
+  nested_dict: { nested_key: nested_value },
+  nested_list: [list_element_0, list_element_1],
+}
+```
+it becomes
+```json
+{
+  key: value,
+  nested_dict.nested_key: nested_value,
+  nested_list.0: list_element_0,
+  nested_list.1: list_element_1,
+}
+```
+When processing a file containing a list of objects, the initial element of each path represents the object's index in the topmost list. The key-value pairs of each flattened object are combined using commas and newlines to form a chunk. Any braces or quotation marks surrounding strings are omitted. It's important to note that JSON files are chunked based on objects, not individual tokens. Consequently, it is essential to ensure that the number of tokens in a flattened JSON does not surpass the token limits established by the embedding models.
+
+
+
+
 
 
