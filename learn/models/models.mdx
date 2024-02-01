@@ -11,13 +11,14 @@ Carbon supports multiple embeddings models for various use cases and modalities.
 #### Text Embeddings
 | Model | Developer  | Embedding Size | Average MTEB Score | Carbon Slug
 | -------- | ------------- | ------ | ------| -------|
-| ada v2     | OpenAI  | 1536 | 61.0 | `TEXT-EMBEDDING-ADA-002`
-| text-embedding-3-small | OpenAI | 512 | 61.6
-|  | OpenAI | 1536 | 62.3
-| text-embedding-3-large   | OpenAI | 256 | 62.0
-|   | OpenAI | 1024 | 64.1
+| ada v2     | OpenAI  | 1536 | 61.0 | `OPENAI`
+| text-embedding-3-small | OpenAI | 512 | 61.6 | `OPENAI_ADA_SMALL_512`
+|  | OpenAI | 1536 | 62.3 | `OPENAI_ADA_SMALL_1536`
+| text-embedding-3-large   | OpenAI | 256 | 62.0 | `OPENAI_ADA_LARGE_256`
+|   | OpenAI | 1024 | 64.1 | `OPENAI_ADA_LARGE_1024`
+|   | OpenAI | 3072 | 64.6 | `OPENAI_ADA_LARGE_3072`
 | Cohere Embed v3 Multilingual | Cohere | 1024 | 64.0 | `COHERE_MULTILINGUAL_V3`
-| jina-embeddings-v2     | Jina  | 768 | 60.4
+| jina-embeddings-v2     | Jina  | 768 | 60.4 | Launching soon
 
 #### Image Embeddings
 | Model | Developer  | Embedding Size | Carbon Slug
@@ -27,11 +28,11 @@ Carbon supports multiple embeddings models for various use cases and modalities.
 ### Usage
 <Warning>Currently do not designate `VERTEX_MULTIMODAL` as an `embedding_model`. This model is automatically employed by Carbon when processing an image file.</Warning>
 
-To define the embedding model, utilize the `embedding_model` parameter in the POST body for the `/embeddings` and other API endpoints. By default, if no specific model is provided, the system will use `text-embedding-ada-002`.
+To define the embedding model, utilize the `embedding_model` parameter in the POST body for the `/embeddings` and other API endpoints. By default, if no specific model is provided, the system will use `OPENAI`.
 
 During a vector search, only files with embeddings generated using the specified model are taken into consideration.
 
-For example, if files A and B have embeddings generated with the `TEXT-EMBEDDING-ADA-002` model, and files C and D with `COHERE_MULTILINGUAL_V3`, the system will default to considering only files A and B when a query is executed without `embedding_model` set.
+For example, if files A and B have embeddings generated with the `OPENAI` model, and files C and D with `COHERE_MULTILINGUAL_V3`, the system will default to considering only files A and B when a query is executed without `embedding_model` set.
 
 Alternatively, if `COHERE_MULTILINGUAL_V3` is explicitly set as the `embedding_model` in the `/embeddings` endpoint, the search will exclusively consider files C and D.
 
