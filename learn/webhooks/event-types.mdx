@@ -16,8 +16,8 @@ Sent if a file has been successfully deleted.
 #### `RATE_LIMIT_ERROR`
 Sent if the organization has reached the rate limit for file processing. In this case, the file is requeued for reprocessing
     up to three times.
-
-These are sent *after* a file has been processed.
+#### `FILE_SYNC_LIMIT_REACHED`
+Sent if the organization has breached the 2.5 GB daily limit for uploads (this limit can be increased upon request). We return in the payload the `customer-id` of the user that exceeded the limit.
 
 ### Data Source Connections
 
