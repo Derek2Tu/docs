@@ -39,10 +39,13 @@ it becomes
   nested_list.1: list_element_1,
 }
 ```
-When processing a file containing a list of objects, the initial element of each path represents the object's index in the topmost list. The key-value pairs of each flattened object are combined using commas and newlines to form a chunk. Any braces or quotation marks surrounding strings are omitted. It's important to note that JSON files are chunked based on objects, not individual tokens. Consequently, it is essential to ensure that the number of tokens in a flattened JSON does not surpass the token limits established by the embedding models.
+When processing a file containing a list of objects, the initial element of each path represents the object's index in the topmost list. The key-value pairs of each flattened object are combined using commas and newlines to form a chunk. Any braces or quotation marks surrounding strings are omitted. 
 
+#### Chunking
+A new chunk is created if either the `max_items_per_chunk` or `chunk_size` limit is reached. 
 
+For example:
+- If each JSON object is 250 tokens, `chunk_size` of 800 tokens and no `max_items_per_chunk` set, then each chunk will contain 3 JSON objects.
+- If each JSON object is 250 tokens, `chunk_size` of 800 tokens and `max_items_per_chunk` set to 1, then each chunk will contain 1 JSON object.
 
-
-
-
+Consequently, it is essential to ensure that the number of tokens in a flattened JSON does not surpass the token limits established by the embedding models.
