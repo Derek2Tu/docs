@@ -1,0 +1,90 @@
+---
+title: 'Security'
+description: 'An overview of Carbon security features and practices.'
+---
+
+## Governance
+Carbon establishes policies and controls, monitors compliance with those controls, and proves the security and compliance to third-party auditors.
+
+Our policies are based on the following foundational principles:
+<CardGroup cols={2}>
+  <Card title="Least Privilege" icon="square-1">
+    Access should be limited to only those with a legitimate business needs, based on the principle of least privilege.
+  </Card>
+  <Card title="Consistency" icon="square-2">
+    Security controls should be applied consistently across all areas of the enterprise.
+  </Card>
+  <Card title="Defense in Depth" icon="square-3">
+    Security controls should be implemented and layered according to the principle of defense-in-depth.
+  </Card>
+  <Card title="Continuous Improvement" icon="square-4">
+    The implementation of controls should be iterative, continuously improving effectiveness and decreasing friction.
+  </Card>
+</CardGroup>
+
+### Compliance Standards 
+
+<AccordionGroup>
+  <Accordion title="SOC 2 Type 2" icon="hourglass-start">
+    Carbon will soon be SOC 2 Type 2 compliant. Contact team@carbon.ai for a copy of the report.
+  </Accordion>
+
+  <Accordion title="GDPR" icon="check">
+    Carbon is fully GDPR Compliant. You can find more details [here]('https://comply.dog/3bv3j7').
+  </Accordion>
+
+
+</AccordionGroup>
+
+## Data Protection
+<Card title="Data at rest" icon="Server">
+  All datastores are encrypted at rest. Sensitive collections and tables also use row-level encryption.
+</Card>
+
+<Card title="Data in Transit" icon="network-wired">
+  Carbon uses TLS 1.3 or higher everywhere data is transmitted over potentially insecure networks
+</Card>
+
+<Card title="Data Backup" icon="database">
+  Carbon backs-up all production data using a point-in-time approach. Backups are persisted for 30 days, and are globally replicated for resiliency against regional disasters.
+</Card>
+
+## Product Security
+### Penetration testing
+Carbon  engages with third-party firms to conduct penetration testing at least annually.
+
+All areas of the Carbon product and cloud infrastructure are in-scope for these assessments, and source code is fully available to the testers in order to maximize the effectiveness and coverage.
+
+### Vulnerability scanning
+Carbon uses multiple vulnerability monitoring techniques including code-level scanning, dependency scanning, and security reviews to identify and remediate vulnerabilities.
+
+Vulnerabilities are prioritized based on severity and risk, and are remediated according to the following schedule:
+
+- Critical: 15 Days
+- High: 30 Days
+- Medium: 90 Day
+- Low: 180 Days
+- Informational: As needed
+
+## Enterprise Security
+
+
+<Card title="Security Education" icon="graduation-cap">
+  Carbon provides comprehensive security training to all employees upon onboarding and annually. Carbon’s conducts threat briefings with employees to inform them of important security and safety-related updates that require special attention or action.
+</Card>
+
+<Card title="Identity and access management" icon="user">
+  Carbon employees are granted access to applications based on their role, and automatically deprovisioned upon termination of their employment. Further access must be approved according to the policies set for each application.
+
+Multi-factor authentication is required for all employees to access company applications.
+</Card>
+
+<Card title="Endpoint Protection" icon="laptop">
+  All company devices are equipped with anti-malware protection. Endpoint security alerts are monitored with 24/7/365 coverage. We use MDM software to monitor secure configuration of endpoints, such as disk encryption, screen lock configuration, and software updates.
+</Card>
+
+
+## Responsible Disclosure
+To report a security concern, please email security@carbon.ai
+
+
