@@ -680,6 +680,48 @@ fetchUserIntegrations();
   removeFile();
   ```
 </Accordion>
+<Accordion title="deleteFiles()">
+### deleteFiles()
+
+- **Description**: This function allows for the removal of multiple files from the Carbon service.
+
+- **Parameters**: The `deleteFiles()` method requires an object with the following properties:
+
+  - `accessToken` (string): The access token obtained through authentication.
+  - `fileIds` (Array):  The IDs of the files you intend to delete.
+
+- **Returns**: A promise that resolves to an `DeleteFilesResponse` object containing the following properties:
+
+  - `status` (number): The HTTP status code of the response.
+  - `data` (object or null): Contains details of the deleted files or any additional response data.
+  - `error` (string or null): An error message in case there is an issue with the file deletion.
+
+- **Usage**:
+
+  ```javascript
+  import * as Carbon from 'carbon-connect-js';
+
+  async function removeFiles() {
+
+    try {
+      const response = await Carbon.deleteFiles({
+        accessToken: 'YOUR_ACCESS_TOKEN',
+        fileIds: filesToDeleteArray,
+      });
+
+      if (response.status === 200) {
+        console.log('Files successfully deleted:', response.data);
+      } else {
+        console.error('Error:', response.error);
+      }
+    } catch (err) {
+      console.error('Unexpected error during file deletion:', err.message);
+    }
+  }
+
+  removeFiles();
+  ```
+</Accordion>
 <Accordion title="uploadFileFromUrl()">
 ### uploadFileFromUrl()
 

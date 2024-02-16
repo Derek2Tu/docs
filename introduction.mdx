@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: "Welcome to the home of your new documentation"
+description: "Data Connectors for LLMs."
 ---
 
 <img
@@ -18,27 +18,25 @@ description: "Welcome to the home of your new documentation"
 
 Carbon provides a comprehensive framework designed to streamline the process of connecting external data sources to Large Language Models (LLMs). 
 
-The Carbon search model is purpose-built for Large Language Models (LLMs) because of its fully neural architecture, enabling natural language querying across indexed documents from external data sources. In cases where vector (or neural) search isn't optimal, Carbon also supports keyword-based searches.
-
 Carbon simplifies the process of **retrieval augmented generation** (RAG), allowing you to spend more time using your data, and less time trying to ingest it.
 
 ## How Carbon Works
 
-Use **[Carbon Connect](https://api.carbon.ai/redoc#tag/Carbon-Connect)** to connect to your users' data sources and then our **Universal API** to retrieve the data to use with LLMs. Carbon has native integrations with 10+ data sources and supports more than 20+ file formats, encompassing text, audio, and visual data.
+Use our REST API or SDKs to sync user data sources and retrieve the data to use with LLMs. Carbon has native integrations with 20+ data connectors and supports more than 20+ file formats, encompassing text, audio, and visual data.
 
 Depending on your use case and in-house infrastructure, you can retrieve user data from Carbon in several formats: 
 
 - Parsed plaintext files
 - Embeddings (and chunks) to store in your vector store
-- Direct semantic and keyword search against Carbon's managed vector database
+- Direct semantic and keyword search on a managed or self-hosted vector database
 
 ## Products
 
 ### 🔗 Connect
 
-A client-side component for users to connect data sources such as Notion, Google Drive, Dropbox, OneDrive, websites, and file uploads. Available as a React component, JavaScript SDK, and soon as a magic link. 
+Client-side UI for users to authenticate and upload content from data sources such as Notion, Google Drive, Dropbox, OneDrive, websites, and file uploads. Available as a React component, SDK libraries, and soon as a magic link. 
 
-Carbon handles OAuth flows for 10+ sources, transforms the source data, and automates data synchronization.
+Carbon handles authentication (OAuth 1 & 2, API key-based, etc) for 20+ sources, processes the source data, and automates data synchronization.
 
 ### 🗄️ Store
 
