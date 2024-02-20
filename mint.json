@@ -88,7 +88,8 @@
           "group": "Productivity",
           "pages": [
             "connectors/notion",
-            "connectors/confluence"
+            "connectors/confluence",
+            "connectors/gitbook"
           ]
         },
         {

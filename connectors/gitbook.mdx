@@ -1,0 +1,47 @@
+---
+title: 'Gitbook'
+description: 'The Carbon Connect `enabledIntegrations` value for Gitbook is `GITBOOK`.'
+---
+
+## Authorization Type
+
+Gitbook uses [API token authentication](`https://developer.gitbook.com/gitbook-api/authentication`) to connect to Gitbook knowledge bases.
+
+## Authorization Flow 
+
+Enter your Gitbook space and page Ids.
+
+## Configuration 
+
+Where can I find my API key?
+1. Log in to your Gitbook account.
+
+2. Click on "Settings" in the bottom left corner of your account.
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/481b9b17-8115-4c9d-7c88-953357c62000/public)
+
+3. Click on "Account Settings" from the drop-down menu.
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/bfd3ce51-afa0-4d93-6516-6e49c1cb7b00/public)
+
+4. Click on "Developer Settings" from the "Settings" menu.
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/7747cba4-88ac-4fee-5b35-67f3bb407b00/public)
+
+5. Click "Create new token" to generate a new access token.
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/31bdd80b-2b8f-4429-12c1-1f1a62426900/public)
+
+6. Copy the API token that is generated.
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/03aaaa7c-a4ac-4f1d-5192-5197e9a2d100/public)
+
+
+## Functionality
+
+Carbon syncs all pages from single Gitbook space. 
+
+## Synchronization
+Syncs are triggered when end-users connects their Gitbook account. You can use the `resync_file` API endpoint to programmatically resync specific Gitbook pages.
+
+In addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.

@@ -76,7 +76,7 @@ When you do not pass `open` or `setOpen`, Carbon Connect will manage the open st
 
 ---
 
-This section demonstrates how to integrate the CarbonConnect component within a Next.js project.
+This section demonstrates how to integrate the Carbon Connect component within a Next.js project.
 
 ### Client Side Configuration
 
@@ -100,7 +100,7 @@ const tokenFetcher = async () => {
 ```
   In the example above, tokenFetcher is a helper function that retrieves the necessary tokens for authentication. This function should be implemented in your client-side code and is designed to make a request to an API on your backend server. The API then requests tokens from the Carbon token creation endpoint. The Carbon token creation endpoint is a secure endpoint that requires a valid API key and customer ID. The customer ID is a unique identifier for your end-user, and you can pass any string as the customer ID. The API key is a secret key provided to you by Carbon. Please contact us to obtain your API key.
 
-#### 3. Implement CarbonConnect Component:
+#### 3. Implement Carbon Connect Component:
 
    Here's a concise usage example. Customize according to your requirements:
 
@@ -175,7 +175,7 @@ const tokenFetcher = async () => {
 
 #### 4. Specify an Embedding Model (Optional)
 
-If you are using Carbon to generate embeddings, in the Carbon Connect component, the specification of an Embedding Model ( `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3`, `VERTEX_MULTIMODAL`) can be set at different levels:
+If you are using Carbon to generate embeddings, in the Carbon Connect component, the specification of an embedding model [(view available models)](learn/models/models) can be set at different levels:
 
 _*Global Level*_: Here, the Embedding Model (embeddingModel) prop applies universally across the entire system or application. It serves as the default unless overridden at other levels.
 
@@ -232,7 +232,7 @@ Here's the list of connectors available for activation:
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Default is `false`.
     - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
-    - `embeddingModel`: Specifies the embedding model for integration. Options include `OPENAI`, `AZURE_OPENAI`, `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
    - `allowedFileTypes`: This is an array of objects. Each object represents a file type that is allowed to be uploaded. Each object can have the following properties:
@@ -255,7 +255,7 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
@@ -269,7 +269,7 @@ Here's the list of connectors available for activation:
     - `maxPagesToScrape`: Maximum number of pages to scrape. Defaults to 100.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
     - `enableAutoSync`: Toggle to enable scheduled syncs. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `htmlTagsToSkip`: Define HTML tags to exclude when converting HTML to plaintext. Defaults to `[]`, an empty list.
     - `cssClassesToSkip`: Define CSS Classes to exclude when converting HTML to plaintext. Defaults to `[]`, an empty list.
@@ -282,7 +282,7 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
@@ -294,7 +294,7 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
@@ -304,7 +304,7 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
@@ -315,7 +315,7 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
@@ -326,7 +326,7 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
@@ -337,7 +337,7 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
@@ -348,7 +348,7 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
@@ -358,17 +358,27 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
   </Accordion>
-    <Accordion title="Freshdesk">
-  `FRESHDESK`: This integration lets you upload files from your Freshdesk. You can pass the following configuration for this integration:
+  <Accordion title="Freshdesk">
+  `FRESHDESK`: This integration lets you sync pages from your Freshdesk. You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
+    - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
+  </Accordion>
+  <Accordion title="Gitbook">
+  `GITBOOK`: This integration lets you sync pages from your Gitbook. You can pass the following configuration for this integration:
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
@@ -388,7 +398,7 @@ Here's the list of connectors available for activation:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
-    - `embeddingModel`: Specifies the embedding model used. Options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
