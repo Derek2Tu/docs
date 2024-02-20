@@ -9,7 +9,9 @@ Gitbook uses [API token authentication](`https://developer.gitbook.com/gitbook-a
 
 ## Authorization Flow 
 
-Enter your Gitbook space and page Ids.
+Enter your API access token and organization name (visible on top left).
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/37b3ccfa-c028-4289-7af8-a98a50516d00/public)
 
 ## Configuration 
 
@@ -39,9 +41,13 @@ Where can I find my API key?
 
 ## Functionality
 
-Carbon syncs all pages from single Gitbook space. 
+You can choose which Gitbook spaces to sync with Carbon. 
+
+You can list all spaces with `/integrations/gitbook/spaces` and sync multiple spaces at once with `integrations/gitbook/sync`.
+
+Specific pages can be listed and synced with the global endpoints `/integrations/items/list` and `/integrations/files/sync` respectively.
 
 ## Synchronization
-Syncs are triggered when end-users connects their Gitbook account. You can use the `resync_file` API endpoint to programmatically resync specific Gitbook pages.
+Syncs are triggered when end-users select specific pages. You can use the `resync_file` API endpoint to programmatically resync specific Gitbook pages.
 
 In addition, we have a 24-hour batch sync running in the background. You can request us via Slack to run more frequent batch syncs.
