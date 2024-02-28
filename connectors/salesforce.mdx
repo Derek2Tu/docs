@@ -2,3 +2,44 @@
 title: 'Salesforce'
 description: 'The Carbon Connect `enabledIntegrations` value for Salesforce is `SALESFORCE`.'
 ---
+## Authorization Type
+Carbon uses **[OAuth 2.0](https://developers.intercom.com/building-apps/docs/setting-up-oauth)** to connect to Intercom workspaces.
+
+## Authorization Flow
+
+## Configuration
+### Custom OAuth Credentials
+1. Sign up for a Salesforce Developer account [here](https://developer.salesforce.com/signup) or log into your existing account.
+
+2. Navigate in left-hand menu from "App" > "App Manager".
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/fb2d4e2c-9e75-41d3-8cbc-7cbb5a7e5100/public)
+
+3. Click on "New Connected App" to create your OAuth app.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/38e8d917-8746-4b0f-b8db-a9f019bee200/public)
+
+4. Fill in the following required information under "Basic Information".
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/0b8b8a58-5367-4a46-ecb6-99dc9dd57f00/public)
+
+5. Check the "Enable OAuth Settings" checkbox.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/7776e41d-d3b4-4e66-43e0-b7be32bcce00/public)
+6. Then add the following "Selected OAuth Scopes":
+- `Access the identity URL service (id, profile, email, address, phone)`
+- `Manage user data via APIs (api)`
+- `Perform requests at any time (refresh_token, offline_access)`
+- `Access unique user identifiers (openid)`
+7. Enter https://api.carbon.ai/integrations/salesforce as the "Callback URL". You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/salesforce`.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/e6ceefb5-efff-48e8-24df-e02a7926da00/public)
+
+8. After created the app, click "Manage Consumer Details" to generate a "Consumer Key" and "Consumer Secret".
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/9b4cdd22-0079-4dd7-9e42-26a7814cef00/public)
+9. Copy the "Consumer Key" and "Consumer Secret" value to your clipboard, save it somewhere safe, and share with us via Slack.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/371a0e90-0ab4-4e9f-83a7-92329c9c7700/public)
+
+## Functionality
+Carbon syncs all `Published` articles under a single Salesforce knowledgebase. Any Draft article won’t be synced.
+
+
+## Synchronization
+Syncs are triggered when end-users add or remove articles in Salesforce directly and then go through Carbon's Salesforce OAuth flow. You can use the `resync_file` API endpoint to programmatically resync specific Salesforce files.
+
+We do not run our 24-hour batch sync for Salesforce by default. If you’d like us to enable batch syncs to run in the background, you can request this via Slack.
