@@ -89,7 +89,8 @@
           "pages": [
             "connectors/notion",
             "connectors/confluence",
-            "connectors/gitbook"
+            "connectors/gitbook",
+            "connectors/salesforce"
           ]
         },
         {
