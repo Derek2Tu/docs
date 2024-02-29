@@ -8,6 +8,23 @@ Carbon uses **[OAuth 2.0](https://developers.intercom.com/building-apps/docs/set
 ## Authorization Flow
 
 ## Configuration
+
+### Syncing Salesforce Knowledge Articles
+As of now, a File Selector UI for Salesforce Knowledge is in development and will be available soon.
+
+Meanwhile, you can synchronize Salesforce Knowledge articles using the following steps:
+
+_*Sync a User's Salesforce Knowledge Account*_
+- Use the `/integrations/items/sync` endpoint to synchronize a user's Salesforce Knowledge account.
+
+_*List All Items from a User's Salesforce Knowledge Account*_
+- Retrieve a list of all items from a user's Salesforce Knowledge account by utilizing the `/integrations/items/list endpoint`.
+
+_*Specify Specific Articles to Sync*_
+- Employ the `/integrations/files/sync` endpoint to specify and synchronize specific articles.
+
+If you are utilizing our Carbon Connect component, be aware that all articles are automatically synchronized by default.
+
 ### Custom OAuth Credentials
 <Note>You will be creating a Connected App in Salesforce, read more about them [here](https://help.salesforce.com/s/articleView?id=sf.connected_app_overview.htm&type=5).</Note>
 1. Click on the gear widget located next to your profile icon to access the "Setup" page.

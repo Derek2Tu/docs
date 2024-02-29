@@ -271,7 +271,8 @@
       "group": "Outlook",
       "pages": [
         "api-reference/endpoint/data-sources/outlook-sync",
-        "api-reference/endpoint/data-sources/outlook-folders"
+        "api-reference/endpoint/data-sources/outlook-folders",
+        "api-reference/endpoint/data-sources/outlook-categories"
       ]
     },
     {

@@ -22,7 +22,20 @@ You should see the following confirmation screen once your account has been conn
 
 ### Syncing Confluence Pages
 
-We currently don't have a File Selector UI for Confluence (Coming Soon). In the meantime, you can retrieve all Confluence pages for each user using the `/integrations/confluence/list` endpoint and specify specific files to sync via the `/integrations/confluence/sync` endpoint.
+As of now, a File Selector UI for Confluence is in development and will be available soon.
+
+Meanwhile, you can synchronize Confluence pages using the following steps:
+
+_*Sync a User's Confluence Account*_
+- Use the `/integrations/items/sync` endpoint to synchronize a user's Confluence account.
+
+_*List All Items from a User's Confluence Account*_
+- Retrieve a list of all items from a user's Confluence account by utilizing the `/integrations/items/list` endpoint.
+
+_*Specify Specific Pages to Sync*_
+- Employ the `/integrations/files/sync` endpoint to specify and synchronize specific pages.
+
+If you are utilizing our Carbon Connect component, be aware that all pages are automatically synchronized by default.
 
 ### Custom OAuth Credentials
 
