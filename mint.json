@@ -220,7 +220,8 @@
       "group": "User",
       "pages": [
         "api-reference/endpoint/user/user",
-        "api-reference/endpoint/user/toggle-user-features"
+        "api-reference/endpoint/user/toggle-user-features",
+        "api-reference/endpoint/user/delete-users"
       ]
     },
     {
