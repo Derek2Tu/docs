@@ -351,7 +351,7 @@ Here's the list of connectors available for activation:
     - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
-
+    - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
   </Accordion>
   <Accordion title="Zendesk">
   `ZENDESK`: This integration lets you upload files from your Zendesk. You can pass the following configuration for this integration:
@@ -381,7 +381,17 @@ Here's the list of connectors available for activation:
     - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
-
+   - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
+  </Accordion>
+   <Accordion title="Salesforce">
+  `SALESFORCE`: This integration lets you sync pages from your Salesforce Knowledge. You can pass the following configuration for this integration:
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
+    - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+   - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
   </Accordion>
   <Accordion title="Outlook">
   `OUTLOOK`: This integration lets you upload emails from Gmail.
