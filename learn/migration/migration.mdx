@@ -1,0 +1,61 @@
+---
+title: Migration
+---
+
+<Note>We recommend batching 5 requests with a delay of 5 seconds.</Note>
+
+Here's a guide on how to migrate existing embeddings and chunks to another vector database using Carbon.
+
+### 1. Upload Files (Optional)
+
+Upload the appropriate files for the embeddings and chunks through the `uploadfile` endpoint. If you plan to upload existing embeddings for the files, set `skip_embedding_generation` to true.
+
+### 2. Upload Embeddings and chunks
+
+Use the `upload_chunks_and_embeddings` endpoint to upload the corresponding chunks and embeddings for the files from the previous step. You can upload multiple chunks and their respective embeddings at once, as well as assign a sequential chunk number to each chunk.
+
+<Note>We recommend batching 5 requests with a delay of 5 seconds.</Note>
+
+Specify the model used to generate the embeddings through the `embedding_generator` parameter. Ensure the model is one of Carbon's supported embedding models (Check models [here](learn/models/models)).
+
+### Example
+
+```json
+{
+  "embedding_generator": "OPENAI",
+  "chunks_and_embeddings": [
+    {
+      "file_id": 22952,
+      "chunks_and_embeddings": [
+        {
+          "chunk": "The sky is blue",
+          "embedding": [],
+          "chunk_number": 0
+        },
+        {
+          "chunk": "And you are too",
+          "embedding": [],
+          "chunk_number": 1
+        }
+      ]
+    },
+    {
+      "file_id": 22951,
+      "chunks_and_embeddings": [
+        {
+          "chunk": "The sky is blue",
+          "embedding": [],
+          "chunk_number": 0
+        },
+        {
+          "chunk": "And you are too",
+          "embedding": [],
+          "chunk_number": 1
+        }
+      ]
+    }
+  ]
+}
+```
+
+After completing steps #1 and #2, your files, chunks, and embeddings will be ready for use on Carbon. You can use them with our managed vector database or one that we directly integrate with.
