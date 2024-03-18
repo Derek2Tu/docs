@@ -2,6 +2,8 @@
 
 You have the option to select from [multiple Embedding models](/learn/models/models#supported-models) based on your use case.
 
+### Supported File Formats
+
 Carbon supports the following text files formats:
 
 | File | More Details                           |
@@ -18,8 +20,19 @@ Carbon supports the following text files formats:
 | `JSON`   |  Carbon iterates through each object in a file and flattens it. Keys on the topmost level remain the same, but nested keys are transformed into the dot separated path to reach the key's value. Each component of the path can either be a string for a nested object or integer for a nested list. |
 
 
-### JSON
+### Processing Semi-Structured Data
 
+#### Chunking
+<Note>Applies to JSON, CSV, TSV, XSLX, and GSheet files.</Note>
+A new chunk is created if either the `max_items_per_chunk` or `chunk_size` limit is reached. 
+
+For example:
+- If each JSON object is 250 tokens, `chunk_size` of 800 tokens and no `max_items_per_chunk` set, then each chunk will contain 3 JSON objects.
+- If each JSON object is 250 tokens, `chunk_size` of 800 tokens and `max_items_per_chunk` set to 1, then each chunk will contain 1 JSON object.
+
+Consequently, it is essential to ensure that the number of tokens in a flattened JSON does not surpass the token limits established by the embedding models.
+
+#### Parsing JSON
 The parser iterates through each object in a file and flattens it. Keys on the topmost level remain the same, but nested keys are transformed into the dot separated path to reach the key's value. Each component of the path can either be a string for a nested object or integer for a nested list. 
 
 For example, given this object
@@ -40,12 +53,3 @@ it becomes
 }
 ```
 When processing a file containing a list of objects, the initial element of each path represents the object's index in the topmost list. The key-value pairs of each flattened object are combined using commas and newlines to form a chunk. Any braces or quotation marks surrounding strings are omitted. 
-
-#### Chunking
-A new chunk is created if either the `max_items_per_chunk` or `chunk_size` limit is reached. 
-
-For example:
-- If each JSON object is 250 tokens, `chunk_size` of 800 tokens and no `max_items_per_chunk` set, then each chunk will contain 3 JSON objects.
-- If each JSON object is 250 tokens, `chunk_size` of 800 tokens and `max_items_per_chunk` set to 1, then each chunk will contain 1 JSON object.
-
-Consequently, it is essential to ensure that the number of tokens in a flattened JSON does not surpass the token limits established by the embedding models.
