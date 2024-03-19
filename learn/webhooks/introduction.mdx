@@ -38,12 +38,17 @@ resulting json is formatted *exactly* as it is in `request_body`. In other words
 {"x": 5, "y": 6}
 ```
     2. If using `Carbon-Signature-V2`, when decoding the request body, ensure that the resulting json is in compact form, where there 
-are no spaces between key-value pairs or between keys and values. For example,
+are no spaces between key-value pairs or between keys and values. 
+For example,
 ```
 {"x":5,"y":6}
 ```
-Given a request body, `x`, you can do this in Python via `json.dumps(x, separators=[",", ":"])` or in JavaScript via `JSON.stringify(x)`.
+     Given a request body, `x`, you can do this in Python via `json.dumps(x, separators=[",", ":"])` or in JavaScript via `JSON.stringify(x)`. 
+
 3. Compute an HMAC of the above string with the SHA256 hash function. Use `signing_key` obtained from the `/add_webhook` endpoint as the key.
+
+<Note>Please decode the signing key as a hex string.</Note>
+
 4. Compare the computed signature with the signature in the header (the value that `v1` - or `v2` - is equal to). If they're identical,
 you can be assured that the webhook is both genuine and hasn't been tampered with.
 
