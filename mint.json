@@ -134,12 +134,10 @@
       "group": "Learn",
       
       "pages": [
-        {
-          "group": "Models",
-          "pages": [
+       
             "learn/models/models"
-          ]
-        },
+          
+      ,
         {
           "group": "Search",
           "pages": [
@@ -154,6 +152,10 @@
             "learn/files/audio"
           ]
         },
+  
+            "learn/ocr"
+          
+        ,
         {
           "group": "Webhooks",
           "pages": [
@@ -161,18 +163,13 @@
             "learn/webhooks/event-types"
           ]
         },
-        {
-          "group": "Filtering",
-          "pages": [
+        
             "learn/filters/filtering"
-          ]
-        },
-        {
-          "group": "Customize",
-          "pages": [
+          
+        ,
+       
             "learn/customize/whitelabel"
-          ]
-        }
+     
       ]
     },
     {

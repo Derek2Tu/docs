@@ -1,0 +1,42 @@
+---
+title: "OCR"
+description: ""
+---
+
+Using optical character recognition (OCR) technology can help to enhance the precision of document processing and retrieval. Carbon currently supports OCR for PDFs. 
+
+Here are some use-cases for when to enable OCR:
+- PDF includes multiple tabs
+
+## Enhanced Table Parsing
+<Note>Enhanced table parsing has to be enabled for an entire documents rather than specific pages.</Note>
+
+By setting certain parameters and configurations, developers can effectively parse tables within PDF documents, enabling improved search functionality and access to additional metadata. 
+
+### Configuration
+
+#### Parameters to Enable
+- **parse_pdf_tables_with_ocr**: This parameter, when set to `true`, activates the enhanced table parsing feature. Tables within PDF documents will be parsed using OCR technology.
+- **use_ocr**: This parameter must also be set to `true` to enable OCR-based table parsing.
+
+These parameters can be found on file upload and `oauth_url` endpoints.
+
+#### Table Format
+The format of the tabular chunks resulting from table parsing will be the same format as CSV-derived chunks.
+
+Tables parsed with the `parse_pdf_tables_with_ocr` parameter set to `true` are assigned their own chunk(s). These chunks can be identified by the presence of the string `TABLE` in the `embedding_metadata.block_types`.
+
+
+#### Enhanced Search Results
+Using the table-parsing feature alongside hybrid search functionality can significantly improve search results, particularly when searching within PDF documents containing tables.
+
+### OCR Metadata
+When OCR is utilized, metadata such as coordinates and page numbers are returned, regardless of the `set_page_as_boundary` parameter setting.
+
+#### Interpretation of Coordinates
+- Bounding box coordinates and page numbers are provided for each parsed chunk.
+- If `pg_start` is less than `pg_end`, coordinate interpretation varies slightly:
+  - `x1` and `x2` correspond to the minimum and maximum x-coordinates, respectively, across all pages for the chunk.
+  - `y1` corresponds to the uppermost coordinate of the chunk on `pg_start`.
+  - `y2` corresponds to the bottommost coordinate of the chunk on `pg_end`.
+
