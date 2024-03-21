@@ -218,7 +218,8 @@
       "pages": [
         "api-reference/endpoint/user/user",
         "api-reference/endpoint/user/toggle-user-features",
-        "api-reference/endpoint/user/delete-users"
+        "api-reference/endpoint/user/delete-users",
+        "api-reference/endpoint/user/update-users"
       ]
     },
     {
