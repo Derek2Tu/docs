@@ -290,7 +290,8 @@ Here's the list of connectors available for activation:
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
     - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
-
+    - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
+    - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`.
   </Accordion>
   <Accordion title="Intercom">
    `INTERCOM`: This integration lets you select pages from your Intercom. You can pass the following configuration for this integration:
@@ -315,6 +316,22 @@ Here's the list of connectors available for activation:
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
     - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
+    - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`.
+
+  </Accordion>
+  <Accordion title="Box">
+  `BOX`: This integration lets you upload files from your Box. You can pass the following configuration for this integration:
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
+    - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+    - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
+    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
+    - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`.
 
   </Accordion>
   <Accordion title="OneDrive">
@@ -327,6 +344,8 @@ Here's the list of connectors available for activation:
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
     - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
+    - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`.
 
   </Accordion>
   <Accordion title="Zotero">
@@ -339,6 +358,8 @@ Here's the list of connectors available for activation:
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
     - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
+    - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`.
 
   </Accordion>
   <Accordion title="Sharepoint">
@@ -351,6 +372,8 @@ Here's the list of connectors available for activation:
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
     - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
+    - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`.
 
   </Accordion>
   <Accordion title="Confluence">
@@ -506,7 +529,7 @@ _*3rd Party Connectors*_
     } or null,
     action: <ACTION_TYPE>, // `ACTION_TYPE` can be one of the following: `INITIATE`, `ADD`, `UPDATE`, `CANCEL`
     event: <EVENT_TYPE>, // `EVENT_TYPE` can be one of the following: `INITIATE`, `ADD`, `UPDATE`, `CANCEL`
-    integration: <INTEGRATION_NAME>, // `INTEGRATION_NAME` can be one of the following: `LOCAL_FILES`, `NOTION`, `WEB_SCRAPER`, `GOOGLE_DRIVE`, `INTERCOM`, `DROPBOX`, `ONEDRIVE`
+    integration: <INTEGRATION_NAME>, // `INTEGRATION_NAME` can be one of the following: `LOCAL_FILES`, `NOTION`, `WEB_SCRAPER`, `GOOGLE_DRIVE`, `INTERCOM`, `DROPBOX`, `ONEDRIVE`,`BOX`
   }
   ```
 
