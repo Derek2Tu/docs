@@ -231,7 +231,9 @@
         "api-reference/endpoint/utilities/fetch-urls",
         "api-reference/endpoint/utilities/sitemap",
         "api-reference/endpoint/utilities/fetch-youtube-transcripts",
-        "api-reference/endpoint/utilities/search-urls"
+        "api-reference/endpoint/utilities/search-urls",
+        "api-reference/endpoint/data-sources/rss-feed"
+
       ]
     },
     {
@@ -242,9 +244,8 @@
         "api-reference/endpoint/data-sources/add-connection",
         "api-reference/endpoint/data-sources/sync-data-source-items",
         "api-reference/endpoint/data-sources/list-data-source-items",
-        "api-reference/endpoint/data-sources/sync-files",
-        "api-reference/endpoint/data-sources/rss-feed"
-      ]
+        "api-reference/endpoint/data-sources/sync-files"
+            ]
     },
     {
       "group": "Gitbook",
