@@ -176,7 +176,20 @@
       "group": "Resources",
       "pages": [
         "resources/sdks",
-        "resources/security"
+        "resources/security",
+        "resources/migration/embedding-models",
+        "resources/migration/migration-to-carbon",
+        "resources/migration/vector-databases"
+
+      ]
+    },
+    {
+      "group": "Migrations",
+      "pages": [
+        "migration/migration-to-carbon",
+        "migration/embedding-models",
+        "migration/vector-databases"
+
       ]
     },
     {
