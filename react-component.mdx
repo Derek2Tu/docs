@@ -224,7 +224,7 @@ Here's the list of connectors available for activation:
 
 <AccordionGroup>
   <Accordion title="Local Files">
-  `LOCAL_FILES`: This integration lets you upload files from your local machine. You can pass the following configuration for this integration:
+  `LOCAL_FILES`: This integration lets you upload files from your local machine. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
 
     - `chunkSize`: Number of tokens per chunk. Default is 1500.
     - `overlapSize`: Size of overlap in tokens. Default is 20.
@@ -282,7 +282,7 @@ Here's the list of connectors available for activation:
 
   </Accordion>
   <Accordion title="Google Drive">
-    `GOOGLE_DRIVE`: This integration lets you upload files from your Google Drive. You can pass the following configuration for this integration:
+    `GOOGLE_DRIVE`: This integration lets you upload files from your Google Drive. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
@@ -308,7 +308,7 @@ Here's the list of connectors available for activation:
 
   </Accordion>
   <Accordion title="Dropbox">
-  `DROPBOX`: This integration lets you upload files from your Dropbox. You can pass the following configuration for this integration:
+  `DROPBOX`: This integration lets you upload files from your Dropbox. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
@@ -322,7 +322,7 @@ Here's the list of connectors available for activation:
 
   </Accordion>
   <Accordion title="Box">
-  `BOX`: This integration lets you upload files from your Box. You can pass the following configuration for this integration:
+  `BOX`: This integration lets you upload files from your Box. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
@@ -336,7 +336,7 @@ Here's the list of connectors available for activation:
 
   </Accordion>
   <Accordion title="OneDrive">
-   `ONEDRIVE`: This integration lets you upload files from your OneDrive. You can pass the following configuration for this integration:
+   `ONEDRIVE`: This integration lets you upload files from your OneDrive. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
@@ -350,7 +350,7 @@ Here's the list of connectors available for activation:
 
   </Accordion>
   <Accordion title="Zotero">
-  `ZOTERO`: This integration lets you upload files from your Zotero. You can pass the following configuration for this integration:
+  `ZOTERO`: This integration lets you upload files from your Zotero. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
@@ -364,7 +364,7 @@ Here's the list of connectors available for activation:
 
   </Accordion>
   <Accordion title="Sharepoint">
-  `SHAREPOINT`: This integration lets you upload files from your SharePoint. You can pass the following configuration for this integration:
+  `SHAREPOINT`: This integration lets you upload files from your SharePoint. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
     - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
     - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
     - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
@@ -437,15 +437,15 @@ Here's the list of connectors available for activation:
       - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
 
   </Accordion>
-  <Accordion title="Outlook">
-  `OUTLOOK`: This integration lets you upload emails from Gmail.
-
-   Once a user has connected their Outlook account, you can select which emails to upload via the `/integrations/outlook/sync` endpoint.
-  </Accordion>
   <Accordion title="Gmail">
-  `GMAIL`: This integration lets you upload emails from Gmail.
+  `GMAIL`: This integration lets you upload emails from Gmail, along with file attachements. You can reference the supported file formats [here](learn/files/text).
 
    Once a user has connected their Gmail account, you can select which emails to upload via the `/integrations/gmail/sync` endpoint.
+  </Accordion>
+    <Accordion title="Outlook">
+  `OUTLOOK`: This integration lets you upload emails from Gmail, along with file attachements. You can reference the supported file formats [here](learn/files/text).
+
+   Once a user has connected their Outlook account, you can select which emails to upload via the `/integrations/outlook/sync` endpoint.
   </Accordion>
   <Accordion title="RSS">
   `RSS_FEED`: This integration lets you upload content from a RSS or Atom feed. You can pass the following configuration for this integration:
@@ -457,8 +457,7 @@ Here's the list of connectors available for activation:
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
 
   </Accordion>
-  <Accordion title="Outlook">
-  </Accordion>
+  
 </AccordionGroup>
 
 
