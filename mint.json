@@ -215,8 +215,6 @@
         "api-reference/endpoint/files/create-raw-text",
         "api-reference/endpoint/files/create-upload-file-from-url",
         "api-reference/endpoint/files/user-files-v2",
-        "api-reference/endpoint/files/parsed-file",
-        "api-reference/endpoint/files/raw-file",
         "api-reference/endpoint/files/delete-files-endpoint",
         "api-reference/endpoint/files/delete-files-v2-endpoint",
         "api-reference/endpoint/files/resync-file"
