@@ -22,9 +22,9 @@ You should see the following confirmation screen once your account has been conn
 
 ### Syncing Confluence Pages
 
-As of now, a File Selector UI for Confluence is in development and will be available soon.
+<Note>We offer a pre-built File Picker UI for Confluence through Carbon Connect, since Confluence does not provider their own File Picker UI.</Note>
 
-Meanwhile, you can synchronize Confluence pages using the following steps:
+You can synchronize Confluence pages using the following steps:
 
 _*Sync a User's Confluence Account*_
 - Use the `/integrations/items/sync` endpoint to synchronize a user's Confluence account.
@@ -78,6 +78,6 @@ Carbon syncs Confluence pages from all personal and shared spaces.
 
 ## Synchronization
 
-You can also use the `resync_file` API endpoint to programmatically resync specific Confluence pages. To delete Confluence pages from Carbon, you can use the `deletefile` endpoint directly.
+You can also use the `resync_file` API endpoint to programmatically resync specific Confluence pages. To delete Confluence pages from Carbon, you can use the `delete_files` endpoint directly.
 
 We do not run our 24-hour batch sync for Confluence by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.

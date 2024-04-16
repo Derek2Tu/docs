@@ -97,6 +97,12 @@
           ]
         },
         {
+          "group": "Developer",
+          "pages": [
+            "connectors/github"
+          ]
+        },
+        {
           "group": "Object Storage",
           "pages": [
             "connectors/s3"
