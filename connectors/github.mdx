@@ -12,8 +12,9 @@ Carbon utilizes [Access Key-based authentication](https://docs.github.com/en/aut
 
 #### Step 1: Generate an Access Token
 
-To enable synchronization of repositories with our system, users need to create a GitHub Personal Access Token with appropriate permissions. Follow the steps outlined in the GitHub documentation on [Managing Personal Access Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+To enable synchronization of repositories with our system, users need to create a GitHub Personal Access Token with appropriate permissions (*view screenshot below*). Follow the steps outlined in the GitHub documentation on [Managing Personal Access Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/03a2c96e-efe1-4589-fbd2-717fa2dbd000/public)
 #### Step: 2 Post Credentials to Carbon
 
 Once the access token is generated, users should submit their GitHub username and access token to our integration endpoint at `/integrations/github` or via our Carbon Connect UI. This action initiates the synchronization process by listing their repositories and their respective content within our system.
