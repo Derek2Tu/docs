@@ -21,4 +21,12 @@ To delete the file corresponding to a RSS `<item>` from Carbon, you can use the 
 
 A `<pubDate>` value is necessary for re-syncs to update existing files. Without this value, re-syncs will only add new items that are introduced to the feed.
 
-We do not run our 24-hour batch sync for RSS feeds by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.
+To sync RSS feeds on a 24-hour schedule (_more frequent schedules available upon request_), you can use the `/update_users` endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
+
+Here's an example illustrating how to automatically enable syncing for updated RSS content for specified users:
+
+```
+{
+    "customer_ids": ["team@carbon.ai", "sam@openai.com"],
+    "auto_sync_enabled_sources": ["RSS"]
+} 

@@ -26,10 +26,19 @@ After successfully connecting their GitHub account, users can leverage our API e
 
 ## Functionality 
 
-Carbon syncs Github files from all private and public repositories.
+Carbon syncs Github files from all private and public repositories. In cases where an extension is unknown, we'll attempt to parse it as a text file. 
 
 ## Synchronization
 
 You can also use the `resync_file` API endpoint to programmatically resync specific Github files. To delete Github files from Carbon, you can use the `delete_files` endpoint directly.
 
-We do not run our 24-hour batch sync for Confluence by default. If you’d like us to enable batch syncs to run in the background, you can request this via Slack.
+To sync Github files on a 24-hour schedule (_more frequent schedules available upon request_), you can use the /update_users endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
+
+Here's an example illustrating how to automatically enable syncing for updated Github content for specified users:
+
+```
+{
+    "customer_ids": ["team@carbon.ai", "sam@openai.com"],
+    "auto_sync_enabled_sources": ["GITHUB"]
+} 
+```

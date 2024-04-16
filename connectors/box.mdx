@@ -76,4 +76,13 @@ Carbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `
 
 Syncs are triggered when end-users select files to upload via the Box file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific Box files. To delete Box files from Carbon, you can use the `delete_files` endpoint directly.
 
-We do not run our 24-hour batch sync for Box by default. If you'd like us to enable batch syncs to run in the background, you can request this via Slack.
+To sync Box files on a 24-hour schedule (_more frequent schedules available upon request_), you can use the /update_users endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
+
+Here's an example illustrating how to automatically enable syncing for updated Box content for specified users:
+
+```
+{
+    "customer_ids": ["team@carbon.ai", "sam@openai.com"],
+    "auto_sync_enabled_sources": ["BOX"]
+} 
+```
