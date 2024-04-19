@@ -277,7 +277,7 @@
     {
       "group": "GitHub",
       "pages": [
-        "api-reference/endpoint/data-sources/github"
+        "api-reference/endpoint/data-sources/github-auth"
       ]
     },
     {
