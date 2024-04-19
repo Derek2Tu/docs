@@ -275,6 +275,12 @@
       ]
     },
     {
+      "group": "GitHub",
+      "pages": [
+        "api-reference/endpoint/data-sources/github"
+      ]
+    },
+    {
       "group": "Gmail",
       "pages": [
         "api-reference/endpoint/data-sources/gmail-sync",
