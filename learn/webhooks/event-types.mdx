@@ -33,8 +33,7 @@ This event is fired when a user selects one or more files for a particular data 
 This event is fired when a user cancels the authentication flow. It's important to note that this event cannot capture tab-close events, so directly closing a tab is not within our tracking capabilities.
 
 #### `REVOKE`
-This event is triggered when a user's data source connection is revoked via the `/revoke_access_token` endpoint.
-
+This event is triggered when a user’s access token is revoked via the `/revoke_access_token` endpoint or when Carbon receives a 401 Unauthorized from the data source using an expired or revoked access token.
 ### Example Payload
 Our webhook payload returns stringified JSON.
 ```
