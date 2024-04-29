@@ -50,10 +50,11 @@
         {
           "group": "Carbon Connect",
           "pages": [
-            "react-component",
-            "resources/sdks"
+            "carbon-connect",
+            "react-component"
           ]
-        }
+        },
+        "resources/sdks"
       ]
     },
     {
