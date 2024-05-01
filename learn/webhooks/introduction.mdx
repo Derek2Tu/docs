@@ -71,7 +71,7 @@ The value of `payload` (which is a stringified json object) will always have the
     "obj": {
         "object_type": WebhookObjectType,
         "object_id": str,
-        "additional_information": dict[str, str] | str
+        "additional_information": dict[str, (str | bool | list[str])] | str | None
     },
     "timestamp": str
 }
