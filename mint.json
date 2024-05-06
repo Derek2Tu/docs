@@ -301,7 +301,8 @@
     {
       "group": "Organizations",
       "pages": [
-        "api-reference/endpoint/organizations/organization"
+        "api-reference/endpoint/organizations/organization",
+        "api-reference/endpoint/organizations/update-organization"
       ]
     },
     {
