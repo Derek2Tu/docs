@@ -17,7 +17,26 @@ Carbon uses **[OAuth 2.0](https://developers.Zendesk.com/building-apps/docs/sett
 
 ## Functionality
 
-Carbon syncs all `Published` articles under a single Zendesk workspace. Any `Draft` article won't be synced. We currently support only having a single Zendesk workspace connected per `customer_id`.
+To enable syncing articles and tickets (including attachments), use the `file_sync_config` parameter on the following endpoints:
+ - `integrations/oauth_url`
+ - `integrations/connect`
+ - `/integrations/files/sync`
+
+### Article
+Carbon can sync `Published` articles under multiple Zendesk workspace. Please note that `Draft` articles won't be synced.
+### Tickets
+Carbon can sync tickets and their associated file attachments. The following ticket information is available as tags for filtering:
+
+```
+{
+  "ticket_type": "incident",
+  "ticket_status": "open",
+  "ticket_assignee": "swapnil+zen1@carbon.ai",
+  "ticket_priority": "normal",
+  "ticket_requester": "customer@example.com",
+  "ticket_submitter": "swapnil+zen1@carbon.ai"
+}
+```
 
 ## Configuration
 
