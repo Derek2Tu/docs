@@ -1,0 +1,44 @@
+---
+title: "Cold Storage"
+description: "Carbon offers cold storage for file embeddings, optimizing storage costs and performance."
+---
+
+<Note>Cold storage is available as a feature for customers utilizing our in-house vector database or integrating with one of our supported destination connectors.</Note>
+
+## Overview
+
+Carbon supports moving file embeddings between hot and cold storage. This feature allows you to optimize storage costs and improve performance by keeping embeddngs for frequently accessed files in hot storage (vector storage) while moving less frequently used files to cold storage (object storage).
+
+## Enabling Cold Storage
+
+By default, the cold storage feature is not enabled. To enable it, you must set a flag at file upload time. Once enabled, files will automatically be moved to cold storage after a set period of inactivity (defined by API requests made to access the file).
+
+### Moving Files from Hot to Cold Storage
+
+Files will be automatically moved from hot to cold storage after a specified period of inactivity. This period is determined by the `time_to_move_to_cold_storage` parameter, which represents the number of seconds a file must be inactive before it's moved to cold storage. There is no manual way to move files to cold storage.
+
+### Moving Files from Cold to Hot Storage
+
+To move files from cold to hot storage, you must make an API request. The request will take filters similar to `/user_files_v2`, and all files matching the provided filters will be moved to hot storage.
+
+To avoid a single request hogging resources, there is a limit of 200 files that can be moved in one request. If the number of files matching the filters exceeds 200, the files will be processed in batches of 200 over a longer period of time.
+
+## `/Embeddings` Endpoint Behavior
+
+If a request is made to `/embeddings` that involves files in cold storage, an error will be returned that includes all `file_ids` for the affected files. This allows the client to know which files need to be moved to hot storage before the request can be processed.
+
+However, `exclude_cold_storage_embeddings` is set to `true`, any files in cold storage will be ignored, and no error will be thrown for requests involving files in cold storage. Then the search will naturally exclude those files.
+
+In the future, we may enable a way to allow `/embeddings` to work with files that are in both cold and hot storage.
+
+## File Object Information
+
+<Tip>Activity is defined as when a file was last used, which currently includes file resyncs, queries involving that file, and updates to that file's tags.</Tip>
+
+The following fields under the file object are related to cold storage:
+
+- `last_use`: A timestamp indicating when a file was last used (i.e., when it last had activity).
+- `supports_cold_storage`: A flag indicating whether or not a file can be moved to cold storage.
+- `time_to_move_to_cold_storage`: An integer representing the number of seconds a file must be inactive before it's moved to cold storage.
+- `embedding_storage_status`: The storage status of the embeddings for a file, indicating whether they are in cold or hot storage.
+
