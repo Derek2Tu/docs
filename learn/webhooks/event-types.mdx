@@ -24,7 +24,8 @@ Sent if the organization has reached the rate limit for file processing. In this
 Sent if the organization has breached the 2.5 GB daily limit for uploads (this limit can be increased upon request). We return in the payload the `customer-id` of the user that exceeded the limit.
 #### `SPARSE_VECTOR_GENERATION`
 Sent when the status of sparse vector generation for a document changes. The webhook payload includes an `embedded` field in the `additional_information` object called `sparse_vector_queue_status`. This field can have one of three possible values: `queued`, `aborted`, `failed`.
-
+#### `FILES_SKIPPED`
+Sent when file processing is skipped. The body of the webhook will contain a list of `file_ids` for files and a reason in `additional_information`.
 
 ## Data Source Connections
 

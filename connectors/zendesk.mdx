@@ -17,10 +17,14 @@ Carbon uses **[OAuth 2.0](https://developers.Zendesk.com/building-apps/docs/sett
 
 ## Functionality
 
-To enable syncing articles and tickets, use the file_sync_config parameter on the following endpoints:
-- `/integrations/oauth_url`
-- `/integrations/connect`
-- `/integrations/files/sync`
+The `integrations/oauth_url` and `integrations/connect` endpoints sync articles by default. To sync only tickets or both articles and tickets, use the `file_sync_config` parameter. The `file_sync_config` parameter can also enable syncing attachments from ticket comments.
+
+```
+ "file_sync_config": {
+    "file_types": ["TICKET"],
+    "sync_attachments": true
+  }
+```
 
 ### Article
 Carbon can sync `Published` articles under multiple Zendesk workspace. Please note that `Draft` articles won't be synced.
