@@ -76,7 +76,19 @@ The value of `payload` (which is a stringified json object) will always have the
     "timestamp": str
 }
 ```
-Please note that the WebhookType refers to specific events outlined in the [Event Types documentation](learn/webhooks/event-types). Presently, the `WebhookObjectType` is restricted to `FILE`.
+
+The `WebhookObjectType` values are as follows:
+
+```
+class WebhookObjectType(StrEnum):
+    FILE = "FILE"
+    FILE_LIST = "FILE_LIST"
+    UPLOAD_REQUEST_ID = "UPLOAD_REQUEST_ID"
+    DATA_SOURCE = "DATA_SOURCE"
+    ORGANIZATION_USER = "ORGANIZATION_USER"
+```
+
+Please note that the WebhookType refers to specific events outlined in the [Event Types documentation](event-types). Presently, the `WebhookObjectType` is restricted to `FILE`.
 
 The field additional_information consistently contains a dictionary of string-string key-value pairs. If empty, it defaults to the string value "null".
 
