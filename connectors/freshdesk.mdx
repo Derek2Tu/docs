@@ -30,9 +30,36 @@ Where can I find my API key?
 
 For more information, please refer to [this solution article]('https://support.freshdesk.com/en/support/solutions/articles/215517') from Freshdesk.
 
+
 ## Functionality
 
-Carbon syncs all `Published` articles under a single Freshdesk workspace. Any Draft article won’t be synced.
+The `integrations/oauth_url` and `integrations/connect` endpoints sync articles by default. 
+
+To sync only tickets or both articles and tickets, use the `file_sync_config` parameter. The `file_sync_config` parameter can also enable syncing attachments from ticket comments.
+
+```
+ "file_sync_config": {
+    "file_types": ["TICKET"],
+    "sync_attachments": true
+  }
+```
+
+### Article
+Carbon can sync `Published` articles under multiple Freshdesk workspace. Please note that `Draft` articles won't be synced.
+### Tickets
+Carbon can sync tickets and their associated file attachments. The following ticket information is available as tags for filtering:
+
+```
+{
+  "ticket_type": "incident",
+  "ticket_status": "open",
+  "ticket_assignee": "swapnil@carbon.ai",
+  "ticket_priority": "normal",
+  "ticket_requester": "customer@example.com",
+  "ticket_submitter": "swapnil@carbon.ai"
+}
+```
+
 
 ## Synchronization
 Syncs are triggered when end-users connects their Freshdesk account. You can use the `resync_file` API endpoint to programmatically resync specific Freshdesk files.
