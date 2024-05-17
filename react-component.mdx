@@ -71,6 +71,7 @@ The `CarbonConnect` component accepts the following properties:
 | `showFilesTab`| Boolean | No | Shows the files tab in Carbon Connect 2.0. Defaults to `true`. 
 | `useRequestIds`| String | No | A `request_id` will be assigned to the uploaded files in that session. 
 | `loadingIconColor`| String | No | Defines the color of the loader icon. This can be specified using standard CSS color names, or directly as either a Hexadecimal (Hex) code or RGB color values.
+| `sendDeletionWebhooks`| Boolean | No | When set to `true`, enables triggering a `FILE_DELETED` webhook event whenever a user deletes files within Carbon Connect. If set to `false`, deleting files will not generate any webhook notifications.
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
