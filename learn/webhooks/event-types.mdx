@@ -21,8 +21,7 @@ Sent if a file has been successfully deleted.
 Sent if the organization has reached the rate limit for file processing. In this case, the file is requeued for reprocessing
     up to three times.
 #### `FILE_SYNC_LIMIT_REACHED`
-Sent if a organization user has attempts to upload files that would cause them to exceed the organization daily upload limit (2.5GB per day), max file limit, max file per upload limit.
-
+Sent if a organization user attempts to upload files that would cause them to exceed the organization daily upload limit (2.5GB per day), max file limit, max file per upload limit.
 #### `SPARSE_VECTOR_GENERATION`
 Sent when the status of sparse vector generation for a document changes. The webhook payload includes an `embedded` field in the `additional_information` object called `sparse_vector_queue_status`. This field can have one of three possible values: `queued`, `aborted`, `failed`.
 #### `FILES_SKIPPED`

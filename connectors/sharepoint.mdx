@@ -107,7 +107,9 @@ Carbon allows users to upload `pdf`, `docx`, `pptx`,`txt`,`csv`, `png`, `rtf`, `
 
 ## Synchronization
 
-Syncs are triggered when end-users select files to upload via the SharePoint file selector UI. You can also use the `resync_file` API endpoint to programmatically resync specific SharePoint files. To delete SharePoint files from Carbon, you can use the `delete_files` endpoint directly.
+Syncs are triggered when end-users select files to upload via the SharePoint file selector UI. When a user selects a folder to be synced, we auto-sync all files added to the folder as well.
+
+You can also use the `resync_file` API endpoint to programmatically resync specific SharePoint files. To delete SharePoint files from Carbon, you can use the `delete_files` endpoint directly.
 
 To sync SharePoint files on a 24-hour schedule (_more frequent schedules available upon request_), you can use the `/update_users` endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
 
