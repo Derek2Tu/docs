@@ -151,7 +151,8 @@
           "pages": [
             "learn/files/text",
             "learn/files/image",
-            "learn/files/audio"
+            "learn/files/audio",
+            "learn/files/video"
           ]
         },
   

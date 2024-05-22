@@ -14,8 +14,43 @@ Carbon uses **[OAuth 2.0](https://developers.intercom.com/building-apps/docs/set
 ![](https://files.readme.io/c2825e3-image.png)
 
 ## Functionality
+The `/integrations/Intercom` and `integrations/connect` endpoints sync articles by default. 
 
-Carbon syncs all `Published` articles under a single Intercom workspace. Any `Draft` article won't be synced.
+To customize the sync behavior, use the `file_sync_config` parameter:
+
+```
+"file_sync_config": {
+  "auto_synced_source_types": ["TICKET"],
+  "sync_attachments": true
+}
+```
+
+- `auto_synced_source_types`: An array specifying the types of items to sync. Valid values are "ARTICLE" (default) and "TICKET". To sync both articles and tickets, include both values in the array.
+- `sync_attachments`: A boolean indicating whether to sync attachments from ticket comments. Set to true to enable attachment syncing.
+
+#### Additional Endpoints
+The following endpoints can be used with Intercom to list and sync items:
+- `integrations/items/sync`: Sync items from Intercom
+- `integrations/items/list`: List items from Intercom
+- `integrations/files/sync`: Sync files from Intercom
+#### Articles
+Carbon can sync `Published` articles from multiple Intercom workspaces. Note that `Draft` articles will not be synced.
+#### Tickets
+Carbon can sync tickets and their associated file attachments. The following ticket information is available as tags for filtering:
+
+```
+{
+  "ticket_type": "Support Request",
+  "ticket_status": "resolved",
+  "ticket_category": "Customer",
+  "ticket_submitter": "example.user@projectmap.com",
+  "ticket_assigned_team": "Technical",
+  "ticket_assigned_admin": "swapnil@carbon.ai"
+}
+````
+
+Use these tags to filter and organize synced tickets based on their properties.
+
 
 ## Configuration
 
@@ -29,9 +64,19 @@ Carbon syncs all `Published` articles under a single Intercom workspace. Any `Dr
 
 ![](https://i.ibb.co/pfzG9VJ/Screen-Shot-2023-09-11-at-5-17-47-PM.png)
 
-3. Under the `Authentication` tab, click `Edit` and then add permissions for `Read one admin`, `Read and List Articles`, and `Read and Write Articles`. You can remove access to the other permissions.
+3. Under the `Authentication` tab, click `Edit` to add permissions:
 
-![](https://i.ibb.co/L9BxJFK/Screen-Shot-2023-09-11-at-5-21-01-PM.png)
+   - To sync user articles only, add these scopes: 
+     - `Read one admin`
+     - `Read and List Articles`
+
+   - To sync both user articles and tickets, also add:
+     - `Read and list users and companies` 
+     - `Read tickets`
+
+You can remove access to the other permissions.
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/aeb2a1b7-1eb8-4c9f-9a70-49282f9ecb00/public)
 
 4. Under the `Basic Info` tab, share the `Client ID` and `Client secret` with us via Slack.
 

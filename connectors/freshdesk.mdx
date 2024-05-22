@@ -38,12 +38,12 @@ To customize the sync behavior, use the `file_sync_config` parameter:
 
 ```
 "file_sync_config": {
-  "file_types": ["TICKET"],
+  "auto_synced_source_types": ["TICKET"],
   "sync_attachments": true
 }
 ```
 
-- `file_types`: An array specifying the types of items to sync. Valid values are "ARTICLE" (default) and "TICKET". To sync both articles and tickets, include both values in the array.
+- `auto_synced_source_types`: An array specifying the types of items to sync. Valid values are "ARTICLE" (default) and "TICKET". To sync both articles and tickets, include both values in the array.
 - `sync_attachments`: A boolean indicating whether to sync attachments from ticket comments. Set to true to enable attachment syncing.
 
 #### Additional Endpoints
@@ -68,8 +68,6 @@ Carbon can sync tickets and their associated file attachments. The following tic
 ````
 
 Use these tags to filter and organize synced tickets based on their properties.
-
-
 
 ## Synchronization
 Syncs are triggered when end-users connects their Freshdesk account. You can use the `resync_file` API endpoint to programmatically resync specific Freshdesk files.
