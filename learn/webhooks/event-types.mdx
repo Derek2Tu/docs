@@ -6,7 +6,7 @@ description: "List of available webhooks"
 ## File Processing
 
 We currently support the following webhook events for file processing:
-#### `FILE_CREATED`
+#### `FILES_CREATED`
 Sent when a user queues up a file to be synced for the first time. The body of the webhook will contain a list of `file_ids` for files that were created in the same upload, and multiple events could fire for the same upload if a lot of files were queued.
 #### `ALL_UPLOADED_FILES_QUEUED`
 Sent when every single item in an upload has been queued for sync, including all children of folders in an upload. The body will contain the upload’s `request_id`.
