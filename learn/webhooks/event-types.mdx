@@ -42,6 +42,14 @@ This event is fired when a user cancels the authentication flow. It's important 
 
 #### `REVOKE`
 This event is triggered when a user’s access token is revoked via the `/revoke_access_token` endpoint or when Carbon receives a 401 Unauthorized from the data source using an expired or revoked access token.
+
+## Organization
+
+We currently support the following webhook events for organizations:
+
+#### `FILE_STATISTICS_AGGREGATED`
+This event is triggered when the organization's request to refresh usage metrics is successfully processed.
+
 ### Example Payload
 Our webhook payload returns stringified JSON.
 ```
