@@ -45,10 +45,10 @@ The `CarbonConnect` component accepts the following properties:
 | `onSuccess`                | Function        | No        | A callback function that will be called after the file upload is successful.                                            |
 | `onError`                  | Function        | No        | A callback function that will be called if there is any error in the file upload.                                       |
 | `children`                 | React Node(JSX) | No        | You can pass any valid React node that will be used as a trigger to open the component.                                 |
-| `entryPoint`               | String          | No        | The initial active step when the component loads. Default entry point is `LOCAL_FILES`. More integrations are upcoming. |
+| `entryPoint`               | String          | No        | The initial active step when the component loads. Default entry point is `LOCAL_FILES`. |
 | `maxFileSize`              | Number          | No        | Maximum file size in bytes that is allowed to be uploaded. Defaults to 10 MB                                            |
 | `tags`                     | Object          | No        | Any additional data you want to associate with the component's state, such as an app ID.                                |
-| `enabledIntegrations`      | dict            | No        | Let's you choose which 3rd party integrations to show. See below for more details about this prop                       |
+| `enabledIntegrations`      | dict            | No        | Let's you choose which 3rd party integrations to show. See below for more details about this prop.                   |
 | `primaryBackgroundColor`   | String          | No        | The primary background color of the component. Defaults to `#000000`.                                                   |
 | `primaryTextColor`         | String          | No        | The primary text color of the component. Defaults to `#FFFFFF`.                                                         |
 | `secondaryBackgroundColor` | String          | No        | The secondary background color of the component. Defaults to `#FFFFFF`.                                                 |
@@ -72,6 +72,8 @@ The `CarbonConnect` component accepts the following properties:
 | `useRequestIds`| String | No | A `request_id` will be assigned to the uploaded files in that session. 
 | `loadingIconColor`| String | No | Defines the color of the loader icon. This can be specified using standard CSS color names, or directly as either a Hexadecimal (Hex) code or RGB color values.
 | `sendDeletionWebhooks`| Boolean | No | When set to `true`, enables triggering a `FILE_DELETED` webhook event whenever a user deletes files within Carbon Connect. If set to `false`, deleting files will not generate any webhook notifications.
+| `fileSyncConfig`| Array  | No | Includes data source and file specific configurations.
+
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 

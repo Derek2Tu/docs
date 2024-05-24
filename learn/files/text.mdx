@@ -18,6 +18,7 @@ Carbon supports the following text files formats:
 | `TSV`     | Every row is situated on an individual line, and each element within the row is prefixed with the header of its respective column. Our parser assumes that the first row and only the first row is the header. |
 | `PPTX`     | Text content is extracted and converted to plain text. Images and charts aren't supported yet.                          |
 | `JSON`   |  Carbon iterates through each object in a file and flattens it. Keys on the topmost level remain the same, but nested keys are transformed into the dot separated path to reach the key's value. Each component of the path can either be a string for a nested object or integer for a nested list. |
+| `HTML`   |  Text content is extracted and converted to plain text.
 
 
 ### Processing Semi-Structured Data
