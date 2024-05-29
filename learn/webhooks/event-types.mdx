@@ -41,14 +41,17 @@ This event is fired when a user selects one or more files for a particular data 
 This event is fired when a user cancels the authentication flow. It's important to note that this event cannot capture tab-close events, so directly closing a tab is not within our tracking capabilities.
 
 #### `REVOKE`
-This event is triggered when a user’s access token is revoked via the `/revoke_access_token` endpoint or when Carbon receives a 401 Unauthorized from the data source using an expired or revoked access token.
+This event is fired when a user’s access token is revoked via the `/revoke_access_token` endpoint or when Carbon receives a 401 Unauthorized from the data source using an expired or revoked access token.
 
 ## Organization
 
 We currently support the following webhook events for organizations:
 
 #### `FILE_STATISTICS_AGGREGATED`
-This event is triggered when the organization's request to refresh usage metrics is successfully processed.
+This event is fired when the organization's request to refresh usage metrics is successfully processed.
+
+#### `CHECKUP   
+This event is fired every 10s to check if a `FLAGGED` webhook is healthy again, and re-activate it if it we receive a `200` response.
 
 ### Example Payload
 Our webhook payload returns stringified JSON.
