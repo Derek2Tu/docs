@@ -20,10 +20,20 @@ If you need to transcribe audio from video files, please refer to the documentat
 
 ### Uploading Video Files
 
-Below is an example of how to upload a video file via the `uploadfile` endpoint.
+Below is an example of how to upload a video file via the `uploadfile` endpoint:
 
-"Carbon Demo.mp4" is just a file in the directory the request is being made from.
+<Note>"Carbon Demo.mp4" is just a file in the directory the request is being made from.</Note>
 
+```
+curl --request POST \
+  --url 'https://api.carbon.ai/uploadfile?media_type=VIDEO' \
+  --header 'Authorization: Bearer <YOUR TOKEN>' \
+  --header 'Content-Type: multipart/form-data' \
+  --header 'customer-id: <YOUR ID>' \
+  --form 'file=@Carbon Demo.mp4'
+```
+
+And the corresponding response will look like this:
 
 ```
 {
@@ -98,7 +108,7 @@ curl --request POST \
   "media_type": "VIDEO"
 }'
 ```
-And the response to this will look like this:
+And the corresponding response will look like this:
 
 <Note>The important part of the response is `content_metadata`, where `end_offset_sec` and `start_offset_sec` denote the interval of the video that the chunk is referencing.</Note>
 
