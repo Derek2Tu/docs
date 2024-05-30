@@ -50,8 +50,8 @@ We currently support the following webhook events for organizations:
 #### `FILE_STATISTICS_AGGREGATED`
 This event is fired when the organization's request to refresh usage metrics is successfully processed.
 
-#### `CHECKUP   
-This event is fired every 10s to check if a `FLAGGED` webhook is healthy again, and re-activate it if it we receive a `200` response.
+#### `CHECKUP`
+This event is fired every 10s to check if a `FLAGGED` webhook is healthy again, and re-activate the webhook if we receive a `200` response.
 
 ### Example Payload
 Our webhook payload returns stringified JSON.
