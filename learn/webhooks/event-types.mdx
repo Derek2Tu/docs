@@ -32,7 +32,7 @@ Sent when file processing is skipped. The body of the webhook will contain a lis
 We currently support the following webhook events for managing user connections to data sources:
 
 #### `ADD` 
-This event is fired when a user authenticates their account for a specific data source for the first time.
+This event is fired when a user connects a new account, when an access token is revoked and the user reconnects, and when a user initiates the "connect a new account" flow but connects to an already connected account.
 
 #### `UPDATE` 
 This event is fired when a user selects one or more files for a particular data source. This event is fired once per file selection confirmation, regardless of how many files are selected.
