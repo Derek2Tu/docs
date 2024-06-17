@@ -73,6 +73,7 @@ The `CarbonConnect` component accepts the following properties:
 | `loadingIconColor`| String | No | Defines the color of the loader icon. This can be specified using standard CSS color names, or directly as either a Hexadecimal (Hex) code or RGB color values.
 | `sendDeletionWebhooks`| Boolean | No | When set to `true`, enables triggering a `FILE_DELETED` webhook event whenever a user deletes files within Carbon Connect. If set to `false`, deleting files will not generate any webhook notifications.
 | `fileSyncConfig`| Array  | No | Includes data source and file specific configurations.
+| `splitRows`| Boolean | No | If `split_rows` is set to `true`, CSV rows will be automatically split if they exceed either the specified chunk size or the maximum token limit of the embedding model. Can be assigned to the `allowedFileTypes` under `LOCAL_FILES` or 3rd party enabled integrations. Defaults to `false`.
 
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
