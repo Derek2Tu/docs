@@ -1,4 +1,65 @@
 ---
 title: 'Slack'
-description: ''
+description: 'The Carbon Connect enabledIntegrations value for Slack is `SLACK`.'
 ---
+
+## Authorization Flow
+Our Slack connector uses [OAuth 2.0](https://api.slack.com/authentication/oauth-v2) for authentication.
+- Access tokens will expire every 12 hours and need to be refreshed using the token refresh flow
+- White labeling is supported by allowing developers to create their own Slack app.
+
+## Configuration
+### Custom OAuth Credentials
+
+1. Go to the Slack API website (https://api.slack.com/) and click on the "Create an app" button.
+2. Choose "From scratch" as the creation method.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/f08bbf9f-eb6c-4f16-912b-61473ff42600/public)
+3. Enter a name for your app and select the workspace where you want to install it. Click "Create App".
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/64a9c49d-9415-4fd6-7b7d-1571a9dbfc00/public)
+4. Add https://api.carbon.ai/integrations/slack as the Redirect URLs. You can also opt to use a custom CNAME record pointing to https://api.carbon.ai. The domain path must still be `/integrations/slack`.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/20d796fd-ae2c-4838-b79d-694ac4e1fe00/public)
+5. Add the following "User Token Scopes":
+- `channels:history`
+- `channels:read`
+- `groups:history`
+- `groups:read`
+- `im:history`
+- `im:read`
+- `mpim:history`
+- `mpim:read`
+- `users:read`
+- `users:read.email`
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/6f6462ec-81d4-4baa-2d9a-11d2725f5900/public)
+6. Under "OAuth and Permissions" > "Advanced token security via token rotation", click "Opt In".
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/15749536-84c3-4353-837f-f4c290aff900/public)
+7. Under "Basic Information", add details for your app.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/1b443d70-0477-4a80-fc5d-bb58a2edee00/public)
+8. Save the `User OAuth Token` and share the credentials securely with Carbon.
+
+
+
+
+
+
+## Synchronization
+There is no automatic or global file sync functionality. Instead, users can rely on the `/integrations/slack/conversations` and `/integrations/slack/sync` endpoints to list and sync Slack conversations. 
+
+### Conversation Listing
+- Users can list their Slack conversations using the `/integrations/slack/conversations` endpoint
+- The endpoint supports filtering conversations by type:
+  - Public channels
+  - Private channels
+  - Private messages
+  - Group conversations
+
+### Conversation Syncing
+- A dedicated sync endpoint `/integrations/slack/sync` is available which requires the following parameters:
+  - `conversation_id` (required): The ID of the Slack conversation to sync
+  - `after` (optional): A date filter to sync messages after a specific date
+
+### Conversation Format
+Messages are synced in 15-minute blocks. 
+
+For example, all messages between 2:15 PM and 2:30 PM will be synced together. If there are replies to messages outside the 15-minute block, they will still be included in the same sync block.
+
+Currently, only message content is synced. Attachments and reactions are not yet supported.
