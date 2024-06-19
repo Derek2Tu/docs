@@ -180,7 +180,8 @@
       "pages": [
         "resources/sdks",
         "resources/security",
-        "resources/rate-limits"
+        "resources/rate-limits",
+        "resources/example"
 
       ]
     },

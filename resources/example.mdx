@@ -1,0 +1,64 @@
+---
+title: 'Example'
+description: 'An example implementation of Carbon.'
+---
+
+<Note>This step-by-step tutorial will walk you through the process of connecting an user's Confluence account to Carbon, syncing your files, and leveraging Carbon's functionality for your RAG workflow.</Note>
+
+## Step 1: Generate OAuth URL
+
+To initiate the integration process, follow these steps:
+
+1. Visit the Carbon OAuth URL generation endpoint: `/oauth_url`
+2. Generate an OAuth URL specifically for Confluence
+3. Click on the generated URL to begin the authentication process with your user's Confluence account
+
+## Step 2: Verify Account Connection
+
+After successfully authenticating your Confluence account, verify the connection:
+
+1. Navigate to the Carbon user data sources endpoint: `/user_data_sources`
+2. Check if your user's Confluence account is listed, indicating a successful connection
+
+## Step 3: Select Files to Sync
+
+<Note>Specific connectors such as Google and Dropbox have their own file selectors, so this step is not required.</Note>
+
+To sync specific files and folders from Confluence to Carbon, follow these steps:
+
+1. Browse your Confluence file directory using the Carbon file listing endpoint: `/integrations/items/list`
+2. Select the desired files and folders you want to sync to Carbon
+3. Pass the selected items to the Carbon file sync endpoint: `/integrations/files/sync`
+4. The sync process will begin, syncing the content of the selected files to Carbon
+
+## Step 4: Access Synced Files
+
+Once the sync process is complete, you can access the synced files in Carbon:
+
+1. Visit the Carbon user files endpoint: `/user_files_v2`
+    - By setting `include_raw_file` to `true`, you can retrieve a pre-signed URL for the uploaded file in its original format (e.g., PDF, DOCX, etc.). This allows you to access and download the file as it was initially uploaded by the user.
+    - By setting `include_parsed_text_file` to `true`, you can retrieve a plain text version of the uploaded file. This can be useful when you need to process or analyze the content of the file without dealing with the original file format.
+2. The synced files will maintain their original directory structure from Confluence
+
+## Step 5: Retrieve Embeddings
+
+Carbon provides powerful embedding capabilities for your synced files:
+
+1. Retrieve embeddings and content using the Carbon embeddings endpoint: `/embeddings`
+2. Alternatively, you can retrieve the embeddings and chunks and store it in your own vector database: `/text_chunks`
+
+## Step 6: Resync Files (Optional)
+
+If you make changes to files in Confluence after the initial sync, you can resync them to update the versions in Carbon:
+
+1. Use the Carbon file resync endpoint: `/resync_file`
+2. Specify the individual files you want to resync
+
+## Step 7: Set Up Auto-Sync (Optional)
+
+To keep your files automatically in sync between Confluence and Carbon, you can enable scheduled auto-sync:
+
+1. Set up auto-sync at the organization level using the Carbon update organization endpoint: `/organization/update`
+2. Alternatively, enable auto-sync for individual users using the Carbon update users endpoint: `/update_users`
+
+By following these steps, you'll be able to seamlessly integrate your Confluence account with Carbon, sync your files, and leverage Carbon's advanced features to supercharge your development workflow. Happy building with Carbon!
