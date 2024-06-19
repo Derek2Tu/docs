@@ -179,7 +179,8 @@
       "group": "Resources",
       "pages": [
         "resources/sdks",
-        "resources/security"
+        "resources/security",
+        "resources/rate-limits"
 
       ]
     },
