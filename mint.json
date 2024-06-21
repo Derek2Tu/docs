@@ -222,7 +222,6 @@
         "api-reference/endpoint/files/create-raw-text",
         "api-reference/endpoint/files/create-upload-file-from-url",
         "api-reference/endpoint/files/user-files-v2",
-        "api-reference/endpoint/files/delete-files-endpoint",
         "api-reference/endpoint/files/delete-files-v2-endpoint",
         "api-reference/endpoint/files/resync-file"
       ]
@@ -241,7 +240,8 @@
       "pages": [
         "api-reference/endpoint/utilities/web-scrape",
         "api-reference/endpoint/utilities/scrape-sitemap",
-        "api-reference/endpoint/utilities/fetch-urls",
+        "api-reference/endpoint/utilities/fetch-webpage",
+        "api-reference/endpoint/utilities/view-webpages",
         "api-reference/endpoint/utilities/sitemap",
         "api-reference/endpoint/utilities/fetch-youtube-transcripts",
         "api-reference/endpoint/utilities/search-urls",
