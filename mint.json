@@ -291,6 +291,13 @@
       ]
     },
     {
+      "group": "Slack",
+      "pages": [
+        "api-reference/endpoint/data-sources/slack-list",
+        "api-reference/endpoint/data-sources/slack-sync"
+      ]
+    },
+    {
       "group": "Outlook",
       "pages": [
         "api-reference/endpoint/data-sources/outlook-sync",
