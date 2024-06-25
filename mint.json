@@ -323,7 +323,7 @@
     {
       "group": "Chunks / Embeddings",
       "pages": [
-        "api-reference/endpoint/embeddings/retrieve-embeddings-and-content",
+        "api-reference/endpoint/embeddings/list-chunks-and-embeddings",
         "api-reference/endpoint/embeddings/upload-chunks-and-embeddings"
       ]
     },
