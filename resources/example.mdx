@@ -5,7 +5,7 @@ description: 'An example implementation of Carbon.'
 
 <Note>This step-by-step tutorial will walk you through the process of connecting an user's Confluence account to Carbon, syncing your files, and leveraging Carbon's functionality for your RAG workflow.</Note>
 
-<Card title="Jupyter Notebook" icon="link" href="https://colab.research.google.com/drive/1S3OZUZwWEoyO9srseab6uiBlrLWDUx2A?usp=sharingg">
+<Card title="Jupyter Notebook" icon="link" hxref="https://colab.research.google.com/drive/1kXJ29dYOtJQip6NYrx9PKUJDC40PGxU_?usp=sharing">
   Follow along with interactive code snippets corresponding to the tutorial.
 </Card>
 
@@ -66,3 +66,14 @@ To keep your files automatically in sync between Confluence and Carbon, you can 
 2. Alternatively, enable auto-sync for individual users using the Carbon update users endpoint: `/update_users`
 
 By following these steps, you'll be able to seamlessly integrate your Confluence account with Carbon, sync your files, and leverage Carbon's advanced features to supercharge your development workflow. Happy building with Carbon!
+
+## Step 8: Add Webhooks (Optional)
+<Note>For testing, you can create a tunnel to your localhost server using a tool like ngrok. For example: https://5f9f-98-14-198-85.ngrok-free.app/api/webhook</Note>
+1. Add a URL to which webhooks should be sent. This can be done using the `/add_webhook` endpoint.
+2. The response from the `/add_webhook` endpoint includes a `signing_key`. Save this key securely as it is used to validate the authenticity of received webhooks and cannot be retrieved again.
+3. You can create a tunnel to your localhost server using a tool like ngrok. For example: https://5f9f-98-14-198-85.ngrok-free.app/api/webhook
+4. At this point, all events will be sent to the URL specified in Step 1. An event - sent via an HTTP POST request - contains two important elements: a `Carbon-Signature` header and a body with a single key-value pair. You can validate the authenticity and integrity of the webhook by calculating its signature.
+5. To ensure that the webhooks are genuine and have not been tampered with, you should validate the incoming webhooks using the `signing_key` from Step 2.
+6. Once you receive and handle the webhook, you should respond to the POST request with a `200` status - otherwise, the webhook will be retried (up to three times).
+
+
