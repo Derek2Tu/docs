@@ -65,6 +65,12 @@ Accepts a date in the format YYYY/mm/dd (e.g., 2023/12/31), enabling the retriev
 #### `is` 
 Supports values like `starred`, `important`, `snoozed`, and `unread` to filter emails based on these attributes.
 
+#### `to`
+Supports an email (`email@address.com`) as a string to which the email was sent.
+
+#### `from`
+Supports an email (`email@address.com`) as a string from which the email was sent.
+
 It's crucial to adhere to the specified keys and values within the JSON object. Usage of keys or values outside this defined scope might result in unexpected behavior.
 
 An example of a basic query with filters, which lists all emails that have the label `Test`:

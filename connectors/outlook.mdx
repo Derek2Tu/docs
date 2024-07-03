@@ -58,10 +58,18 @@ The filters parameter is a JSON object with key-value pairs, supporting AND and 
 
 Below are the supported filter keys:
 
-- _*`category`*_: Custom categories created in Outlook.
+#### `category`
+Custom categories created in Outlook.
 
-- _*`after or before`*_: A date in YYYY/mm/dd format (e.g., 2023/12/31) to fetch emails after/before a specific date.
-You can combine these filters for more refined queries. 
+#### `after`
+Accepts a date in the format YYYY/mm/dd (e.g., 2023/12/31), enabling the retrieval of emails after a specified date.
+
+#### `before`
+Accepts a date in the format YYYY/mm/dd (e.g., 2023/12/31), enabling the retrieval of emails before a specified date.
+
+#### `from`
+Supports an email (`email@address.com`) as a string from which the email was sent.
+
 
 Here are some examples:
 
