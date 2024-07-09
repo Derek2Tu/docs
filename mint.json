@@ -181,7 +181,8 @@
         "resources/sdks",
         "resources/security",
         "resources/rate-limits",
-        "resources/example"
+        "resources/example",
+        "resources/entity-diagram"
 
       ]
     },
