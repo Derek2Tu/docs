@@ -68,7 +68,7 @@ The `CarbonConnect` component accepts the following properties:
 | `embeddingModel`             | String         | No      |Specifies the embedding model used for the integration. The options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
 | `filePickerMode`             | String         | No      |Specifies whether users can locally upload files, folders, or both. The options are `FILES`, `FOLDERS`, or `BOTH`.
 | `prependFilenameToChunks`| String | No | Adds the file title to each chunk. Defaults to `false`. 
-| `showFilesTab`| Boolean | No | Shows the files tab in Carbon Connect 2.0. Defaults to `true`. 
+| `showFilesTab`| Boolean | No | Shows the synced files tab in Carbon Connect 2.0. Defaults to `true`. 
 | `useRequestIds`| String | No | A `request_id` will be assigned to the uploaded files in that session. 
 | `loadingIconColor`| String | No | Defines the color of the loader icon. This can be specified using standard CSS color names, or directly as either a Hexadecimal (Hex) code or RGB color values.
 | `sendDeletionWebhooks`| Boolean | No | When set to `true`, enables triggering a `FILE_DELETED` webhook event whenever a user deletes files within Carbon Connect. If set to `false`, deleting files will not generate any webhook notifications.
@@ -229,7 +229,6 @@ Here's the list of connectors available for activation:
 <AccordionGroup>
   <Accordion title="Local Files">
   `LOCAL_FILES`: This integration lets you upload files from your local machine. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
-
     - `chunkSize`: Number of tokens per chunk. Default is 1500.
     - `overlapSize`: Size of overlap in tokens. Default is 20.
     - `maxFileSize`: Maximum file size allowed for upload in bytes. Default is 10 MB.
@@ -252,8 +251,6 @@ Here's the list of connectors available for activation:
       - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search for this file type. Default is `false`.
       - `prependFilenameToChunks`: Adds the file title to each chunk for the file. Defaults to `false`. 
       - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
-
-
   </Accordion>
 
   <Accordion title="Notion">
@@ -265,8 +262,9 @@ Here's the list of connectors available for activation:
     - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
   </Accordion>
 
   <Accordion title="Web Scraper">
@@ -284,7 +282,6 @@ Here's the list of connectors available for activation:
     - `cssClassesToSkip`: Define CSS Classes to exclude when converting HTML to plaintext. Defaults to `[]`, an empty list.
     - `cssSelectorsToSkip`: Define CSS Selectors to exclude when converting HTML to plaintext. Defaults to `[]`, an empty list.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
-
   </Accordion>
   <Accordion title="Google Drive">
     `GOOGLE_DRIVE`: This integration lets you upload files from your Google Drive. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
@@ -295,10 +292,11 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Intercom">
@@ -311,8 +309,9 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Dropbox">
@@ -324,10 +323,11 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Box">
@@ -339,10 +339,11 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="OneDrive">
@@ -354,10 +355,11 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Zotero">
@@ -369,10 +371,11 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Sharepoint">
@@ -384,10 +387,11 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `useOcr`: Toggle to enable Optical Character Recognition (OCR) for PDFs. Default is `false`.
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Confluence">
@@ -399,8 +403,9 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Zendesk">
@@ -412,8 +417,9 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Freshdesk">
@@ -425,8 +431,9 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Gitbook">
@@ -438,8 +445,9 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
     <Accordion title="GitHub">
@@ -451,8 +459,9 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `false`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
    <Accordion title="Salesforce">
@@ -464,19 +473,26 @@ Here's the list of connectors available for activation:
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
-    - `showFilesTab`: Shows the files tab in Carbon Connect 2.0 for this specific integration. Defaults to `true`. 
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
 
   </Accordion>
   <Accordion title="Gmail">
-  `GMAIL`: This integration lets you upload emails from Gmail, along with file attachements. You can reference the supported file formats [here](learn/files/text).
+  `GMAIL`: This integration enables you to import emails from Gmail, including file attachments. You can reference the supported file formats [here](learn/files/text).
 
    Once a user has connected their Gmail account, you can select which emails to upload via the `/integrations/gmail/sync` endpoint.
   </Accordion>
     <Accordion title="Outlook">
-  `OUTLOOK`: This integration lets you upload emails from Gmail, along with file attachements. You can reference the supported file formats [here](learn/files/text).
+  `OUTLOOK`: This integration enables you to import emails from Outlook, including file attachments. You can reference the supported file formats [here](learn/files/text).
 
    Once a user has connected their Outlook account, you can select which emails to upload via the `/integrations/outlook/sync` endpoint.
+  </Accordion>
+
+  <Accordion title="Slack">
+  `Slack`: This integration enables you to import conversations from Slack.
+
+   Once a user has connected their Slack account, you can select which conversations to upload via the `/integrations/slack/conversations` and `/integrations/slack/sync` endpoints.
   </Accordion>
   <Accordion title="RSS">
   `RSS_FEED`: This integration lets you upload content from a RSS or Atom feed. You can pass the following configuration for this integration:
@@ -508,7 +524,7 @@ Responds to successful events: file upload, 3rd party account connection, file s
 
   1. `INITIATE`: This event type is triggered when a user enters the integration flow (either for auth or file selection)
   2. `ADD`: This event type is triggered when a user authenticates an account under an integration.
-  3. `UPDATE`: This event type is triggered when a user adds or removes files for an integration. We’ll list the files added or removed.
+  3. `UPDATE`: This event type is triggered when a user adds or removes files for an integration.
   4. `CANCEL`: This event type is triggered when when a user exits the integration flow without taking any action.
 
 
