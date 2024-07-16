@@ -23,13 +23,31 @@ Carbon supports multiple embeddings models for various use cases and modalities.
 | Solar Embeddings     | Upstage  |-| 4096 | - | `SOLAR_1_MINI`
 | jina-embeddings-v2     | Jina  |-| 768 | 60.4 | Launching soon
 
+#### Reranking Models
+
+| Model | Developer  |  Carbon Slug
+| -------- | ------------- |  ------|
+| jina-reranker-v2-base-multilingual     | Jina AI  | `JINA_MULTILINGUAL_BASE_V2`
+| Cohere Rerank 3 Multilingual   | Cohere  | `COHERE_RERANK_MULTILINGUAL_V3`
+
 #### Image Embeddings
+
+<Warning>Currently do not designate `VERTEX_MULTIMODAL` as an `embedding_model`. This model is automatically employed by Carbon when processing an image file.</Warning>
+
+| Model | Developer  | Carbon Slug
+| -------- | ------------- | ------|
+| Embeddings for Multimodal     | Google  | `JINA_MULTILINGUAL_BASE_V2`
+| Embeddings for Multimodal     | Google  | `COHERE_RERANK_MULTILINGUAL_V3`
+
+#### Video Embeddings
+
+<Warning>Currently do not designate `VERTEX_MULTIMODAL` as an `embedding_model`. This model is automatically employed by Carbon when processing a video file.</Warning>
+
 | Model | Developer  | Embedding Size | Carbon Slug
 | -------- | ------------- | ------ | ------|
 | Embeddings for Multimodal     | Google  | 1408 | `VERTEX_MULTIMODAL`
 
 ### Usage
-<Warning>Currently do not designate `VERTEX_MULTIMODAL` as an `embedding_model`. This model is automatically employed by Carbon when processing an image file.</Warning>
 
 To define the embedding model, utilize the `embedding_model` parameter in the POST body for the `/embeddings` and other API endpoints. By default, if no specific model is provided, the system will use `OPENAI`.
 
