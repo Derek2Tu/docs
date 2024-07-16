@@ -53,8 +53,9 @@ This event is fired when the organization's request to refresh usage metrics is 
 #### `CHECKUP`
 This event is fired every 10s to check if a `FLAGGED` webhook is healthy again, and re-activate the webhook if we receive a `200` response.
 
-## Webpages
-
+## Websites
+#### `WEBSCRAPE_URLS_READY`
+This event is fired when a specific web page from a web scrape request is finished processing.
 #### `WEBPAGE_ERROR`
 This event is fired when a `fetch_webpage` request failed. The webhook payload includes the corresponding webpage ID.
 #### `WEBPAGE_READY`
