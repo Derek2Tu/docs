@@ -106,7 +106,8 @@
         {
           "group": "Object Storage",
           "pages": [
-            "connectors/s3"
+            "connectors/s3",
+            "connectors/google-cloud-storage"
           ]
         },
 
