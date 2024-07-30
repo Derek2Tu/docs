@@ -51,7 +51,7 @@ Once the sync process is complete, you can access the synced files in Carbon:
 Carbon provides powerful embedding capabilities for your synced files:
 
 1. Retrieve embeddings and content using the Carbon embeddings endpoint: `/embeddings`
-2. Alternatively, you can retrieve the embeddings and chunks and store it in your own vector database: `/text_chunks`
+2. Alternatively, you can retrieve the embeddings and chunks and store it in your own vector database: `/list_chunks_and_embeddings`
 
 ## Step 6: Resync Files (Optional)
 
@@ -75,7 +75,7 @@ By following these steps, you'll be able to seamlessly integrate your Confluence
 2. The response from the `/add_webhook` endpoint includes a `signing_key`. Save this key securely as it is used to validate the authenticity of received webhooks and cannot be retrieved again.
 3. You can create a tunnel to your localhost server using a tool like ngrok. For example: https://5f9f-98-14-198-85.ngrok-free.app/api/webhook
 4. At this point, all events will be sent to the URL specified in Step 1. An event - sent via an HTTP POST request - contains two important elements: a `Carbon-Signature` header and a body with a single key-value pair. You can validate the authenticity and integrity of the webhook by calculating its signature.
-5. To ensure that the webhooks are genuine and have not been tampered with, you should validate the incoming webhooks using the `signing_key` from Step 2.
+5. To ensure that the webhooks are genuine and have not been tampered with, you should validate the incoming webhooks using the `signing_key` from Step 2. You can do this manually or use our official webhook libraries [here](https://github.com/Carbon-for-Developers/webhook-library).
 6. Once you receive and handle the webhook, you should respond to the POST request with a `200` status - otherwise, the webhook will be retried (up to three times).
 
 
