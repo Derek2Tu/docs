@@ -74,7 +74,7 @@ The `CarbonConnect` component accepts the following properties:
 | `sendDeletionWebhooks`| Boolean | No | When set to `true`, enables triggering a `FILE_DELETED` webhook event whenever a user deletes files within Carbon Connect. If set to `false`, deleting files will not generate any webhook notifications.
 | `fileSyncConfig`| Array  | No | Includes data source and file specific configurations.
 | `splitRows`| Boolean | No | If `splitRows` is set to `true`, CSV rows will be automatically split if they exceed either the specified chunk size or the maximum token limit of the embedding model. For `LOCAL_FILES`, `splitRows` can be set on the integration or extension level. For third-party connectors, this value can be set under the `fileSyncConfig` as `split_rows`. Defaults to `false`.
-
+| `incrementalSync`| Boolean | No | By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
@@ -265,6 +265,8 @@ Here's the list of connectors available for activation:
     - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+
   </Accordion>
 
   <Accordion title="Web Scraper">
@@ -297,6 +299,7 @@ Here's the list of connectors available for activation:
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
   </Accordion>
   <Accordion title="Intercom">
@@ -312,6 +315,7 @@ Here's the list of connectors available for activation:
     - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
   </Accordion>
   <Accordion title="Dropbox">
@@ -328,6 +332,7 @@ Here's the list of connectors available for activation:
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
   </Accordion>
   <Accordion title="Box">
@@ -344,6 +349,7 @@ Here's the list of connectors available for activation:
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
   </Accordion>
   <Accordion title="OneDrive">
@@ -360,6 +366,7 @@ Here's the list of connectors available for activation:
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
   </Accordion>
   <Accordion title="Zotero">
@@ -392,6 +399,7 @@ Here's the list of connectors available for activation:
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
   </Accordion>
   <Accordion title="Confluence">
@@ -406,6 +414,7 @@ Here's the list of connectors available for activation:
     - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
   </Accordion>
   <Accordion title="Zendesk">
@@ -420,6 +429,7 @@ Here's the list of connectors available for activation:
     - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
   </Accordion>
   <Accordion title="Freshdesk">
