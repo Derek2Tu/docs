@@ -2,3 +2,87 @@
 title: 'Google Cloud Storage'
 description: 'The Carbon Connect `enabledIntegrations` value for Google Cloud Storage is `GCS`.'
 ---
+
+## Authorization Type
+
+Carbon uses **[OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)** to connect to Google Cloud Storages buckets.
+
+## Authorization Flow
+
+Log into your Google Drive account to provide access to your Google Cloud Storage buckets.
+![](https://i.ibb.co/wQsyjrV/Screen-Shot-2023-08-11-at-2-04-49-PM.png)
+
+## Configuration
+
+### Custom OAuth Credentials
+
+<Warning>Custom OAuth credentials is only required for customers who enable [white labeling](/learn/customize/whitelabel).</Warning>
+
+1. Go to `APIs and Services` > `Enabled APIs and Services` in your Google Cloud console, then click on the button titled `ENABLE APIS AND SERVICES` and enable `Cloud Resource Manager API` (cloudresourcemanager.googleapis.com).
+2. Then create an `OAuth Client ID` in the `Credentials section` under `Cloud Resource Manager API`. Select `Web Application` as the Application type and give it an identifiable name for your reference.
+
+![](https://files.readme.io/e7f42e5-image.png)
+
+3. Add [https://api.carbon.ai](https://api.carbon.ai) as the `Authorized JS origin` and [https://api.carbon.ai/integrations/google](https://api.carbon.ai/integrations/google) as an `Authorized redirect URI`. 
+You can also opt to use a custom CNAME record pointing to https://api.carbon.ai for the `Authorized JS Origin` and `Authorized redirect URI`. However, for the `Authorized redirect URI` the domain paths must still be `/integrations/google`.
+
+![](https://files.readme.io/60d16d3-image.png)
+
+4. Save the credentials. Download the credentials.json file once you save the OAuth Client ID data and share the file with Carbon.
+
+![](https://files.readme.io/f265775-image.png)
+
+7. Configure your consent screen in the OAuth Consent Screen. Provide your **App name**, **support email address**, and **brand logo**. Add [carbon.ai](http://carbon.ai/) (or your custom CNAME) to `Authorized domain`.
+
+![](https://files.readme.io/33ebd01-image.png)
+
+![](https://files.readme.io/6d7f247-image.png)
+
+
+8. Click on `Add or Remove Scopes` button to add the following scopes: `auth/userinfo.profile`, `auth/userinfo.email`, `auth/devstorage.read_only`.
+
+9. If you wish to add test users, you can do so. These users will not see the "App is unverified" notification. Other users will see this alert.
+10. Click `Publish App` to make this app available to your end-users.
+
+![](https://files.readme.io/d24c355-image.png)
+
+## Synchronization
+
+#### Step 1: List Files and Buckets
+You can list all available GCS buckets and objects by using _*POST*_ `/integrations/items/sync` and list them via _*POST*_ `/integrations/items/list`.
+
+#### Step 2: Sync Files or Buckets
+Use the `/integrations/gcs/files` endpoint to sync specific file objects or buckets.
+
+For syncing specific files (multiple files allowed):
+```json
+{
+    "ids": [{"bucket": "bucket-name", "id": "object-key"}],
+    "tags": "...",
+    "chunk_size": "...",
+    "chunk_overlap": "...",
+    "skip_embedding_generation": "..."
+}
+```
+For syncing all files from buckets (multiple buckets allowed):
+```json
+{
+    "ids": [{"bucket": "bucket-name"}],
+    "tags": "...",
+    "chunk_size": "...",
+    "chunk_overlap": "...",
+    "skip_embedding_generation": "..."
+}
+```
+
+You can also use the `resync_file` API endpoint to programmatically resync specific GCS files. To delete GCS files from Carbon, you can use the `delete_file` endpoint directly.
+
+To sync GCS files on a 24-hour schedule (_more frequent schedules available upon request_), you can use the `/update_users` endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
+
+Here's an example illustrating how to automatically enable syncing for updated GCS content for specified users:
+
+```
+{
+    "customer_ids": ["team@carbon.ai", "sam@openai.com"],
+    "auto_sync_enabled_sources": ["RSS"]
+} 
