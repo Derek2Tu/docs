@@ -14,6 +14,7 @@ Log into your Google Drive account to provide access to your Google Cloud Storag
 
 ## Configuration
 
+
 ### Custom OAuth Credentials
 
 <Warning>Custom OAuth credentials is only required for customers who enable [white labeling](/learn/customize/whitelabel).</Warning>
@@ -38,7 +39,6 @@ You can also opt to use a custom CNAME record pointing to https://api.carbon.ai 
 
 ![](https://files.readme.io/6d7f247-image.png)
 
-
 8. Click on `Add or Remove Scopes` button to add the following scopes: `auth/userinfo.profile`, `auth/userinfo.email`, `auth/devstorage.read_only`.
 
 9. If you wish to add test users, you can do so. These users will not see the "App is unverified" notification. Other users will see this alert.
@@ -48,32 +48,18 @@ You can also opt to use a custom CNAME record pointing to https://api.carbon.ai 
 
 ## Synchronization
 
-#### Step 1: List Files and Buckets
-You can list all available GCS buckets and objects by using _*POST*_ `/integrations/items/sync` and list them via _*POST*_ `/integrations/items/list`.
+<Note>We offer a pre-built File Picker UI for Confluence through Carbon Connect, since Confluence does not provider their own File Picker UI.</Note>
 
-#### Step 2: Sync Files or Buckets
-Use the `/integrations/gcs/files` endpoint to sync specific file objects or buckets.
+You can synchronize buckets and files GCS using the following steps:
 
-For syncing specific files (multiple files allowed):
-```json
-{
-    "ids": [{"bucket": "bucket-name", "id": "object-key"}],
-    "tags": "...",
-    "chunk_size": "...",
-    "chunk_overlap": "...",
-    "skip_embedding_generation": "..."
-}
-```
-For syncing all files from buckets (multiple buckets allowed):
-```json
-{
-    "ids": [{"bucket": "bucket-name"}],
-    "tags": "...",
-    "chunk_size": "...",
-    "chunk_overlap": "...",
-    "skip_embedding_generation": "..."
-}
-```
+_*Sync a User's GCS Account*_
+- Use the `/integrations/items/sync` endpoint to synchronize a user's GCS account.
+
+_*List All Items from a User's GCS Account*_
+- Retrieve a list of all items (buckets and files) from a user's Confluence account by utilizing the `/integrations/items/list` endpoint.
+
+_*Specify Specific Files to Sync*_
+- Employ the `/integrations/files/sync` endpoint to specify and synchronize specific files.
 
 You can also use the `resync_file` API endpoint to programmatically resync specific GCS files. To delete GCS files from Carbon, you can use the `delete_file` endpoint directly.
 
