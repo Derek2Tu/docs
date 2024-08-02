@@ -48,11 +48,11 @@ You can manually verify the webhook or use our official [webhook libraries](http
 
 ```python Python
 
+from carbon_verifier import WebhookVerifier
 import json
-from verifier import WebhookVerifier
 
 # Initialize the verifier with your signing key
-SIGNING_SECRET = 'aa76aee859f223451fd9bfb37ce893a0'  # Replace with your actual signing key
+SIGNING_SECRET = ''  # Replace with your actual signing key
 verifier = WebhookVerifier(SIGNING_SECRET)
 
 def verify_webhook(headers, payload):
@@ -79,8 +79,10 @@ def verify_webhook(headers, payload):
 
     return {'status': 'success'}, 200
 
+# hardcoded payload for example 
 payload_v1 = '{"payload": "{\\"webhook_type\\": \\"FILES_CREATED\\", \\"obj\\": {\\"object_type\\": \\"FILE_LIST\\", \\"object_id\\": [\\"46654\\"], \\"additional_information\\": \\"null\\"}, \\"customer_id\\": \\"satvik\\", \\"timestamp\\": \\"1721392406\\"}"}'
 
+# hardcoded header for example 
 headers = {
   "Content-Type": "application/json",
   "Carbon-Signature": "t=1721392406,v1=aa2273ab64bb9162e7e7983a9cd7ab9f90d686691b1fd25c577991ad42c53fc1",
