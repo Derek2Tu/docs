@@ -1,38 +1,37 @@
 ---
-title: 'DigitalOcean'
-description: 'The Carbon Connect `enabledIntegrations` value for DigitalOcean Spaces is `DIGITALOCEAN`.'
+title: 'DigitalOcean Spaces'
+description: 'The Carbon Connect `enabledIntegrations` value for DigitalOcean Spaces is `S3`.'
 ---
-
 All text, audio, video and image files are supported file formats via Spaces Object Storage.
+
+<Note>Since the Spaces API is interoperable with the AWS S3 API, Digital Ocean Spaces leverages our existing S3 endpoints. To determine if a connection belong to DigitalOcean, check `data_source_metadata` equals `DIGITALOCEAN` on the `data_source` object. To determine if a file is synced from DigitalOcean, check `type` equals `DIGITALOCEAN` under the `file_metadata` object.</Note>
 
 ## Authorization Type
 
 Carbon uses [Access Key based](https://docs.digitalocean.com/products/spaces/how-to/use-aws-sdks/) authentication to connect to Spaces Object Storage. 
 
-Since the Spaces API is interoperable with the AWS S3 API, the source of our Spaces Connector will show up as `S3`.
-
 ## Functionality
 
-Carbon allows users to upload [text](https://docs.carbon.ai/learn/files/text) and [audio](https://docs.carbon.ai/learn/files/audio) file formats directly from Spaces Object Storage.
-
+Carbon allows users to upload [text](https://docs.carbon.ai/learn/files/text), [image](https://docs.carbon.ai/learn/files/image), [video](https://docs.carbon.ai/learn/files/video). and [audio](https://docs.carbon.ai/learn/files/audio) file formats directly from Spaces Object Storage.
 
 ## Synchronization
 
-#### Step 1: Generate IAM User and Access Key
+#### Step 1: Generate Access Key and Secret
+For Digital Ocean Spaces, generate the Access Key and Secret under the `Space Keys` tab of the `Applications and API` page [here](https://cloud.digitalocean.com/account/api/spaces).
 
-Create an IAM user in AWS with the following permissions:
-
-- **List all buckets:** Grant permissions to list all Spaces Object Storage buckets.
-- **Read access to specific buckets and objects:** Allow read access to the buckets and objects intended for synchronization in Carbon. Ensure that new buckets added in the future grant access to this IAM user for object retrieval.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/06f1c95c-d712-49db-da52-ad54d1ba4600/public)
 
 #### Step 2: Provide Credentials to Carbon
+
+<Note>In order to access Spaces from different regions, you need to create separate Access Keys for each region.</Note>
 
 `POST` the generated credentials to the `/integrations/s3` endpoint in this format:
 
 ```json
 {
     "access_key": "<<your-access-key>>",
-    "access_key_secret": "<<access-key-secret>>"
+    "access_key_secret": "<<access-key-secret>>",
+    "endpoint_url": "<<region>>.digitaloceanspaces.com"
 }
 ```
 
@@ -75,3 +74,4 @@ Here's an example illustrating how to automatically enable syncing for updated S
     "customer_ids": ["team@carbon.ai", "sam@openai.com"],
     "auto_sync_enabled_sources": ["Spaces Object Storage"]
 } 
+```
