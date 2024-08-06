@@ -1,0 +1,77 @@
+---
+title: 'DigitalOcean'
+description: 'The Carbon Connect `enabledIntegrations` value for DigitalOcean Spaces is `DIGITALOCEAN`.'
+---
+
+All text, audio, video and image files are supported file formats via Spaces Object Storage.
+
+## Authorization Type
+
+Carbon uses [Access Key based](https://docs.digitalocean.com/products/spaces/how-to/use-aws-sdks/) authentication to connect to Spaces Object Storage. 
+
+Since the Spaces API is interoperable with the AWS S3 API, the source of our Spaces Connector will show up as `S3`.
+
+## Functionality
+
+Carbon allows users to upload [text](https://docs.carbon.ai/learn/files/text) and [audio](https://docs.carbon.ai/learn/files/audio) file formats directly from Spaces Object Storage.
+
+
+## Synchronization
+
+#### Step 1: Generate IAM User and Access Key
+
+Create an IAM user in AWS with the following permissions:
+
+- **List all buckets:** Grant permissions to list all Spaces Object Storage buckets.
+- **Read access to specific buckets and objects:** Allow read access to the buckets and objects intended for synchronization in Carbon. Ensure that new buckets added in the future grant access to this IAM user for object retrieval.
+
+#### Step 2: Provide Credentials to Carbon
+
+`POST` the generated credentials to the `/integrations/s3` endpoint in this format:
+
+```json
+{
+    "access_key": "<<your-access-key>>",
+    "access_key_secret": "<<access-key-secret>>"
+}
+```
+
+#### Step 3: List Files and Buckets
+Optionally load all available Spaces Object Storage buckets and objects by using _*POST*_ `/integrations/items/sync` and list them via _*POST*_ `/integrations/items/list`.
+
+#### Step 4: Sync Files or Buckets
+Use the `/integrations/s3/files` endpoint to sync specific file objects or buckets.
+
+For syncing specific files (multiple files allowed):
+```json
+{
+    "ids": [{"bucket": "bucket-name", "id": "object-key"}],
+    "tags": "...",
+    "chunk_size": "...",
+    "chunk_overlap": "...",
+    "skip_embedding_generation": "..."
+}
+```
+
+For syncing all files from buckets (multiple buckets allowed):
+```json
+{
+    "ids": [{"bucket": "bucket-name"}],
+    "tags": "...",
+    "chunk_size": "...",
+    "chunk_overlap": "...",
+    "skip_embedding_generation": "..."
+}
+```
+
+You can also use the `resync_file` API endpoint to programmatically resync specific Spaces Object Storage files. To delete Spaces Object Storage files from Carbon, you can use the `delete_file` endpoint directly.
+
+To sync Spaces Object Storage files on a 24-hour schedule (_more frequent schedules available upon request_), you can use the `/update_users` endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
+
+Here's an example illustrating how to automatically enable syncing for updated Spaces Object Storage content for specified users:
+
+```
+{
+    "customer_ids": ["team@carbon.ai", "sam@openai.com"],
+    "auto_sync_enabled_sources": ["Spaces Object Storage"]
+} 

@@ -9,7 +9,7 @@ Carbon uses **[OAuth 2.0](https://developers.google.com/identity/protocols/oauth
 
 ## Authorization Flow
 
-Log into your Google Drive account to provide access to your Google Cloud Storage buckets.
+Log into your Google Drive account to provide access to your Google Cloud Storage buckets. Once you’ve successfully authenticated your account, you can select files and folders directly.
 ![](https://i.ibb.co/wQsyjrV/Screen-Shot-2023-08-11-at-2-04-49-PM.png)
 
 ## Configuration
@@ -48,7 +48,7 @@ You can also opt to use a custom CNAME record pointing to https://api.carbon.ai 
 
 ## Synchronization
 
-<Note>We offer a pre-built File Picker UI for Confluence through Carbon Connect, since Confluence does not provider their own File Picker UI.</Note>
+<Note>We offer a pre-built File Picker UI for GCS through Carbon Connect, since GCS does not provider their own File Picker UI.</Note>
 
 You can synchronize buckets, folders, and files GCS using the following steps:
 
@@ -56,7 +56,7 @@ _*Sync a User's GCS Account*_
 - Use the `/integrations/items/sync` endpoint to synchronize a user's GCS account.
 
 _*List All Items from a User's GCS Account*_
-- Retrieve a list of all items (buckets, folders, and files) from a user's Confluence account by utilizing the `/integrations/items/list` endpoint.
+- Retrieve a list of all items (buckets and files) from a user's GCS account by utilizing the `/integrations/items/list` endpoint.
 
 _*Specify Specific Files to Sync*_
 - Employ the `/integrations/files/sync` endpoint to specify and synchronize specific files.

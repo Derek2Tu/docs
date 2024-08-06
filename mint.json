@@ -107,7 +107,8 @@
           "group": "Object Storage",
           "pages": [
             "connectors/s3",
-            "connectors/google-cloud-storage"
+            "connectors/google-cloud-storage",
+            "connectors/digitalocean-spaces"
           ]
         },
 
