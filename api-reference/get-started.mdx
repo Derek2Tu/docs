@@ -63,6 +63,20 @@ In general, `2xx` HTTP codes correspond to success, `4xx` codes are for user-rel
 | `429`    | The rate limit was exceeded.                  |
 | `5xx`    | Indicates an error with Carbon servers.       |
 
+## File Sync Status
+
+<Note>The existing files, chunks, and embeddings remain retrievable in any of the following non-`READY` statuses if the file was previously synchronized.</Note>
+
+- `QUEUED_FOR_SYNC`: The file is waiting in the queue to be synced.
+- `SYNCING`: The file is currently being synced.
+- `READY`: The file has been successfully synced and is now ready for use. Files, chunks, and embeddings are ready in this status.
+- `SYNC_ERROR`: An error occurred during the sync process for this item. 
+- `EVALUATING_RESYNC`: The system is assessing whether the file needs to be re-synced.
+- `RATE_LIMITED`: The file sync has been temporarily paused or slowed down due to hitting API rate limits with an external service.
+- `SYNC_ABORTED`: The file sync was cancelled or aborted before it could be completed, either due to a user action or system decision.
+- `QUEUED_FOR_OCR`: The item is in the queue, waiting for optical character recognition (OCR) processing to extract text from images or scanned documents.
+- `DELAYED`: The file sync is delayed until resources are available to process the file.
+
 ## FAQ
 
 <AccordionGroup>
