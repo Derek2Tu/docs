@@ -139,7 +139,8 @@
       
       "pages": [
        
-            "learn/models/models"
+            "learn/models/models",
+            "learn/cold-storage"
           
       ,
         {
