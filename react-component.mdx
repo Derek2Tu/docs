@@ -21,13 +21,20 @@ npm install carbon-connect
 
 The following packages will be added as peer dependencies:
 
-1. `@radix-ui/react-dialog`
-3. `react`
-4. `react-dom`
-5. `react-drag-drop-files`
-6. `react-icons`
-7. `react-toastify`
-8. `tailwindcss`
+- `@radix-ui/react-checkbox`
+- `@radix-ui/react-dialog`
+- `@radix-ui/react-dropdown-menu`
+- `@radix-ui/react-popover`
+- `@radix-ui/react-slot`
+- `class-variance-authority`
+- `clsx`
+- `next-themes`
+- `react`
+- `react-dom`
+- `react-dropzone`
+- `react-infinite-scroll-component`
+- `react-loader-spinner`
+- `tailwind-merge`
 
 Please check for the versions from `package.json` if you encounter a version mismatch error.
 
@@ -218,7 +225,7 @@ Ensure that your tokenFetcher returns an object structured as:
 }
 ```
 
-## Enabling Connectors
+# Enabling Connectors
 
 ---
 
@@ -415,7 +422,6 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
-
   </Accordion>
   <Accordion title="Zendesk">
   `ZENDESK`: This integration lets you upload files from your Zendesk. You can pass the following configuration for this integration:
@@ -512,6 +518,36 @@ Here's the list of connectors available for activation:
     - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+
+  </Accordion>
+    <Accordion title="S3">
+  `S3`: This integration lets you upload files from your Confluence. You can pass the following configuration for this integration:
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
+    - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+    - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
+    - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `enableDigitalOcean`: Specifies whether files from Digital Ocean Spaces can be synced. The default value is `false`.
+  </Accordion>
+    <Accordion title="Google Cloud Storage">
+  `GCS`: This integration lets you upload files from your Confluence. You can pass the following configuration for this integration:
+    - `chunkSize`: Number of tokens per chunk. Defaults to 1500.
+    - `overlapSize`: Size of the overlap in tokens. Defaults to 20.
+    - `skipEmbeddingGeneration`: Toggle to skip embedding generation. Defaults to `false`.
+    - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
+    - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search. Default is `false`.
+    - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+    - `syncFilesOnConnection`: Auto-sync all files from a user’s connected account.
+    - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
+    - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
+    - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 
   </Accordion>
   
