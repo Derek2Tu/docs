@@ -82,6 +82,7 @@ The `CarbonConnect` component accepts the following properties:
 | `fileSyncConfig`| Array  | No | Includes data source and file specific configurations.
 | `splitRows`| Boolean | No | If `splitRows` is set to `true`, CSV rows will be automatically split if they exceed either the specified chunk size or the maximum token limit of the embedding model. For `LOCAL_FILES`, `splitRows` can be set on the integration or extension level. For third-party connectors, this value can be set under the `fileSyncConfig` as `split_rows`. Defaults to `false`.
 | `incrementalSync`| Boolean | No | By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+| `filesTabColumns` | Array | No | Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
@@ -258,6 +259,7 @@ Here's the list of connectors available for activation:
       - `generateSparseVectors`: Toggle to `true` to generate sparse vectors for hybrid search for this file type. Default is `false`.
       - `prependFilenameToChunks`: Adds the file title to each chunk for the file. Defaults to `false`. 
       - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
+      - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
   </Accordion>
 
   <Accordion title="Notion">
@@ -273,6 +275,7 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
 
@@ -291,6 +294,7 @@ Here's the list of connectors available for activation:
     - `cssClassesToSkip`: Define CSS Classes to exclude when converting HTML to plaintext. Defaults to `[]`, an empty list.
     - `cssSelectorsToSkip`: Define CSS Selectors to exclude when converting HTML to plaintext. Defaults to `[]`, an empty list.
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
+  
   </Accordion>
   <Accordion title="Google Drive">
     `GOOGLE_DRIVE`: This integration lets you upload files from your Google Drive. You can reference the supported file formats [here](learn/files/text). You can pass the following configuration for this integration:
@@ -307,6 +311,7 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="Intercom">
@@ -323,6 +328,7 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="Dropbox">
@@ -340,6 +346,7 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="Box">
@@ -357,6 +364,7 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="OneDrive">
@@ -374,6 +382,7 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="Zotero">
@@ -390,6 +399,7 @@ Here's the list of connectors available for activation:
     - `parsePdfTablesWithOcr`: Enables table parsing when `useOCR` is set to `true`. Default is `false`.
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="Sharepoint">
@@ -407,6 +417,7 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="Confluence">
@@ -422,6 +433,8 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
+
   </Accordion>
   <Accordion title="Zendesk">
   `ZENDESK`: This integration lets you upload files from your Zendesk. You can pass the following configuration for this integration:
@@ -436,6 +449,7 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="Freshdesk">
@@ -450,6 +464,7 @@ Here's the list of connectors available for activation:
     - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="Gitbook">
@@ -464,6 +479,7 @@ Here's the list of connectors available for activation:
     - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
     <Accordion title="GitHub">
@@ -478,6 +494,7 @@ Here's the list of connectors available for activation:
     - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `false`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
    <Accordion title="Salesforce">
@@ -492,23 +509,27 @@ Here's the list of connectors available for activation:
     - `showFilesTab`: Shows the synced files tab in Carbon Connect for this specific integration. Defaults to `true`. (Carbon Connect 2.0 only)
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   <Accordion title="Gmail">
-  `GMAIL`: This integration enables you to import emails from Gmail, including file attachments. You can reference the supported file formats [here](learn/files/text).
+  `GMAIL`: This integration enables you to import emails from Gmail, including file attachments. You can reference the supported file formats [here](learn/files/text). Once a user has connected their Gmail account, you can select which emails to upload via the `/integrations/gmail/sync` endpoint.
+   
+   You can pass the following configuration for this integration:
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
-   Once a user has connected their Gmail account, you can select which emails to upload via the `/integrations/gmail/sync` endpoint.
   </Accordion>
     <Accordion title="Outlook">
-  `OUTLOOK`: This integration enables you to import emails from Outlook, including file attachments. You can reference the supported file formats [here](learn/files/text).
+  `OUTLOOK`: This integration enables you to import emails from Outlook, including file attachments. You can reference the supported file formats [here](learn/files/text). Once a user has connected their Outlook account, you can select which emails to upload via the `/integrations/outlook/sync` endpoint.
+   
+   You can pass the following configuration for this integration:
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
-   Once a user has connected their Outlook account, you can select which emails to upload via the `/integrations/outlook/sync` endpoint.
   </Accordion>
 
   <Accordion title="Slack">
-  `Slack`: This integration enables you to import conversations from Slack.
-
-   Once a user has connected their Slack account, you can select which conversations to upload via the `/integrations/slack/conversations` and `/integrations/slack/sync` endpoints.
+  `Slack`: This integration enables you to import conversations from Slack. Once a user has connected their Slack account, you can select which conversations to upload via the `/integrations/slack/conversations` and `/integrations/slack/sync` endpoints.
+  
   </Accordion>
   <Accordion title="RSS">
   `RSS_FEED`: This integration lets you upload content from a RSS or Atom feed. You can pass the following configuration for this integration:
@@ -534,6 +555,8 @@ Here's the list of connectors available for activation:
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
     - `enableDigitalOcean`: Specifies whether files from Digital Ocean Spaces can be synced. The default value is `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
+
   </Accordion>
     <Accordion title="Google Cloud Storage">
   `GCS`: This integration lets you upload files from your Confluence. You can pass the following configuration for this integration:
@@ -548,6 +571,7 @@ Here's the list of connectors available for activation:
     - `syncSourceItems`: Controls whether items from the file directory are synced by default. It defaults to `true`.
     - `useCarbonFilePicker`: Controls whether Carbon Connect defaults to Carbon’s file picker instead of the source’s file picker. Defaults to `false`. (Carbon Connect 3.0 only)
     - `incrementalSync`: By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
+    - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 
   </Accordion>
   
