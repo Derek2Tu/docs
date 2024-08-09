@@ -249,6 +249,7 @@ Here's the list of connectors available for activation:
     - `embeddingModel`: Specifies the embedding model used. You can find the model options [here](learn/models/models).
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
+    - `transcriptionService`: Specifies the model being used for audio transcripton. Accepts an enum of `ASSEMBLYAI` or `DEEPGRAM`. Defaults to `DEEPGRAM`.
    - `allowedFileTypes`: This is an array of objects. Each object represents a file type that is allowed to be uploaded. Each object can have the following properties:
       - `extension`: File extension of the allowed file type (required property).
       - `chunkSize`: Number of tokens per chunk for this file type. Defaults to global setting if not specified.
@@ -260,6 +261,8 @@ Here's the list of connectors available for activation:
       - `prependFilenameToChunks`: Adds the file title to each chunk for the file. Defaults to `false`. 
       - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
       - `filesTabColumns`: Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
+      - `transcriptionService`: Specifies the model being used for audio transcripton. Accepts an enum of `ASSEMBLYAI` or `DEEPGRAM`. Defaults to `DEEPGRAM`.
+
   </Accordion>
 
   <Accordion title="Notion">

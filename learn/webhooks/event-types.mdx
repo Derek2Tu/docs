@@ -61,7 +61,14 @@ This event is fired when a `fetch_webpage` request failed. The webhook payload i
 #### `WEBPAGE_READY`
 This event is fired when a `fetch_webpage` request succeeded. The webhook payload includes the corresponding webpage ID.
 
-### Example Payload
+## Cold Storage
+#### `MOVED_TO_COLD_STORAGE`
+This event is fired when a file is moved to cold storage.
+#### `MOVED_TO_HOT_STORAGE`
+This event is fired when a file is moved to hot storage.
+
+
+## Example Payload
 Our webhook payload returns stringified JSON.
 ```
 {

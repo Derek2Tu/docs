@@ -94,9 +94,9 @@ print(f"Verification Result: {result}, Status Code: {status_code}")
 ```
 ```javascript Javascript
 
-const WebhookVerifier = require('../carbon_webhooks_javascript/verifier');
+const WebhookVerifier = require('carbon-webhooks-javascript');
 
-const SIGNING_SECRET = 'aa76aee859f223451fd9bfb37ce893a0';  // Replace with your actual signing key
+const SIGNING_SECRET = '';  // Replace with your actual signing key
 const verifier = new WebhookVerifier(SIGNING_SECRET);
 
 function verifyWebhook(headers, payload) {
@@ -127,8 +127,10 @@ function verifyWebhook(headers, payload) {
     }
 }
 
+// Hardcoded payload
 const payloadV1 = '{"payload": "{\\"webhook_type\\": \\"FILES_CREATED\\", \\"obj\\": {\\"object_type\\": \\"FILE_LIST\\", \\"object_id\\": [\\"46654\\"], \\"additional_information\\": \\"null\\"}, \\"customer_id\\": \\"satvik\\", \\"timestamp\\": \\"1721392406\\"}"}';
 
+// Hardcoded header
 const headers = {
     'Content-Type': 'application/json',
     'Carbon-Signature': 't=1721392406,v1=aa2273ab64bb9162e7e7983a9cd7ab9f90d686691b1fd25c577991ad42c53fc1',
