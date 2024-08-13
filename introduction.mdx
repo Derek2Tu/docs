@@ -21,7 +21,7 @@ Carbon significantly simplifies the process of _*Retrieval Augmented Generation*
 
 ## How Carbon Works
 
-Use our [REST API](/api-reference/get-started) or [SDKs](/resources/sdks) to sync user data sources and retrieve the data to use with LLMs. Carbon has native integrations with 20+ data connectors and supports more than 20+ file formats, encompassing text, audio, and visual data.
+You can use our [REST API](/api-reference/get-started) or [SDKs](/resources/sdks) to sync user data sources and retrieve the data to use with LLMs. Carbon has native integrations with 20+ data connectors and supports more than 20+ file formats, encompassing text, audio, and visual data.
 
 Depending on your use case and in-house infrastructure, you can retrieve user data from Carbon in several formats: 
 
@@ -51,14 +51,34 @@ Our flexible API suite powers all functionality, including the Carbon Connect UI
 
 For detailed information on available endpoints, request/response formats, and code samples, refer to our [API Reference](/api-reference/get-started). 
 
+## Concepts
+--- 
+### Files
+Files (along with folders) can be synced with Carbon locally or through third-party connectors. The files' content is (optionally) processed to extract semantic information, and we also provide the original file, plain text, chunks, and embeddings. 
+
+Carbon supports various file types across text, image, video, and audio, and the [complete list of supported file types](/learn/files) is available here. Files can include source-specific and custom metadata, which can later be used for retrieval filtering. You can update files, which will replace the previous version in future retrieval. 
+
+### Tags
+Tags are custom metadata that can be added to files. They can be used to filter results across various endpoints, from retrieving files to deleting them. Tags are helpful for many purposes, such as managing permissions and organizing files. They can be modified without having to re-process the file. Learn more about filtering by tags [here](learn/filters/filtering).
+
+### Connectors
+To sync user data from external sources to Carbon, you can utilize connectors. For example, you can connect a Google Drive folder, and all its content will be automatically sent to Carbon and kept updated. Learn more about our data connectors [here](/connectors/overview).
+
+### Retrieval
+
+You can choose whether Carbon should generate and store chunks and embeddings for a specific file. If you opt for this, Carbon will manage your chunks and embeddings, enabling you to perform semantic, keyword, and hybrid searches directly on your file content by entering a natural language search query. Learn more about hybrid search [here](learn/search/hybrid-search).
+
 ## Setup
 
 ---
 
 ### 🔑 Getting a Carbon API Key
 
-Carbon is free to use up to the first million characters. 
+Your first million characters on Carbon is free.
+
 Sign up for a free API [here](https://portal.carbon.ai), or book a 15-minute onboarding to get an API key [here](https://cal.com/carbon-ai/15min).
+
+
 
 ### 🔗 Helpful Links
 To get started with Carbon, follow our guides:
@@ -74,7 +94,7 @@ To get started with Carbon, follow our guides:
   <Card
     title="Reference APIs"
     icon="code"
-    href="api-reference/authentication"
+    href="api-reference/get-started"
   >
     Comprehensive API library to simplify RAG.
   </Card>
