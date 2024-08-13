@@ -60,7 +60,7 @@
     {
       "group": "Source Connectors",
       "pages": [
-
+        "connectors/overview",
         {
           "group": "Cloud Storage",
           "pages": [

@@ -3,48 +3,53 @@ title: Introduction
 description: "Data Connectors for LLMs."
 ---
 
+## What is Carbon?
+
+Carbon offers a comprehensive framework specifically designed to streamline the process of connecting external data sources to Large Language Models (LLMs).
+
+Carbon significantly simplifies the process of _*Retrieval Augmented Generation*_ (RAG), allowing you to devote more time to using your data and less time to ingesting it.
 <img
   className="block dark:hidden"
-  src="http://cdn.mcauto-images-production.sendgrid.net/3b277c940596d872/33ed03b3-3f38-485c-a51c-8925f14a7441/1780x1252.png"
+  src="https://framerusercontent.com/images/SQGrc7smm5rNWsX6bEz9Mym9WcE.svg"
   alt="Hero Light"
 />
 <img
   className="hidden dark:block"
-  src="http://cdn.mcauto-images-production.sendgrid.net/3b277c940596d872/33ed03b3-3f38-485c-a51c-8925f14a7441/1780x1252.png"
+  src="https://framerusercontent.com/images/SQGrc7smm5rNWsX6bEz9Mym9WcE.svg"
   alt="Hero Dark"
 />
 
-## What is Carbon?
-
-Carbon provides a comprehensive framework designed to streamline the process of connecting external data sources to Large Language Models (LLMs). 
-
-Carbon simplifies the process of **retrieval augmented generation** (RAG), allowing you to spend more time using your data, and less time trying to ingest it.
-
 ## How Carbon Works
 
-Use our REST API or SDKs to sync user data sources and retrieve the data to use with LLMs. Carbon has native integrations with 20+ data connectors and supports more than 20+ file formats, encompassing text, audio, and visual data.
+Use our [REST API](/api-reference/get-started) or [SDKs](/resources/sdks) to sync user data sources and retrieve the data to use with LLMs. Carbon has native integrations with 20+ data connectors and supports more than 20+ file formats, encompassing text, audio, and visual data.
 
 Depending on your use case and in-house infrastructure, you can retrieve user data from Carbon in several formats: 
 
-- Parsed plaintext files
-- Embeddings (and chunks) to store in your vector store
-- Direct semantic and keyword search on a managed or self-hosted vector database
+- Original file (PDF, CSV, etc.)
+- Parsed plain text
+- Chunks and embeddings to store in your vector store
+- Semantic, keyword and hybrid search on a managed or self-hosted vector database
 
 ## Products
 
 ### 🔗 Connect
 
-Client-side UI for users to authenticate and upload content from data sources such as Notion, Google Drive, Dropbox, OneDrive, websites, and file uploads. Available as a React component, SDK libraries, and soon as a magic link. 
+[Carbon Connect](/carbon-connect) provides a seamless client-side UI for users to authenticate and upload content from various data sources, including Notion, Google Drive, Dropbox, OneDrive, websites, and file uploads. Once authenticated, Carbon processes the source data and automates data synchronization to keep your application up-to-date with the connected sources.
 
-Carbon handles authentication (OAuth 1 & 2, API key-based, etc) for 20+ sources, processes the source data, and automates data synchronization.
+You can integrate the Connect module into your application using a React component, SDK libraries, or a magic link (coming soon).
 
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/ecced28a-34db-453e-b48e-0f733bcf0c00/public)
 ### 🗄️ Store
 
-Choose between Carbon's managed vector database (hosted on Qdrant Cloud) or your storage solution. The database updates as users modify connected sources and manage chunks alongside embeddings.
+Carbon offers flexible storage options. You can choose between Carbon's managed vector database, hosted on Qdrant Cloud, or use your own custom vector store.
+Embeddings and chunks in the connected vector store automatically updates as users modify connected sources.
 
 ### 🔌 Universal API
 
-Access and manage data (documents, chunks, vectors, etc.) from any source using our flexible API suite. Our API powers everything — our Carbon Connect UI makes calls to the backend. 
+Carbon's Universal API allows you to access and manage data from any source, including documents, chunks, vectors, and other metadata.
+Our flexible API suite powers all functionality, including the Carbon Connect UI which makes calls to the backend.
+
+For detailed information on available endpoints, request/response formats, and code samples, refer to our [API Reference](/api-reference/get-started). 
 
 ## Setup
 
@@ -53,7 +58,7 @@ Access and manage data (documents, chunks, vectors, etc.) from any source using 
 ### 🔑 Getting a Carbon API Key
 
 Carbon is free to use up to the first million characters. 
-Book a 15 minute onboarding to get an API key [here](https://cal.com/carbon-ai/15min).
+Sign up for a free API [here](https://portal.carbon.ai), or book a 15-minute onboarding to get an API key [here](https://cal.com/carbon-ai/15min).
 
 ### 🔗 Helpful Links
 To get started with Carbon, follow our guides:
@@ -62,22 +67,29 @@ To get started with Carbon, follow our guides:
   <Card
     title="Carbon Connect"
     icon="palette"
-    href="js-sdk"
+    href="carbon-connect"
   >
-    JavaScript SDK to integrate Carbon into your product.
+    Pre-built UI components to integrate Carbon into your product.
   </Card>
   <Card
     title="Reference APIs"
     icon="code"
     href="api-reference/authentication"
   >
-    Integrate Carbon API into your product.
+    Comprehensive API library to simplify RAG.
   </Card>
   <Card
     title="Connectors"
     icon="plug"
-    href="connectors"
+    href="connectors/overview"
   >
-    Guides for 3rd party connectors.
+    Guides for third-party connectors.
+  </Card>
+  <Card
+    title="Tutorial"
+    icon="book"
+    href="/resources/example"
+  >
+    Step-by-step example with Jupyter notebook.
   </Card>
 </CardGroup>

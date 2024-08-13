@@ -83,6 +83,7 @@ The `CarbonConnect` component accepts the following properties:
 | `splitRows`| Boolean | No | If `splitRows` is set to `true`, CSV rows will be automatically split if they exceed either the specified chunk size or the maximum token limit of the embedding model. For `LOCAL_FILES`, `splitRows` can be set on the integration or extension level. For third-party connectors, this value can be set under the `fileSyncConfig` as `split_rows`. Defaults to `false`.
 | `incrementalSync`| Boolean | No | By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 | `filesTabColumns` | Array | No | Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
+| `theme` | String | No | Specifies whether dark or light mode is enabled. The prop can have values `"light"`, `"dark"`, and `"auto"`.
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 

@@ -1,0 +1,17 @@
+---
+title: 'Overview'
+description: 'Connectors provide a seamless solution for integrating external data sources.'
+---
+
+To link user data from external sources to Carbon, you can utilize connectors. For example, you can connect a Google Drive folder, and all its content will be automatically sent to Carbon and kept updated.
+
+### Authentication
+
+Users can authenticate via Carbon’s OAuth credentials, or you can choose to [white label](learn/customize/whitelabel) Carbon by providing your own credentials. 
+
+After authentication, users can select the content to keep in sync with Carbon. For specific information, including instructions for configuring your OAuth credentials for white-labeling (check `Custom OAuth Credentials` section), refer to the individual connectors' pages.
+
+### Syncing
+When enabled, Carbon will perform syncs every 3, 6, or 12 hours (*based on plan tier*) to keep your files up to date. The sync can detect new, updated, and deleted files, keeping your documents in sync. However, please note that changes might not be visible immediately. It may take up to 4 hours for your files to synchronize after adding a bunch of files. 
+
+If you need to see the changes immediately, you can manually trigger a sync via the `resync_file` endpoint.
