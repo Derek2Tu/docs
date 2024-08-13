@@ -112,3 +112,39 @@ Here's an example illustrating how to automatically enable syncing for updated O
     "customer_ids": ["team@carbon.ai", "sam@openai.com"],
     "auto_sync_enabled_sources": ["ONEDRIVE"]
 } 
+```
+
+## Microsoft Admin Approval
+
+To allow Carbon to access your Microsoft applications (OneDrive and SharePoints), users might need to request admin consent approval. 
+
+Here's a step-by-step guide:
+
+### Prerequisites
+
+Before you begin, ensure you have:
+
+- Gone through Carbon's managed OAuth flow and submitted the admin consent request (see screenshot below):
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/e93b438c-a787-4d28-b3e6-4c36f613e600/public)
+- An administrator role or designated reviewer role to review admin consent requests
+
+### Approve the Request
+
+1. Sign in to the Microsoft Entra admin center as at least a Cloud Application Administrator who is a designated reviewer.
+
+2. Navigate to **Identity** > **Applications** > **Enterprise applications**.
+
+3. Under **Activity**, select **Admin consent requests**.
+
+4. Select the **My Pending** tab to view and act on the pending requests.
+
+5. From the list, select the Carbon application that is being requested.
+
+6. Review the request details:
+   - Select **Review permissions and consent** to see what permissions are being requested by Carbon.
+   - Select the **App details** tab to view the application details.
+   - Select the **Requested by** tab to see who is requesting access and why.
+
+7. **Approve the request** to grant admin consent to allow Carbon to access your Microsoft application. All requestors will be notified that their request for access is granted. This allows all users in your tenant to access Carbon unless otherwise restricted with user assignment.
+
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/d45b40bc-423a-4f77-3dc5-f93f2633fa00/public)
