@@ -30,10 +30,13 @@ After successfully authenticating your Confluence account, verify the connection
 
 To sync specific files and folders from Confluence to Carbon, follow these steps:
 
-1. Browse your Confluence file directory using the Carbon file listing endpoint: `/integrations/items/list`
-2. Select the desired files and folders you want to sync to Carbon
-3. Pass the selected items to the Carbon file sync endpoint: `/integrations/files/sync`
-4. The sync process will begin, syncing the content of the selected files to Carbon
+1. Sync all items in a user's data source connection: `/integrations/items/sync`
+2. Browse your Confluence file directory using the Carbon file listing endpoint: `/integrations/items/list`
+3. Select the desired files and folders you want to sync to Carbon
+4. Pass the selected items to the Carbon file sync endpoint: `/integrations/files/sync`
+5. The sync process will begin, syncing the content of the selected files to Carbon
+
+<Note>The `/integrations/items/sync` endpoint syncs all items in a user’s data source connection. It only syncs the directory structure and accompanying metadata, not the content within the files.</Note>
 
 <Tip>Steps #1-3 above can be managed via our pre-built [Carbon Connect React component](/carbon-connect) as well.</Tip>
 
