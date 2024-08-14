@@ -84,6 +84,9 @@ The `CarbonConnect` component accepts the following properties:
 | `incrementalSync`| Boolean | No | By setting `incremental_sync` to `true`, only new or updated files since the last sync will be re-synced. Defaults to `false`.
 | `filesTabColumns` | Array | No | Specifies which columns are displayed in the file list view and accepts an array of strings which can have values `"name"`, `"status"`, `"created_at"`, `"external_url"`.
 | `theme` | String | No | Specifies whether dark or light mode is enabled. The prop can have values `"light"`, `"dark"`, and `"auto"`.
+| `theme` | String | No | Specifies whether dark or light mode is enabled. The prop can have values `"light"`, `"dark"`, and `"auto"`.
+| `dataSourcePollingInterval` | Number | No | Specifies how frequently data sources are polled for any updates and events. The value is specified in milliseconds (ms) and the minimum allowed value for this property is 3000 ms. Defaults to 8000 ms.
+| `openFilesTabTo` | String | No | Specifies which tab (`FILE_PICKER` or `FILES_LIST`) the user is taken to by default when they select an integration. Only applies when customer has enabled Carbon’s in-house file picker.
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
@@ -251,6 +254,7 @@ Here's the list of connectors available for activation:
     - `prependFilenameToChunks`: Adds the file title to each chunk for the integration. Defaults to `false`. 
     - `maxItemsPerChunk`: Specifies the number of items to include in a specific chunk. Defaults to `null`.
     - `transcriptionService`: Specifies the model being used for audio transcripton. Accepts an enum of `ASSEMBLYAI` or `DEEPGRAM`. Defaults to `DEEPGRAM`.
+    - `includeSpeakerLabels`: Specifies whether speaker diarization will be enabled for the audio transcription services. This allows us to format chunks so that the text is organized by utterances and each utterance will be labeled with the speaker. Defaults to `false`.
    - `allowedFileTypes`: This is an array of objects. Each object represents a file type that is allowed to be uploaded. Each object can have the following properties:
       - `extension`: File extension of the allowed file type (required property).
       - `chunkSize`: Number of tokens per chunk for this file type. Defaults to global setting if not specified.
