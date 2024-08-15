@@ -175,6 +175,10 @@ const tokenFetcher = async () => {
       id: 'GOOGLE_DRIVE',
       chunkSize: 1000,
       overlapSize: 20,
+      fileSyncConfig: {
+        detect_audio_language: true,
+        split_rows: true,
+      },
     },
   ]}
   onSuccess={(data) => console.log('Data on Success: ', data)}
