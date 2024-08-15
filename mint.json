@@ -262,7 +262,8 @@
         "api-reference/endpoint/data-sources/add-connection",
         "api-reference/endpoint/data-sources/sync-data-source-items",
         "api-reference/endpoint/data-sources/list-data-source-items",
-        "api-reference/endpoint/data-sources/sync-files"
+        "api-reference/endpoint/data-sources/sync-files",
+        "api-reference/endpoint/data-sources/cancel-sync-data-source-items"
             ]
     },
     {
