@@ -86,7 +86,8 @@
             "connectors/notion",
             "connectors/confluence",
             "connectors/gitbook",
-            "connectors/salesforce"
+            "connectors/salesforce",
+            "connectors/guru"
           ]
         },
         {

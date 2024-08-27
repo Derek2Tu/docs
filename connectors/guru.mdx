@@ -1,6 +1,6 @@
 ---
 title: 'Guru'
-description: 'The Carbon Connect `enabledIntegrations` value for Google Drive is `GURU`.'
+description: 'The Carbon Connect `enabledIntegrations` value for Guru is `GURU`.'
 ---
 
 ## Authorization Type
@@ -15,8 +15,10 @@ The Guru connector allows users to synchronize collections, folders, and cards f
 
 1. Log into your Guru account.
 
-2. Obtain an access token by following the instructions here: https://help.getguru.com/docs/gurus-api#obtaining-a-user-token
+2. Obtain an access token by following the instructions [here](https://help.getguru.com/docs/gurus-api#obtaining-a-user-token).
 
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/da7ce8b2-8329-4e0f-2a83-5bc373115900/public)
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/0301efdc-02f0-4372-f61d-ffcc9aa69e00/public)
 3. Provide your Guru username and access token to Carbon via the `/integrations/guru` or `/integrations/connect` endpoint to grant Carbon access to your Guru data.
 
 ## Configuration
@@ -25,7 +27,8 @@ No additional configuration is required beyond providing your Guru username and 
 
 ## Synchronization
 
-By default, Carbon automatically synchronizes your Guru collections, folders, and cards. This includes text, images, and file attachments within the cards.
+By default, Carbon automatically synchronizes your Guru collections, folders, and cards. This includes text, images, and file attachments within the cards. If the card has an image or file attachment, we replace it with its source url.
+we don't actually download and embed these
 
 You can turn off automatic synchronization if desired. In this case, you can use the global endpoints to manually trigger synchronization of the same data.
 
