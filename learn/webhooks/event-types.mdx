@@ -51,7 +51,13 @@ We currently support the following webhook events for organizations:
 This event is fired when the organization's request to refresh usage metrics is successfully processed.
 
 #### `CHECKUP`
-This event is fired every 10s to check if a `FLAGGED` webhook is healthy again, and re-activate the webhook if we receive a `200` response.
+When Carbon sends a request to a webhook URL, it tracks the number of successful requests per minute (RPM). A request is considered successful if it satisfies the following criteria:
+1. Carbon is able to connect to the specified webhook URL.
+2. The request doesn't timeout (our current timeout is 8 seconds).
+
+If the number of unsuccessful RPMs exceeds a certain threshold, the webhook URL is flagged, and no further webhooks will be sent to that URL. The owner of the URL will also receive an email notification. Currently, the threshold for flagging a URL is set at 40 unsuccessful RPMs.
+
+To verify the health of a flagged URL, Carbon will periodically send health check events every 10 seconds. These events are of type `CHECKUP` and have an empty payload. If Carbon receives a successful response that meets the above criteria, the URL will be reactivated.
 
 ## Websites
 #### `WEBSCRAPE_URLS_READY`
