@@ -19,15 +19,42 @@ Carbon utilizes [Access Key-based authentication](https://docs.github.com/en/aut
 To enable synchronization of repositories with our system, users need to create a GitHub Personal Access Token with appropriate permissions (*view screenshot below*). Follow the steps outlined in the GitHub documentation on [Managing Personal Access Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
 ![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/03a2c96e-efe1-4589-fbd2-717fa2dbd000/public)
-#### Step 2: Post Credentials to Carbon
 
-Once the access token is generated, users should submit their GitHub username and access token to our integration endpoint at `/integrations/github` or via our Carbon Connect UI. This action initiates the synchronization process by listing their repositories and their respective content within our system.
+#### Step 2: Connect Your GitHub Account to Carbon
+- Submit your GitHub username and the generated Personal Access Token to our integration endpoint at `/integrations/github` or via the Carbon Connect UI.
+- Our system will initiate the synchronization process by listing your repositories and their respective content.
 
-<Note>Users have the flexibility to set an expiry for their access tokens. If a token expires, they can simply generate a new one with the necessary permissions and post it to the same endpoint (`/integrations/github`). Our system automatically updates the data source with the new token, ensuring uninterrupted synchronization.</Note>
+If your token expires, simply generate a new one with the necessary permissions and post it to the same endpoint (`/integrations/github`). Carbon will automatically update the data source with the new token, ensuring uninterrupted synchronization.
 
-#### Step 3: Sync Github Files
+#### Step 3: List and Sync Repositories
 
-After successfully connecting their GitHub account, users can leverage our API endpoints (`/integrations/items/list` and `/integrations/files/sync`) or the pre-built Carbon Connect file picker to effortlessly browse and sync files from their repositories. This streamlined process simplifies content management and ensures seamless collaboration within our platform.
+- To retrieve the repositories your token has access to, use the `/integrations/github/repos` endpoint.
+- To sync the repositories, make a request to `/integrations/github/sync_repos`. This will store the repository content within Carbon, which can be accessed through the `/integrations/items/list` endpoint.
+- Please note that a maximum of 25 repositories can be synced per request.
+
+#### Step 4: Sync Github Files
+
+After successfully connecting your GitHub account, you can use the following endpoints to browse and sync files from your repositories:
+- `/integrations/items/list`: Lists the files and folders within a repository.
+- `/integrations/files/sync`: Syncs specific files and folders from a repository.
+
+Carbon currently supports syncing individual folders and files within repositories, rather than entire repositories. To list the items within a repository, pass the `external_id` (repository ID) as the `parent_id` parameter.
+
+Example request to list items within a repository:
+
+```
+curl --location 'https://api.carbon.ai/integrations/items/list' \
+--header 'customer-id: ddfdc805-be49-441e-af8b-bb08cf50957e' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <token>' \
+--data '{
+    "data_source_id": 19517,
+    "parent_id": "carbon/hello-world" 
+}'
+```
+
+Alternatively, you can use the pre-built Carbon Connect file picker to easily browse and sync files.
+
 
 ## Functionality 
 
