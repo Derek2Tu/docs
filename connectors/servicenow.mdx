@@ -1,0 +1,50 @@
+---
+title: 'ServiceNow'
+description: 'The Carbon Connect `enabledIntegrations` value for ServiceNow is `SerivceNow`.'
+---
+
+ServiceNow is a cloud-based IT service management platform that helps organizations manage and automate their IT services. Carbon now supports connecting to ServiceNow instances to sync incidents and attachments.
+
+## Authorization Type
+
+ServiceNow uses OAuth 2.0 for authorization.
+
+## Authorization Flow
+
+<Note>Instructions on setting up an OAuth app for ServiceNow can be found [here](https://docs.servicenow.com/bundle/vancouver-platform-security/page/administer/security/task/t_CreateEndpointforExternalClients.html).</Note>
+
+To connect to a ServiceNow instance:
+
+1. Set `"service": "SERVICENOW"` in the `/integrations/oauth_url` request.
+2. Provide the following required parameters:
+   - `instance_subdomain`: The subdomain of your ServiceNow instance, extracted from the instance URL (`<instance-subdomain>.service-now.com`).
+   - `client_id`: The client ID obtained from the ServiceNow OAuth integration.
+   - `client_secret`: The client secret obtained from the ServiceNow OAuth integration.
+   - `redirect_uri`: The redirect URI, which should be `https://api.carbon.ai/integations/servicenow` or a CNAME'd version of that URL.
+
+3. ServiceNow will redirect the user to a successful connection page after the OAuth flow is completed.
+
+## Functionality
+
+After connecting to a ServiceNow instance, you can sync incidents and their attachments. By default, nothing is synced on connection. To change this behavior, include the following in the request:
+
+```json
+"file_sync_config": {
+  "auto_synced_source_types": ["INCIDENT"]
+}
+```
+
+Alternatively, you can use Carbon Connect's file picker or build your own using the `/integrations/items/sync` and `/integrations/items/list` endpoints to list and sync incidents and attachments.
+
+## Additional Endpoints
+
+No additional endpoints are required for the ServiceNow integration.
+
+## Tickets
+
+ServiceNow supports three ticket-specific items:
+
+1. **TABLE**: The only table that can be synced is the Incidents table. Syncing the Incidents table will pull in new incidents through the auto-resync. The Incidents table is a container and has no extractable text of its own.
+2. **INCIDENT**: Incidents are child items of the Incidents table. The extracted text of an incident takes the form of the default view in ServiceNow's UI. The JSON representation of the incident is stored in `presigned_url` in `user_files_v2`.
+3. **ATTACHMENT**: Attachments are child items of Incidents. They are automatically synced along with the incident if the file format is supported by Carbon.
+
