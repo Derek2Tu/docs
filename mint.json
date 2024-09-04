@@ -77,7 +77,8 @@
           "pages": [
             "connectors/intercom",
             "connectors/zendesk",
-            "connectors/freshdesk"
+            "connectors/freshdesk",
+            "connectors/servicenow"
           ]
         },
         {
