@@ -15,13 +15,25 @@ ServiceNow uses OAuth 2.0 for authorization.
 
 To connect to a ServiceNow instance:
 
-1. Set `"service": "SERVICENOW"` in the `/integrations/oauth_url` request.
+1. Set `"service": "SERVICENOW"` under the `servicenow_credentials` object within the `/integrations/oauth_url` request.
 2. Provide the following required parameters:
    - `instance_subdomain`: The subdomain of your ServiceNow instance, extracted from the instance URL (`<instance-subdomain>.service-now.com`).
    - `client_id`: The client ID obtained from the ServiceNow OAuth integration.
    - `client_secret`: The client secret obtained from the ServiceNow OAuth integration.
    - `redirect_uri`: The redirect URI, which should be `https://api.carbon.ai/integations/servicenow` or a CNAME'd version of that URL.
 
+Example below for reference:
+```
+{
+   "service": "SERVICENOW"
+   "servicenow_credentials": {
+        "instance_subdomain": "example",
+        "client_id": "example",
+        "client_secret": "example",
+        "redirect_uri": "example"
+    }
+}
+```
 3. ServiceNow will redirect the user to a successful connection page after the OAuth flow is completed.
 
 ## Functionality
