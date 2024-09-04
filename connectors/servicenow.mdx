@@ -36,11 +36,7 @@ After connecting to a ServiceNow instance, you can sync incidents and their atta
 
 Alternatively, you can use Carbon Connect's file picker or build your own using the `/integrations/items/sync` and `/integrations/items/list` endpoints to list and sync incidents and attachments.
 
-## Additional Endpoints
-
-No additional endpoints are required for the ServiceNow integration.
-
-## Tickets
+### Tickets
 
 ServiceNow supports three ticket-specific items:
 
@@ -48,3 +44,14 @@ ServiceNow supports three ticket-specific items:
 2. **INCIDENT**: Incidents are child items of the Incidents table. The extracted text of an incident takes the form of the default view in ServiceNow's UI. The JSON representation of the incident is stored in `presigned_url` in `user_files_v2`.
 3. **ATTACHMENT**: Attachments are child items of Incidents. They are automatically synced along with the incident if the file format is supported by Carbon.
 
+## Synchronization
+
+To sync ServiceNow tickets on a 24-hour schedule (_more frequent schedules available upon request_), you can use the `/update_users` endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
+
+Here's an example illustrating how to automatically enable syncing for updated ServiceNow content for specified users:
+
+```
+{
+    "customer_ids": ["team@carbon.ai", "sam@openai.com"],
+    "auto_sync_enabled_sources": ["SERVICENOW"]
+} 
