@@ -1,0 +1,52 @@
+---
+title: 'Gong'
+description: 'The Carbon Connect `enabledIntegrations` value for Gmail is `GONG`'
+---
+
+## Authorization Type
+
+Carbon uses OAuth to connect to Gong.
+
+## Functionality
+
+Carbon has the ability to synchronize Gong calls and retrieve the transcripts.
+
+## Authorization Flow
+
+## Configuration
+
+### Custom OAuth Credentials
+
+1. In order to create an app for Gong, follow the instructions [here](https://help.gong.io/docs/create-an-app-for-gong) to set up a developer account.
+
+2. Once your developer account is ready, log in and click on the "Company Settings" icon located in the lower-left corner.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/b3308652-5e63-4d1f-1f95-5142c4473600/public)
+
+3. Then navigate to "Ecosystem" > "API".
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/02b8e3bb-9659-40e7-97d9-442aa5410500/public)
+
+4. Provide the necessary information about your company and the app.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/1fa604f2-aa1a-491d-0fd4-e5566836d900/public)
+
+5. Choose `api:library:read`, `api:calls:read:extensive`, and `api:calls:read:transcript` under "Required authorization scopes".
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/6e5a7b9a-abb8-46e0-9e45-e80b5862f100/public)
+
+6. Add the following URLs: https://api.carbon.ai/integrations/gong under "Redirect URI Needed for the OAuth Authorization Code Flow" and https://api.carbon.ai under "Domain". You can also use a custom CNAME record that points to https://api.carbon.ai, but the domain path must still be /integrations/gong.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/438b004c-15a6-44c9-64ca-945721841100/public)
+
+7. Make sure to click "Save" to save your updates.
+
+## Synchronization
+
+You can also use the `resync_file` API endpoint to programmatically resync specific Gong calls. To delete Gong calls from Carbon, you can use the `delete_files` endpoint directly.
+
+To sync Gong files on a 24-hour schedule (_more frequent schedules available upon request_), you can use the /update_users endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
+
+Here's an example illustrating how to automatically enable syncing for updated Confluence content for specified users:
+
+```
+{
+    "customer_ids": ["team@carbon.ai", "sam@openai.com"],
+    "auto_sync_enabled_sources": ["GONG"]
+} 
+```
