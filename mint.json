@@ -82,6 +82,13 @@
           ]
         },
         {
+          "group": "Sales",
+          "pages": [
+            "connectors/gong",
+            "connectors/salesforce"
+          ]
+        },
+        {
           "group": "Productivity",
           "pages": [
             "connectors/notion",

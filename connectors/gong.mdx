@@ -1,6 +1,6 @@
 ---
 title: 'Gong'
-description: 'The Carbon Connect `enabledIntegrations` value for Gmail is `GONG`'
+description: 'The Carbon Connect `enabledIntegrations` value for Gong is `GONG`'
 ---
 
 ## Authorization Type
@@ -14,6 +14,8 @@ Carbon has the ability to synchronize Gong calls and retrieve the transcripts.
 By default, the Gong connector will sync all of your workspaces and calls. However, you can customize this behavior:
 - To turn off automatic syncing of all workspaces and calls, set the `sync_files_on_connection` parameter to `false` when configuring the connector.
 - To manually sync specific workspaces or calls, use the global endpoints (`/integrations/items/list` and `/integrations/files/sync`).
+
+To include speaker names and emails (when available), set the `include_speaker_labels` flag under `file_sync_config` to `true`.
 
 ## Authorization Flow
 
