@@ -23,7 +23,7 @@ Create an IAM user in AWS with the following permissions:
 
 #### Step 2: Provide Credentials to Carbon
 
-`POST` the generated credentials to the `/integrations/s3` endpoint in this format:
+**Via API**: `POST` the generated credentials to the `/integrations/s3` endpoint in this format:
 
 ```json
 {
@@ -31,6 +31,9 @@ Create an IAM user in AWS with the following permissions:
     "access_key_secret": "<<access-key-secret>>"
 }
 ```
+**Via Carbon Connect**: Optionally you can input the credentials directly via the [Carbon Connect](/carbon-connect) component.
+
+<img src="/images/s3.png" />
 
 #### Step 3: List Files and Buckets
 Optionally load all available S3 buckets and objects by using _*POST*_ `/integrations/items/sync` and list them via _*POST*_ `/integrations/items/list`.
