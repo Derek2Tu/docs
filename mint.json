@@ -117,7 +117,8 @@
           "pages": [
             "connectors/s3",
             "connectors/google-cloud-storage",
-            "connectors/digitalocean-spaces"
+            "connectors/digitalocean-spaces",
+            "connectors/azure-blob-storage"
           ]
         },
 

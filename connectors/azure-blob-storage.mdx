@@ -1,0 +1,76 @@
+---
+title: 'Azure Blob Storage'
+description: 'The Carbon Connect `enabledIntegrations` value for Azure Blob Storage is `AZURE_BLOB_STORAGE`.'
+---
+
+## Authorization Type
+
+Carbon uses [Access Key based](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal) authentication to connect to Azure Blob Storage.
+
+## Functionality
+
+Carbon allows users to upload [text](https://docs.carbon.ai/learn/files/text), [image](https://docs.carbon.ai/learn/files/image), [video](https://docs.carbon.ai/learn/files/video). and [audio](https://docs.carbon.ai/learn/files/audio) file formats directly from Spaces Object Storage.
+
+
+## Synchronization
+
+#### Step 1: Retrieve Account Name and Account Key
+
+1. Log into your Azure Portal and navigate to the "Storage Account" service.
+2. Click the name of the Storage Account you wish to sync.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/45441ff7-286a-41ae-11e6-620314ec8200/public)
+3. Under the selected account, navigate to "Security + networking" > "Access keys" in the left-hand menu.
+4. There will be two pairs of "Account Name" and "Account Key" under "Key1" and "Key2". You can use either pair.
+![](https://imagedelivery.net/_sHUUMiZokZ59YDFOZEZTw/ea6849bb-e136-4695-c4a9-0977f9584f00/public)
+#### Step 2: Provide Credentials to Carbon
+
+**Via API**: `POST` the generated credentials to the `/integrations/azure_blob_storage` endpoint in this format:
+
+```json
+{
+    "account_name": "carbontest",
+    "account_key": "SOME_KEY"
+}
+```
+**Via Carbon Connect**: Optionally you can input the credentials directly via the [Carbon Connect](/carbon-connect) component.
+
+
+#### Step 3: List Files and Buckets
+Optionally load all available Azure Blob Storage buckets and objects by using _*POST*_ `/integrations/items/sync` and list them via _*POST*_ `/integrations/items/list`.
+
+#### Step 4: Sync Files or Buckets
+Use the `/integrations/azure_blob_storage/files` endpoint to sync specific file objects or blobs.
+
+For syncing specific files (multiple files allowed):
+```json
+{
+   "ids": [{"container": "container-name", "id": "file-name"}],
+   "tags": "...",
+   "chunk_size": "...",
+   "chunk_overlap": "...",
+   "skip_embedding_generation": "..."
+}
+```
+
+For syncing all files from buckets (multiple buckets allowed):
+```json
+{
+   "ids": [{"container": "carbon-test"}],
+   "tags": "...",
+   "chunk_size": "...",
+   "chunk_overlap": "...",
+   "skip_embedding_generation": "..."
+}
+```
+
+You can also use the `resync_file` API endpoint to programmatically resync specific Azure Blob Storage files. To delete Azure Blob Storage files from Carbon, you can use the `delete_file` endpoint directly.
+
+To sync Azure Blob Storage files on a 24-hour schedule (_more frequent schedules available upon request_), you can use the `/update_users` endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
+
+Here's an example illustrating how to automatically enable syncing for updated Azure Blob Storage content for specified users:
+
+```
+{
+    "customer_ids": ["team@carbon.ai", "sam@openai.com"],
+    "auto_sync_enabled_sources": ["AZURE_BLOB_STORAGE"]
+} 
