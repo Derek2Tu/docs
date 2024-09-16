@@ -44,7 +44,7 @@ Use the `/integrations/azure_blob_storage/files` endpoint to sync specific file 
 For syncing specific files (multiple files allowed):
 ```json
 {
-   "ids": [{"container": "container-name", "id": "file-name"}],
+   "ids": [{"bucket": "container-name", "id": "file-name"}],
    "tags": "...",
    "chunk_size": "...",
    "chunk_overlap": "...",
@@ -55,7 +55,7 @@ For syncing specific files (multiple files allowed):
 For syncing all files from buckets (multiple buckets allowed):
 ```json
 {
-   "ids": [{"container": "carbon-test"}],
+   "ids": [{"bucket": "carbon-test"}],
    "tags": "...",
    "chunk_size": "...",
    "chunk_overlap": "...",
