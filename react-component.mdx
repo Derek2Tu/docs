@@ -180,6 +180,14 @@ const tokenFetcher = async () => {
         generate_chunks_only: true,
       },
     },
+    {
+      id: 'INTERCOM',
+      chunkSize: 1000,
+      overlapSize: 20,
+      fileSyncConfig: {
+         "auto_synced_source_types": AutoSyncedSourceTypes.TICKET,
+      },
+    },
   ]}
   onSuccess={(data) => console.log('Data on Success: ', data)}
   onError={(error) => console.log('Data on Error: ', error)}
