@@ -14,7 +14,7 @@ Carbon uses **[OAuth 2.0](https://developers.intercom.com/building-apps/docs/set
 ![](https://files.readme.io/c2825e3-image.png)
 
 ## Functionality
-The `/integrations/Intercom` and `integrations/connect` endpoints sync articles by default. 
+The `/integrations/Intercom` and `integrations/connect` endpoints sync articles by default, but tickets and conversations can also be optionally synced.
 
 To customize the sync behavior, use the `file_sync_config` parameter:
 
@@ -33,8 +33,10 @@ The following endpoints can be used with Intercom to list and sync items:
 - `integrations/items/sync`: Sync items from Intercom
 - `integrations/items/list`: List items from Intercom
 - `integrations/files/sync`: Sync files from Intercom
+
 #### Articles
 Carbon can sync `Published` articles from multiple Intercom workspaces. Note that `Draft` articles will not be synced.
+
 #### Tickets
 Carbon can sync tickets and their associated file attachments. The following ticket information is available as tags for filtering:
 
@@ -46,6 +48,21 @@ Carbon can sync tickets and their associated file attachments. The following tic
   "ticket_submitter": "example.user@projectmap.com",
   "ticket_assigned_team": "Technical",
   "ticket_assigned_admin": "swapnil@carbon.ai"
+}
+````
+
+Use these tags to filter and organize synced tickets based on their properties.
+
+#### Conversations
+Carbon can sync conversations and their associated file attachments. The following ticket information is available as tags for filtering:
+
+```
+{
+  "conversation_status": "open",
+  "conversation_priority": "not_priority",
+  "conversation_submitter": "example.user@projectmap.com",
+  "conversation_assigned_team": "Support",
+  "conversation_assigned_admin": "swapnil+int2@carbon.ai"
 }
 ````
 
@@ -72,9 +89,11 @@ Use these tags to filter and organize synced tickets based on their properties.
      - `Read one admin`
      - `Read and List Articles`
 
-   - To sync tickets and conversations as well, also add:
+   - To sync tickets, add these scopes:
      - `Read and list users and companies` 
      - `Read tickets`
+
+  - To sync tickets, add these scopes:  
      - `Read conversations`
 
 You can remove access to the other permissions.
