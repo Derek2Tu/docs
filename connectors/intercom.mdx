@@ -25,7 +25,7 @@ To customize the sync behavior, use the `file_sync_config` parameter:
 }
 ```
 
-- `auto_synced_source_types`: An array specifying the types of items to sync. Valid values are "ARTICLE" (default) and "TICKET". To sync both articles and tickets, include both values in the array.
+- `auto_synced_source_types`: An array specifying the types of items to sync. Valid values are "ARTICLE" (default), "TICKET", and "CONVERSATION". To sync both articles and tickets, include both values in the array.
 - `sync_attachments`: A boolean indicating whether to sync attachments from ticket comments. Set to true to enable attachment syncing.
 
 #### Additional Endpoints
@@ -72,9 +72,10 @@ Use these tags to filter and organize synced tickets based on their properties.
      - `Read one admin`
      - `Read and List Articles`
 
-   - To sync both user articles and tickets, also add:
+   - To sync tickets and conversations as well, also add:
      - `Read and list users and companies` 
      - `Read tickets`
+     - `Read conversations`
 
 You can remove access to the other permissions.
 
