@@ -1,0 +1,22 @@
+---
+title: 'Qdrant'
+description: 'Sync embeddings generated from source connectors to any Qdrant instance.'
+---
+
+Any customer with a Qdrant account can bring their vector database to use with Carbon. Carbon automatically synchronizes content from user data sources (Google Drive, Notion, etc) and the embeddings in your Qdrant index.
+
+## Instructions
+Contact the Carbon team via email (team@carbon.ai) or Slack to share your Qdrant credentials (API key and host URL) with us securely via a Password vault.
+
+Please provide a distinct host URL for each intended embedding model (ie: one for Cohere Embed v3 Multilingual, one for OpenAI text-embedding-3-small, and one for BM25 sparse vectors)
+
+```json
+{
+    "api_key": "API_KEY", 
+    "url": "URL", 
+    "collection_names": {
+    "EMBEDDING_GENERATOR_1": "COLLECTION_NAME_1",
+    "EMBEDDING_GENERATOR_2": "COLLECTION_NAME_2"
+    }
+}
+```
