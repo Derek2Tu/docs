@@ -71,7 +71,6 @@ The `CarbonConnect` component accepts the following properties:
 | `navigateBackURL`          | String          | No        | A URL to your intended destination. Defaults to `None`.                                                                 |
 | `backButtonText`           | String          | No        | The label that you want to show on the back button. Defaults to `Go back`.                                               |
 | `zIndex`                   | Number          | No        | Update the z-index of the Carbon Connect modal.                                                                         |
-| `enableToasts`             | Boolean         | No        | Setting to `false` disables Toast notifications by default in Carbon Connect.                                                      |
 | `embeddingModel`             | String         | No      |Specifies the embedding model used for the integration. The options are `OPENAI`, `AZURE_OPENAI`, or `COHERE_MULTILINGUAL_V3` for text and audio files, and `VERTEX_MULTIMODAL` for image files.
 | `filePickerMode`             | String         | No      |Specifies whether users can locally upload files, folders, or both. The options are `FILES`, `FOLDERS`, or `BOTH`.
 | `prependFilenameToChunks`| String | No | Adds the file title to each chunk. Defaults to `false`. 
@@ -86,6 +85,7 @@ The `CarbonConnect` component accepts the following properties:
 | `theme` | String | No | Specifies whether dark or light mode is enabled. The prop can have values `"light"`, `"dark"`, and `"auto"`.
 | `dataSourcePollingInterval` | Number | No | Specifies how frequently data sources are polled for any updates and events. The value is specified in milliseconds (ms) and the minimum allowed value for this property is 3000 ms. Defaults to 8000 ms.
 | `openFilesTabTo` | String | No | Specifies which tab (`FILE_PICKER` or `FILES_LIST`) the user is taken to by default when they select an integration. Only applies when customer has enabled Carbon’s in-house file picker.
+| `apiURL` | String | No | Defaults to https://api.carbon.ai but can be set to another URL value. For self-hosting customers, this URL value then acts as the base path for all of the requests made through Carbon Connect.
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
