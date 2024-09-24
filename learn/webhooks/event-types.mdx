@@ -12,6 +12,8 @@ Sent when a user queues up a file to be synced for the first time. The body of t
 Sent when every single item in an upload has been queued for sync, including all children of folders in an upload. The body will contain the upload’s `request_id`.
 #### `FILE_READY`
 Sent after a file has been fully processed and added to Carbon.
+#### `FILE_SYNCING`
+Sent after a file transitions to the `SYNCING` sync status. The pre-signed URLs for both the plain text and original file will be available when this webhook is triggered.
 #### `FILE_ERROR`
 Sent if there was an error during the file processing stage. If an error occurred, the file is requeued for reprocessing
     up to three times.
