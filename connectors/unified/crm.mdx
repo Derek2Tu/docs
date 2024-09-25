@@ -1,16 +1,18 @@
 ---
-title: 'Salesforce'
+title: 'CRM'
+description: "Fetch unified data directly from CRM systems via a dedicated set of endpoints."
+
 --- 
 
-### Overview
+## Authentication
 
-Our platform now offers a new category of endpoints that provide unified data directly from third-party sources, starting with CRM systems and specifically Salesforce. This integration allows you to access Accounts, Contacts, Leads, and Opportunities data from Salesforce using a set of dedicated endpoints.
+To access these endpoints, you must first connect your CRM account through our OAuth URL (`/integrations/oauth_url`). No additional steps are required after authentication.
 
-### Endpoints
+## Endpoints
 
 #### List Endpoints (POST)
 
-The following endpoints are used to retrieve lists of data from Salesforce. These endpoints require a `data_source_id` and support various query parameters to customize the response.
+The following endpoints are used to retrieve lists of data from CRMs. These endpoints require a `data_source_id` and support various query parameters to customize the response.
 
 - **Accounts**: `/integrations/data/crm/accounts`
 - **Leads**: `/integrations/data/crm/leads`
@@ -19,26 +21,24 @@ The following endpoints are used to retrieve lists of data from Salesforce. Thes
 
 #### Get Endpoints
 
-These endpoints are used to retrieve specific data by ID from Salesforce. These endpoints also require a `data_source_id`.
+These endpoints are used to retrieve specific data by `id` (returned via List Endpoints) from your CRM. These endpoints also require a `data_source_id`.
 
 - **Account by ID**: `/integrations/data/crm/accounts/{id}`
 - **Lead by ID**: `/integrations/data/crm/leads/{id}`
 - **Contact by ID**: `/integrations/data/crm/contacts/{id}`
 - **Opportunity by ID**: `/integrations/data/crm/opportunities/{id}`
 
-### Authentication
+### Parameters
 
-To access these endpoints, you must first connect your Salesforce account through our OAuth URL. No additional steps are required after authentication.
+You can pass the following parameters with the List and Get Endpoints.
 
-### Query Parameters
-
-#### Common Parameters
+#### Shared Parameters
 
 - **`data_source_id`**: Required for all endpoints.
 - **`page_size`**: Integer value specifying the number of records to return per page. Minimum is 200, and maximum is 2000. Applicable on list endpoints.
 - **`next_cursor`**: String value used to retrieve the next set of results. Applicable on list endpoints.
 - **`includes`**: List of additional data to include in the response. Currently supports `Tasks` and `Attachments`.
-- **`include_remote_data`**: Boolean flag to include the raw data received from Salesforce in addition to our unified data.
+- **`include_remote_data`**: Boolean flag to include the raw data received from the specific CRM software in addition to our unified data.
 
 #### Filter and Ordering Parameters
 
@@ -81,9 +81,3 @@ Content-Type: application/json
   "include_remote_data": true
 }
 ```
-
-### Notes
-
-- Ensure you replace `your_data_source_id` with your actual data source ID.
-- The `filters`, `order_by`, and `order_dir` parameters must be used according to the object type you are querying. Refer to Salesforce documentation for valid fields and filter structures.
-- The `include_remote_data` parameter can significantly increase the response size. Use it judiciously based on your requirements.
