@@ -35,16 +35,16 @@ You can pass the following parameters with the List and Get Endpoints.
 #### Shared Parameters
 
 - **`data_source_id`**: Required for all endpoints.
-- **`page_size`**: Integer value specifying the number of records to return per page. Minimum is 200, and maximum is 2000. Applicable on list endpoints.
-- **`next_cursor`**: String value used to retrieve the next set of results. Applicable on list endpoints.
+- **`page_size`**: Integer value specifying the number of records to return per page. Minimum is 200, and maximum is 2000. Applicable on List Endpoints.
+- **`next_cursor`**: String value used to retrieve the next set of results. Applicable on List Endpoints.
 - **`includes`**: List of additional data to include in the response. Currently supports `Tasks` and `Attachments`.
-- **`include_remote_data`**: Boolean flag to include the raw data received from the specific CRM software in addition to our unified data.
+- **`include_remote_data`**: Boolean flag to include the raw data received from the specific CRM software (ie: Salesforce) in addition to our unified data.
 
 #### Filter and Ordering Parameters
 
-- **`filters`**: Object containing filter criteria. The structure and available filters vary by object type. Applicable on list endpoints.
-- **`order_by`**: Field to order the results by. Available fields vary by object type. Applicable on list endpoints.
-- **`order_dir`**: Direction of ordering, either `asc` or `desc`. Applicable on list endpoints.
+- **`filters`**: Object containing filter criteria. The structure and available filters vary by object type. Applicable on List Endpoints.
+- **`order_by`**: Field to order the results by. Available fields vary by object type. Applicable on List Endpoints.
+- **`order_dir`**: Direction of ordering, either `asc` or `desc`. Applicable on List endpoints.
 
 ### Example Usage
 
