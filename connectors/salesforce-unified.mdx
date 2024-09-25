@@ -1,0 +1,89 @@
+---
+title: 'Salesforce'
+--- 
+
+### Overview
+
+Our platform now offers a new category of endpoints that provide unified data directly from third-party sources, starting with CRM systems and specifically Salesforce. This integration allows you to access Accounts, Contacts, Leads, and Opportunities data from Salesforce using a set of dedicated endpoints.
+
+### Endpoints
+
+#### List Endpoints (POST)
+
+The following endpoints are used to retrieve lists of data from Salesforce. These endpoints require a `data_source_id` and support various query parameters to customize the response.
+
+- **Accounts**: `/integrations/data/crm/accounts`
+- **Leads**: `/integrations/data/crm/leads`
+- **Contacts**: `/integrations/data/crm/contacts`
+- **Opportunities**: `/integrations/data/crm/opportunities`
+
+#### Get Endpoints
+
+These endpoints are used to retrieve specific data by ID from Salesforce. These endpoints also require a `data_source_id`.
+
+- **Account by ID**: `/integrations/data/crm/accounts/{id}`
+- **Lead by ID**: `/integrations/data/crm/leads/{id}`
+- **Contact by ID**: `/integrations/data/crm/contacts/{id}`
+- **Opportunity by ID**: `/integrations/data/crm/opportunities/{id}`
+
+### Authentication
+
+To access these endpoints, you must first connect your Salesforce account through our OAuth URL. No additional steps are required after authentication.
+
+### Query Parameters
+
+#### Common Parameters
+
+- **`data_source_id`**: Required for all endpoints.
+- **`page_size`**: Integer value specifying the number of records to return per page. Minimum is 200, and maximum is 2000. Applicable on list endpoints.
+- **`next_cursor`**: String value used to retrieve the next set of results. Applicable on list endpoints.
+- **`includes`**: List of additional data to include in the response. Currently supports `Tasks` and `Attachments`.
+- **`include_remote_data`**: Boolean flag to include the raw data received from Salesforce in addition to our unified data.
+
+#### Filter and Ordering Parameters
+
+- **`filters`**: Object containing filter criteria. The structure and available filters vary by object type. Applicable on list endpoints.
+- **`order_by`**: Field to order the results by. Available fields vary by object type. Applicable on list endpoints.
+- **`order_dir`**: Direction of ordering, either `asc` or `desc`. Applicable on list endpoints.
+
+### Example Usage
+
+#### Retrieving a List of Accounts
+
+```json
+POST /integrations/data/crm/accounts HTTP/1.1
+Content-Type: application/json
+
+{
+  "data_source_id": "your_data_source_id",
+  "page_size": 500,
+  "includes": ["Tasks", "Attachments"],
+  "filters": {
+    "Name": {
+      "operator": "contains",
+      "value": "Example"
+    }
+  },
+  "order_by": "Name",
+  "order_dir": "asc",
+  "include_remote_data": true
+}
+```
+
+#### Retrieving a Specific Contact
+
+```json
+GET /integrations/data/crm/contacts/{id} HTTP/1.1
+Content-Type: application/json
+
+{
+  "data_source_id": "your_data_source_id",
+  "include_remote_data": true
+}
+```
+
+### Notes
+
+- Ensure you replace `your_data_source_id` with your actual data source ID.
+- The `filters`, `order_by`, and `order_dir` parameters must be used according to the object type you are querying. Refer to Salesforce documentation for valid fields and filter structures.
+- The `include_remote_data` parameter can significantly increase the response size. Use it judiciously based on your requirements.
