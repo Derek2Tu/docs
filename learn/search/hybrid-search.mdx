@@ -3,10 +3,14 @@ title: 'Hybrid Search'
 description: 'Learn how to enable hybrid search.'
 ---
 
-<Info>Please keep in mind hybrid search is slower than non-hybrid search. Unless required by your use case, we recommend not enabling hybrid search. For more details on the various search techniques, please reference this [article](https://carbon.ai/blog/hybrid-and-semantic-search).</Info>
-To enable hybrid search for a customer across a set of documents, follow these steps:
+[Hybrid search]("https://carbon.ai/blog/hybrid-and-semantic-search") is an advanced technique that combines the strengths of semantic search and keyword-based search to provide more accurate and comprehensive search results. This approach is particularly effective when dealing with diverse datasets or complex query requirements.
 
-### 1. Use the `/modify_user_configuration` endpoint
+<Info>Please keep in mind hybrid search is slower than non-hybrid search. Unless required by your use case, we recommend not enabling hybrid search. For more details on the various search techniques, please reference this [article](https://carbon.ai/blog/hybrid-and-semantic-search).</Info>
+
+### Implementing Hybrid Search in Carbon
+
+To enable hybrid search for a customer across a set of documents, follow these steps:
+#### 1. Use the `/modify_user_configuration` endpoint
 
 Send the following payload to enable sparse vectors for the customer:
 
@@ -19,18 +23,14 @@ Send the following payload to enable sparse vectors for the customer:
 }
 ```
 
-### 2. Generate Sparse Vectors for Content
+#### 2. Generate Sparse Vectors for Content
 
-_*For Files via API:*_ 
+_*For Files via API:*_ Set the query parameter `generate_sparse_vectors` to `true` in the API request body.
 
-Set the query parameter `generate_sparse_vectors` to `true` in the API request body.
-
-_*For Carbon Connect:*_ 
-
-[React Component](/react-component) (`v1.5.57` above required): Set `generateSparseVectors` to `TRUE` for each `enabledIntegrations`.
+_*For [Carbon Connect:](/react-component)*_ Set `generateSparseVectors` to `TRUE` for each `enabledIntegrations`.
 
 
-### 3. Enable hybrid search on `/embeddings` endpoint
+#### 3. Enable hybrid search on `/embeddings` endpoint
 
 To enable hybrid search, you must set the `hybrid_search` parameter in the `/embeddings` request body to `TRUE`. 
 
