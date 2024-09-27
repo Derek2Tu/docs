@@ -356,6 +356,19 @@
         "api-reference/endpoint/webhooks/webhook-urls",
         "api-reference/endpoint/webhooks/delete-webhook-url"
       ]
+    },
+    {
+      "group": "CRM",
+      "pages": [
+        "api-reference/endpoint/unified/crm/get-accounts",
+        "api-reference/endpoint/unified/crm/get-contacts",
+        "api-reference/endpoint/unified/crm/get-leads",
+        "api-reference/endpoint/unified/crm/get-opportunities",
+        "api-reference/endpoint/unified/crm/list-accounts",
+        "api-reference/endpoint/unified/crm/list-contacts",
+        "api-reference/endpoint/unified/crm/list-leads",
+        "api-reference/endpoint/unified/crm/list-opportunities"
+      ]
     }
   ],
   "analytics": {
