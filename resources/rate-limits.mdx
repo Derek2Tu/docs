@@ -17,55 +17,65 @@ Carbon's API enforces the following rate limits per tier:
 The rate limits apply to the following API endpoints:
 
 ### Tier 1 Endpoints
-- `/organization`
-- `/organization/create`
-- `/organization/update` 
-- `/organization/statistics`
-- `/user`
+
+| Endpoints |
+|-----------------------------|
+| `/organization`             |
+| `/organization/create`      | 
+| `/organization/update`      |
+| `/organization/statistics`  |
+| `/user`                     |
+
 
 ### Tier 2 Endpoints
-- `/fetch_youtube_transcript`
-- `/search_urls`
-- `/fetch_urls`
-- `/scrape_sitemap`
-- `/process_sitemap`
-- `/web_scrape`
-- `/webhooks`
-- `/add_webhook`
-- `/delete_webhook/{webhook_id}`
-- `/modify_user_configuration`
-- `/delete_users`
-- `/update_users`
-- `/integrations/{service}`
-- `/integrations/{service}/files`
-- `/integrations/connect`
-- `/integrations/items/sync`
-- `/integrations/items/sync/cancel`
-- `/integrations/confluence/list`
-- `/integrations/{service}/sync`
-- `/integrations/outlook/user_folders`
-- `/integrations//outlook/user_categories`
-- `/integrations/gmail/user_labels`
-- `/integrations/gitbook/spaces`
-- `/integrations/github/repos` 
-- `/integrations/github/sync_repos`
-- `/integrations/slack/conversations`
-- `/user_data_sources`
-- `/revoke_access_token`
-- `/checkout/create`
-- `/subscription/update`
 
-### Tier 3 Endpoints  
-- `/uploadfile`
-- `/upload_file_from_url`
-- `/upload_text`
-- `/delete_files_v2`
-- `/user_files_v2`
-- `/create_user_file_tags`
-- `/delete_user_file_tags`
-- `/resync_file`
-- `/integrations/oauth_url`
-- `/integrations/items/list`
-- `/integrations/files/sync`
+| Endpoints |
+|-----------------------------|
+| `/fetch_youtube_transcript` |
+| `/search_urls`|
+| `/fetch_urls`|
+| `/scrape_sitemap`|
+| `/process_sitemap`|
+| `/web_scrape`|
+| `/webhooks`|
+| `/add_webhook`|
+| `/delete_webhook/{webhook_id}`|
+| `/modify_user_configuration`|
+| `/delete_users`|
+| `/update_users`|
+| `/integrations/{service}`|
+| `/integrations/{service}/files` |
+| `/integrations/connect` |
+| `/integrations/items/sync` |
+| `/integrations/items/sync/cancel` |
+| `/integrations/confluence/list` |
+| `/integrations/{service}/sync` |
+| `/integrations/outlook/user_folders` |
+| `/integrations//outlook/user_categories` |
+| `/integrations/gmail/user_labels` |
+| `/integrations/gitbook/spaces` |
+| `/integrations/github/repos` |
+| `/integrations/github/sync_repos` |
+| `/integrations/slack/conversations` |
+| `/user_data_sources` |
+| `/revoke_access_token` |
+| `/checkout/create` |
+| `/subscription/update` |
+
+### Tier 3 Endpoints 
+
+| Endpoints |
+|-----------------------------|
+| `/uploadfile` |
+| `/upload_file_from_url` |
+| `/upload_text` |
+| `/delete_files_v2` |
+| `/user_files_v2` |
+| `/create_user_file_tags` |
+| `/delete_user_file_tags` |
+| `/resync_file` |
+| `/integrations/oauth_url` |
+| `/integrations/items/list` |
+| `/integrations/files/sync` |
 
 Requests that exceed the rate limits will receive a `429` Too Many Requests HTTP status code that specifies how many seconds to wait before making a new request. Ensure your application adheres to these rate limits to avoid being throttled.

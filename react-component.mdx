@@ -75,7 +75,7 @@ The `CarbonConnect` component accepts the following properties:
 | `filePickerMode`             | String         | No      |Specifies whether users can locally upload files, folders, or both. The options are `FILES`, `FOLDERS`, or `BOTH`.
 | `prependFilenameToChunks`| String | No | Adds the file title to each chunk. Defaults to `false`. 
 | `showFilesTab`| Boolean | No | Shows the synced files tab in Carbon Connect 2.0. Defaults to `true`. 
-| `useRequestIds`| String | No | A `request_id` will be assigned to the uploaded files in that session. 
+| `useRequestIds`| Boolean | No | A `request_id` will be assigned to the uploaded files in that session. 
 | `loadingIconColor`| String | No | Defines the color of the loader icon. This can be specified using standard CSS color names, or directly as either a Hexadecimal (Hex) code or RGB color values.
 | `sendDeletionWebhooks`| Boolean | No | When set to `true`, enables triggering a `FILE_DELETED` webhook event whenever a user deletes files within Carbon Connect. If set to `false`, deleting files will not generate any webhook notifications.
 | `fileSyncConfig`| Array  | No | Includes data source and file specific configurations.

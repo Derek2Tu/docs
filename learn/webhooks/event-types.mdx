@@ -6,74 +6,59 @@ description: "List of available webhooks"
 ## File Processing
 
 We currently support the following webhook events for file processing:
-#### `FILES_CREATED`
-Sent when a user queues up a file to be synced for the first time. The body of the webhook will contain a list of `file_ids` for files that were created in the same upload, and multiple events could fire for the same upload if a lot of files were queued.
-#### `ALL_UPLOADED_FILES_QUEUED`
-Sent when every single item in an upload has been queued for sync, including all children of folders in an upload. The body will contain the upload’s `request_id`.
-#### `FILE_READY`
-Sent after a file has been fully processed and added to Carbon.
-#### `FILE_SYNCING`
-Sent after a file transitions to the `SYNCING` sync status. The pre-signed URLs for both the plain text and original file will be available when this webhook is triggered.
-#### `FILE_ERROR`
-Sent if there was an error during the file processing stage. If an error occurred, the file is requeued for reprocessing
-    up to three times.
-#### `FILE_DELETED`
-Sent if a file has been successfully deleted.
-#### `RATE_LIMIT_ERROR`
-Sent if the organization has reached the rate limit for file processing. In this case, the file is requeued for reprocessing
-    up to three times.
-#### `FILE_SYNC_LIMIT_REACHED`
-Sent if a organization user attempts to upload files that would cause them to exceed the organization daily upload limit (2.5GB per day), max file limit, max file per upload limit.
-#### `SPARSE_VECTOR_GENERATION`
-Sent when the status of sparse vector generation for a document changes. The webhook payload includes an `embedded` field in the `additional_information` object called `sparse_vector_queue_status`. This field can have one of three possible values: `queued`, `aborted`, `failed`.
-#### `FILES_SKIPPED`
-Sent when file processing is skipped. The body of the webhook will contain a list of `file_ids` for files and a reason in `additional_information`.
+
+| Event | Description                           |
+| -------- | ------------------------------------- |
+|  `FILES_CREATED`    | Sent when a user queues up a file to be synced for the first time. The body of the webhook will contain a list of `file_ids` for files that were created in the same upload, and multiple events could fire for the same upload if a lot of files were queued.
+| `ALL_UPLOADED_FILES_QUEUED`     | Sent when every single item in an upload has been queued for sync, including all children of folders in an upload. The body will contain the upload’s `request_id`.                        |
+| `FILE_READY`   | Sent after a file has been fully processed and added to Carbon. |
+| `FILE_SYNCING` | Sent after a file transitions to the `SYNCING` sync status. The pre-signed URLs for both the plain text and original file will be available when this webhook is triggered.|
+| `FILE_ERROR` | Sent if there was an error during the file processing stage. If an error occurred, the file is requeued for reprocessing up to three times.|
+| `FILE_DELETED`|Sent if a file has been successfully deleted.|
+| `RATE_LIMIT_ERROR`|Sent if the organization has reached the rate limit for file processing. In this case, the file is requeued for reprocessing up to three times.|
+| `FILE_SYNC_LIMIT_REACHED`|Sent if a organization user attempts to upload files that would cause them to exceed the organization daily upload limit (2.5GB per day), max file limit, max file per upload limit.|
+| `SPARSE_VECTOR_GENERATION`|Sent when the status of sparse vector generation for a document changes. The webhook payload includes an `embedded` field in the `additional_information` object called `sparse_vector_queue_status`. This field can have one of three possible values: `queued`, `aborted`, `failed`.|
+| `FILES_SKIPPED`|Sent when file processing is skipped. The body of the webhook will contain a list of `file_ids` for files and a reason in `additional_information`.|
 
 ## Data Source Connections
 
 We currently support the following webhook events for managing user connections to data sources:
 
-#### `ADD` 
-This event is fired when a user connects a new account, when an access token is revoked and the user reconnects, and when a user initiates the "connect a new account" flow but connects to an already connected account.
-
-#### `UPDATE` 
-This event is fired when a user selects one or more files for a particular data source. This event is fired once per file selection confirmation, regardless of how many files are selected.
-
-#### `CANCEL` 
-This event is fired when a user cancels the authentication flow. It's important to note that this event cannot capture tab-close events, so directly closing a tab is not within our tracking capabilities.
-
-#### `REVOKE`
-This event is fired when a user’s access token is revoked via the `/revoke_access_token` endpoint or when Carbon receives a 401 Unauthorized from the data source using an expired or revoked access token.
+| Event | Description                           |
+| -------- | ------------------------------------- |
+| `ADD` |This event is fired when a user connects a new account, when an access token is revoked and the user reconnects, and when a user initiates the "connect a new account" flow but connects to an already connected account.|
+| `UPDATE`| This event is fired when a user selects one or more files for a particular data source. This event is fired once per file selection confirmation, regardless of how many files are selected.|
+| `CANCEL` | This event is fired when a user cancels the authentication flow. It's important to note that this event cannot capture tab-close events, so directly closing a tab is not within our tracking capabilities.|
+| `REVOKE` |This event is fired when a user’s access token is revoked via the `/revoke_access_token` endpoint or when Carbon receives a 401 Unauthorized from the data source using an expired or revoked access token.|
 
 ## Organization
 
 We currently support the following webhook events for organizations:
 
-#### `FILE_STATISTICS_AGGREGATED`
-This event is fired when the organization's request to refresh usage metrics is successfully processed.
 
-#### `CHECKUP`
-When Carbon sends a request to a webhook URL, it tracks the number of successful requests per minute (RPM). A request is considered successful if it satisfies the following criteria:
-1. Carbon is able to connect to the specified webhook URL.
-2. The request doesn't timeout (our current timeout is 8 seconds).
-
-If the number of unsuccessful RPMs exceeds a certain threshold, the webhook URL is flagged, and no further webhooks will be sent to that URL. The owner of the URL will also receive an email notification. Currently, the threshold for flagging a URL is set at 40 unsuccessful RPMs.
-
-To verify the health of a flagged URL, Carbon will periodically send health check events every 10 seconds. These events are of type `CHECKUP` and have an empty payload. If Carbon receives a successful response that meets the above criteria, the URL will be reactivated.
+| Event | Description                           |
+| -------- | ------------------------------------- |
+| `FILE_STATISTICS_AGGREGATED` |This event is fired when the organization's request to refresh usage metrics is successfully processed.|
+|  `CHECKUP` |When Carbon sends a request to a webhook URL, it tracks the number of successful requests per minute (RPM). A request is considered successful if it satisfies the following criteria: 1. Carbon is able to connect to the specified webhook URL. 2. The request doesn't timeout (our current timeout is 8 seconds). If the number of unsuccessful RPMs exceeds a certain threshold, the webhook URL is flagged, and no further webhooks will be sent to that URL. The owner of the URL will also receive an email notification. Currently, the threshold for flagging a URL is set at 40 unsuccessful RPMs. To verify the health of a flagged URL, Carbon will periodically send health check events every 10 seconds. These events are of type `CHECKUP` and have an empty payload. If Carbon receives a successful response that meets the above criteria, the URL will be reactivated.|
 
 ## Websites
-#### `WEBSCRAPE_URLS_READY`
-This event is fired when a specific web page from a web scrape request is finished processing.
-#### `WEBPAGE_ERROR`
-This event is fired when a `fetch_webpage` request failed. The webhook payload includes the corresponding webpage ID.
-#### `WEBPAGE_READY`
-This event is fired when a `fetch_webpage` request succeeded. The webhook payload includes the corresponding webpage ID.
+
+| Event | Description                           |
+| -------- | ------------------------------------- |
+| `WEBSCRAPE_URLS_READY`|This event is fired when a specific web page from a web scrape request is finished processing.|
+| `WEBPAGE_ERROR`|This event is fired when a `fetch_webpage` request failed. The webhook payload includes the corresponding webpage ID.|
+| `WEBPAGE_READY`|This event is fired when a `fetch_webpage` request succeeded. The webhook payload includes the corresponding webpage ID.|
+
+## User
+| Event | Description                           |
+| -------- | ------------------------------------- |
+|`ORGANIZATION_USER_DELETED`|This event is fired after we've deleted all the user's data (files, chunks and embeddings, data sources) and the user (`customer-id`) itself.|
 
 ## Cold Storage
-#### `MOVED_TO_COLD_STORAGE`
-This event is fired when a file is moved to cold storage.
-#### `MOVED_TO_HOT_STORAGE`
-This event is fired when a file is moved to hot storage.
+| Event | Description                           |
+| -------- | ------------------------------------- |
+| `MOVED_TO_COLD_STORAGE`|This event is fired when a file is moved to cold storage.|
+| `MOVED_TO_HOT_STORAGE`|This event is fired when a file is moved to hot storage.|
 
 
 ## Example Payload
