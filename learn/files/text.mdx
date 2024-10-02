@@ -10,6 +10,7 @@ Carbon supports the following text files formats:
 | -------- | ------------------------------------- |
 | `PDF`     | Carbon supports rich metadata such as document `author` and `title`. When chunking PDFs, we can return coordinates points so users can highlight specific blocks of text in the actual PDF document. |
 | `XLSX`     | Each row is split on its own line, and each element within the row has the header of its corresponding column added to it as a prefix. Our parser assumes that the first row and only the first row is the header. Images and charts aren't supported yet.                        |
+| `XLSM`     | Each row is split on its own line, and each element within the row has the header of its corresponding column added to it as a prefix. Our parser assumes that the first row and only the first row is the header. Images and charts aren't supported yet.                        |
 | `CSV`   | Every row is situated on an individual line, and each element within the row is prefixed with the header of its respective column. Our parser assumes that the first row and only the first row is the header. |
 | `DOCX`     | Text content is extracted and converted to plain text.  Images and charts aren't supported yet.                      |
 | `TXT`     | Text content is extracted and converted to plain text.                          |
