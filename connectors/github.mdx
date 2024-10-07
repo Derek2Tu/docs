@@ -55,6 +55,20 @@ curl --location 'https://api.carbon.ai/integrations/items/list' \
 
 Alternatively, you can use the pre-built Carbon Connect file picker to easily browse and sync files.
 
+### Step 5: Sync Additional GitHub Data (Optional)
+
+In addition to syncing files from repositories, you can fetch data directly from GitHub via the following endpoints:
+
+- `/pull_requests`: Lists all pull requests for a repository
+- `/pull_requests/{pull_number}`: Retrieves a specific pull request
+- `/pull_requests/comments`: Fetches comments on a pull request
+- `/pull_requests/files`: Retrieves files that were changed
+- `/pull_requests/commits`: Retrieves a list of commits on a pull request
+- `/issues`: Lists repository issues
+- `/issues/{issue_number}`: Retrieves a specific issue
+
+By default, we return responses with mappings applied, but there is an option to include the entire GitHub response on every endpoint (`include_remote_data`).
+
 
 ## Functionality 
 
