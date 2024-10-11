@@ -296,7 +296,15 @@
       "pages": [
         "api-reference/endpoint/data-sources/github-auth",
         "api-reference/endpoint/data-sources/list-repositories",
-        "api-reference/endpoint/data-sources/sync-repositories"
+        "api-reference/endpoint/data-sources/sync-repositories",
+        "api-reference/endpoint/unified/github/get-issue",
+        "api-reference/endpoint/unified/github/list-issues",
+        "api-reference/endpoint/unified/github/get-pull-request",
+        "api-reference/endpoint/unified/github/list-pull-requests",
+        "api-reference/endpoint/unified/github/retrieve-commits",
+        "api-reference/endpoint/unified/github/retrieve-files",
+        "api-reference/endpoint/unified/github/retrieve-comments"
+
       ]
     },
     {
