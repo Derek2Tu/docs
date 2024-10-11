@@ -19,7 +19,7 @@ We currently support the following webhook events for file processing:
 | `FILE_SYNC_LIMIT_REACHED`|Sent if a organization user attempts to upload files that would cause them to exceed the organization daily upload limit (2.5GB per day), max file limit, max file per upload limit.|
 | `SPARSE_VECTOR_GENERATION`|Sent when the status of sparse vector generation for a document changes. The webhook payload includes an `embedded` field in the `additional_information` object called `sparse_vector_queue_status`. This field can have one of three possible values: `queued`, `aborted`, `failed`.|
 | `FILES_SKIPPED`|Sent when file processing is skipped. The body of the webhook will contain a list of `file_ids` for files and a reason in `additional_information`.|
-
+| `ALL_FILES_PROCESSED`| Sent when all files in an upload have moved into the `READY`, `SYNC_ERROR`, `READY_TO_SYNC`, or `RATE_LIMITED` status. It includes the `request_id` as the sent object and the `upload_id` as additional information.
 ## Data Source Connections
 
 We currently support the following webhook events for managing user connections to data sources:
