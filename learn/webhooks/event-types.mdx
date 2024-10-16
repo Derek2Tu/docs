@@ -9,8 +9,8 @@ We currently support the following webhook events for file processing:
 
 | Event | Description                           |
 | -------- | ------------------------------------- |
-|  `FILES_CREATED`    | Sent when a user queues up a file to be synced for the first time. The body of the webhook will contain a list of `file_ids` for files that were created in the same upload, and multiple events could fire for the same upload if a lot of files were queued.
-| `ALL_UPLOADED_FILES_QUEUED`     | Sent when every single item in an upload has been queued for sync, including all children of folders in an upload. The body will contain the upload’s `request_id`.                        |
+|  `FILES_CREATED`    | Sent when a user queues up a file to be synced for the first time. The body of the webhook will contain a list of `file_ids` for files that were created in the same upload, and multiple events could fire for the same upload if a lot of files were queued. The body will contain the upload’s `request_id` and `upload_id`.|
+| `ALL_UPLOADED_FILES_QUEUED`     | Sent when every single item in an upload has been queued for sync, including all children of folders in an upload. The body will contain the upload’s `request_id` and `upload_id`. |
 | `FILE_READY`   | Sent after a file has been fully processed and added to Carbon. |
 | `FILE_SYNCING` | Sent after a file transitions to the `SYNCING` sync status. The pre-signed URLs for both the plain text and original file will be available when this webhook is triggered.|
 | `FILE_ERROR` | Sent if there was an error during the file processing stage. If an error occurred, the file is requeued for reprocessing up to three times.|
@@ -19,7 +19,7 @@ We currently support the following webhook events for file processing:
 | `FILE_SYNC_LIMIT_REACHED`|Sent if a organization user attempts to upload files that would cause them to exceed the organization daily upload limit (2.5GB per day), max file limit, max file per upload limit.|
 | `SPARSE_VECTOR_GENERATION`|Sent when the status of sparse vector generation for a document changes. The webhook payload includes an `embedded` field in the `additional_information` object called `sparse_vector_queue_status`. This field can have one of three possible values: `queued`, `aborted`, `failed`.|
 | `FILES_SKIPPED`|Sent when file processing is skipped. The body of the webhook will contain a list of `file_ids` for files and a reason in `additional_information`.|
-| `ALL_FILES_PROCESSED`| Sent when all files in an upload have moved into the `READY`, `SYNC_ERROR`, `READY_TO_SYNC`, or `RATE_LIMITED` status. It includes the `request_id` as the sent object and the `upload_id` as additional information.
+| `ALL_FILES_PROCESSED`| Sent when all files in an upload have moved into the `READY`, `SYNC_ERROR`, `READY_TO_SYNC`, or `RATE_LIMITED` status. The body will contain the upload’s `request_id` and `upload_id`. |
 ## Data Source Connections
 
 We currently support the following webhook events for managing user connections to data sources:
