@@ -366,6 +366,15 @@
       ]
     },
     {
+      "group": "White Labeling",
+      "pages": [
+        "api-reference/endpoint/white-label/list",
+        "api-reference/endpoint/white-label/update",
+        "api-reference/endpoint/white-label/delete",
+        "api-reference/endpoint/white-label/create"
+      ]
+    },
+    {
       "group": "CRM",
       "pages": [
         "api-reference/endpoint/unified/crm/get-accounts",

@@ -17,6 +17,39 @@ description: "Carbon allows for complete white-labeling of our product."
     
 - Hosting the success page on your own subdomain (ie: `data.example.com`) versus on `api.carbon.ai`. Minimal set-up effort is required here — all you need is to add a CNAME record for your custom subdomain and point it to entri.carbon.ai.
 
+### Implementation
+
+<Note> Carbon will encrypt client secrets in our database, but return them unencrypted in the API responses. </Note>
+
+If white-labeling is enabled for your organization, you can directly manage your OAuth credentials for white-labeling via the following endpoints:
+- `/white_label/create`: Add OAuth credentials to white label data sources.
+- `/white_label/delete`: Delete credentials for white-labeled data sources.
+- `/white_label/update`: Update credentials for a white-labeled data source.
+- `/white_label/update`: List credentials for white-labeled data sources.
+
+Below is a list of data sources that can be white-labeling:
+- NOTION
+- GOOGLE_DRIVE
+- BOX
+- ONEDRIVE
+- SHAREPOINT
+- INTERCOM
+- SLACK
+- ZENDESK
+- OUTLOOK
+- GMAIL
+- SERVICENOW
+- SALESFORCE
+- ZOTERO
+- CONFLUENCE
+- DROPBOX
+- GOOGLE_CLOUD_STORAGE
+- GONG
+
+For all these data source types, `client_id` and `redirect_uri` are required credentials. `client_secret` is optional for those who want to create data source with access tokens obtained outside of Carbon. For data source specific credentials:
+- Google Drive takes an `api_key` optionally for those who want to use Google’s file picker
+- OneDrive and Sharepoint take a `file_picker_client_id` and `file_picker_redirect_uri` for those who want to use Microsoft’s file picker.
+
 ### Contact Us
 
 Reach out to us at team@carbon.ai to set this up.
