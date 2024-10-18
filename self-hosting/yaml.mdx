@@ -3,9 +3,11 @@ title: 'Manage Environment Variables'
 description: 'Environment variables for the Carbon self-hosting application to be passed as a `yaml` file.'
 ---
 
-The `config.yaml` file is a configuration file that stores all the environment variables for the application. It can have multiple environments such as dev, prod, etc. Each environment should be placed under a key with the name of the environment, and the key must be at the top level of the file. The environment that is used is determined by the `global_env` key-value pair (e.g. `global_env: dev`). It’s important to note that the variables in this file are converted into environment variables. Essentially, every key-value pair at the leaf level is extracted. The key becomes the key of the environment variable in all caps, and the value remains the same.
+The `config.yaml` file is a configuration file that stores all the environment variables for the application. This file should be placed at the root of the `/app` directory. It can have multiple environments such as dev, prod, etc. Each environment should be placed under a key with the name of the environment, and the key must be at the top level of the file. The environment that is used is determined by the `global_env` key-value pair (e.g. `global_env: dev`). It’s important to note that the variables in this file are converted into environment variables. Essentially, every key-value pair at the leaf level is extracted. The key becomes the key of the environment variable in all caps, and the value remains the same.
 
-Example: The `microsoft_file_picker_client_id` variable under `prod.data_connects.onedrive` would be converted to the env variable: `MICROSOFT_CLIENT_FILE_PICKER_CLIENT_ID=test_id_here`.
+_*Example:*_ The `microsoft_file_picker_client_id` variable under `prod.data_connects.onedrive` would be converted to the env variable: `MICROSOFT_CLIENT_FILE_PICKER_CLIENT_ID=test_id_here`.
+
+<Note> You can also pass these variables in as an `.env` file or simply as regular environment variables. </Note>
 
 ```yaml
 global_env: prod
