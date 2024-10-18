@@ -1,0 +1,212 @@
+---
+title: 'Managing Environment Variables'
+description: 'Environment variables for the Carbon self-hosting application to be passed as a `yaml` file.'
+---
+
+The `config.yaml` file is a configuration file that stores all the environment variables for the application. It can have multiple environments such as dev, prod, etc. Each environment should be placed under a key with the name of the environment, and the key must be at the top level of the file. The environment that is used is determined by the `global_env` key-value pair (e.g. `global_env: dev`). It’s important to note that the variables in this file are converted into environment variables. Essentially, every key-value pair at the leaf level is extracted. The key becomes the key of the environment variable in all caps, and the value remains the same.
+
+Example: The `microsoft_file_picker_client_id` variable under `prod.data_connects.onedrive` would be converted to the env variable: `MICROSOFT_CLIENT_FILE_PICKER_CLIENT_ID=test_id_here`.
+
+```yaml
+global_env: prod
+prod:
+  general:
+    env: '' # local, dev, or prod
+    data_source_encryption_key: ''
+    hash_bearer_token: '' # true or false
+    api_hostname: ''
+    auth_access_token_secret: ''
+    auth_refresh_token_secret: ''
+    disable_api: '' # true or false
+    disable_background_processes: '' # true or false
+    disable_resync: '' # true or false
+    disable_textract: '' # true or false
+    queue_backend: '' # Queue backend (PUBSUB , SQS, or ElasticMQ)
+    use_custom_queue: '' # If using a custom queue, provide the path to the file it's implemented in.
+    carbon_webhook_signing_key: '' # for testing carbon webhooks
+    disable_rate_limits: '' # true or false
+  storage:
+    storage_backend: '' # Storage backend (S3, S3-compatible, GCS, or local)
+    storage_endpoint_url: '' # only relevant for S3-compatible storage
+    storage_access_key_id: '' # only relevant for S3-compatible storage
+    storage_secret_access_key: '' # only relevant for S3-compatible storage
+    storage_tls: '' # only relevant for S3-compatible storage (true or false)
+    storage_sse: '' # only relevant for S3-compatible storage (true or false)
+  logging:
+    better_exceptions: 1
+    log_json_format: '' # whether to log as JSON or not (true or false)
+    log_level: '' # INFO or DEBUG
+    no_logging: '' # true or false
+  db:
+    db_host: ''
+    db_host_reader: ''
+    db_name: ''
+    db_name_reader: ''
+    db_password: ''
+    db_password_reader: ''
+    db_port: ''
+    db_port_reader: ''
+    db_schema: ''
+    db_schema_reader: ''
+    db_user: ''
+    db_user_reader: ''
+    instance_db_pool_overflow: ''
+    instance_db_pool_size: ''
+  redis:
+    # only redis_db and redis_host are requried
+    redis_db: ''
+    redis_host: ''
+    redis_password: ''
+    redis_port: ''
+  vector_db:
+    qdrant_api_key: ''
+    qdrant_bm25_collection_name: ''
+    qdrant_cohere_multilingual_v3_collection_name: ''
+    qdrant_collection_name: ''
+    qdrant_openai_ada_large_1024_collection_name: ''
+    qdrant_openai_ada_large_256_collection_name: ''
+    qdrant_openai_ada_large_3072_collection_name: ''
+    qdrant_openai_ada_small_1536_collection_name: ''
+    qdrant_openai_ada_small_512_collection_name: ''
+    qdrant_solar_1_mini_collection_name: ''
+    qdrant_url: ''
+    qdrant_vertex_multimodal_collection_name: ''
+  s3_buckets:
+    rss_feeds_bucket: ''
+    s3_cold_storage_bucket: ''
+    s3_config_bucket: ''
+    s3_customer_files_bucket: ''
+    s3_dictionary_and_tfidf_bucket: ''
+  gcs_buckets:
+    gcs_customer_videos_bucket: ''
+  queues:
+    # only required if using sqs
+    sqs_all_uploaded_files_queued_webhook_queue: ''
+    sqs_bm25_queue: ''
+    sqs_cold_storage_webhook_queue: ''
+    sqs_cold_to_hot_storage_queue: ''
+    sqs_customer_files_queue: ''
+    sqs_data_source_actions_webhook_queue: ''
+    sqs_data_source_ready_webhook_queue: ''
+    sqs_delete_files_queue: ''
+    sqs_delete_files_v2_queue: ''
+    sqs_delete_users_queue: ''
+    sqs_external_api_customer_files_queue: ''
+    sqs_external_api_dropbox_queue: ''
+    sqs_external_api_emails_queue: ''
+    sqs_external_api_help_center_queue: ''
+    sqs_external_api_onedrive_queue: ''
+    sqs_external_source_items_queue: ''
+    sqs_fetch_user_webpages_queue: ''
+    sqs_file_deleted_webhook_queue: ''
+    sqs_file_error_webhook_queue: ''
+    sqs_file_sync_limit_reached_webhook_queue: ''
+    sqs_file_syncing_webhook_queue: ''
+    sqs_files_created_webhook_queue: ''
+    sqs_google_drive_queue: ''
+    sqs_notion_rate_limit_queue: ''
+    sqs_organization_user_deleted_webhook_queue: ''
+    sqs_rate_limit_error_webhook_queue: ''
+    sqs_raw_text_uploads_queue: ''
+    sqs_video_uploads_queue: ''
+    sqs_webhook_queue: ''
+    sqs_webpage_webhooks_queue: ''
+    sqs_webscrape_batch_queue: ''
+    sqs_webscrape_queue: ''
+    sqs_zotero_queue: ''
+    sqs_all_files_processed_webhook_queue: ''
+  pubsub:
+    # only required if using pubsub instead of sqs
+    pubsub_project_id: ''
+    pubsub_topic: ''
+  embedding_models:
+    cohere:
+      cohere_api_key: ''
+    openai:
+      azure_openai_ada_large_deployment_id: ''
+      azure_openai_ada_small_deployment_id: ''
+      azure_openai_api_base: ''
+      azure_openai_api_key: ''
+      azure_openai_deployment_id: ''
+      azure_openai_v3_api_base: ''
+      azure_openai_v3_api_key: ''
+      default_ada_large_1024_model: ''
+      default_ada_large_256_model: ''
+      default_ada_large_3072_model: ''
+      default_ada_small_1536_model: ''
+      default_ada_small_512_model: ''
+      default_query_text_embedding_model: ''
+      openai_accepted_latency_seconds: ''
+      openai_api_key: ''
+    jina:
+      jina_api_key: ''
+    solar:
+      solar_api_key: ''
+  data_connectors:
+    atlassian:
+      atlassian_client_id: ''
+      atlassian_client_secret: ''
+    box:
+      box_client_id: ''
+      box_client_secret: ''
+    dropbox:
+      alt_2_dropbox_app_key: ''
+      alt_2_dropbox_app_secret: ''
+      alt_dropbox_app_key: ''
+      alt_dropbox_app_secret: ''
+      dropbox_app_key: ''
+      dropbox_app_secret: ''
+    gmail:
+      gmail_client_id: ''
+      gmail_client_secret: ''
+    google:
+      google_api_key: ''
+      google_client_id: ''
+      google_client_secret: ''
+      google_redirect_uri: ''
+    google_cloud_storage:
+      google_cloud_storage_api_key: ''
+      google_cloud_storage_client_id: ''
+      google_cloud_storage_client_secret: ''
+    intercom:
+      intercom_client_id: ''
+      intercom_client_secret: ''
+    notion:
+      notion_client_id: ''
+      notion_client_secret: ''
+      notion_redirect_uri: ''
+    one_drive:
+      microsoft_file_picker_client_id: ''
+      onedrive_client_id: ''
+      onedrive_client_secret: ''
+    salesforce:
+      salesforce_client_id: ''
+      salesforce_client_secret: ''
+      salesforce_verifier: ''
+    slack:
+      slack_client_id: ''
+      slack_client_secret: ''
+    zendesk:
+      zendesk_app_subdomain: ''
+      zendesk_client_id: ''
+      zendesk_client_secret: ''
+    zotero:
+      zotero_client_key: ''
+      zotero_client_secret: ''
+    gong:
+      gong_client_id: ''
+      gong_client_secret: ''
+  data_processors:
+    apify:
+      apify_actor_id: ''
+      apify_api_key: ''
+      apify_api_key_for_resync: ''
+      default_apify_account_max_ram: ''
+    sauce_labs:
+      sauce_labs_access_key: ''
+      sauce_labs_region: ''
+      sauce_labs_username: ''
+    assemblyai_api_key: ''
+    deepgram_api_key: ''
+    metaphor_api_key: ''
+```
