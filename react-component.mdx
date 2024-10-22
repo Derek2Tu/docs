@@ -86,6 +86,9 @@ The `CarbonConnect` component accepts the following properties:
 | `dataSourcePollingInterval` | Number | No | Specifies how frequently data sources are polled for any updates and events. The value is specified in milliseconds (ms) and the minimum allowed value for this property is 3000 ms. Defaults to 8000 ms.
 | `openFilesTabTo` | String | No | Specifies which tab (`FILE_PICKER` or `FILES_LIST`) the user is taken to by default when they select an integration. Only applies when customer has enabled Carbon’s in-house file picker.
 | `apiURL` | String | No | Defaults to https://api.carbon.ai but can be set to another URL value. For self-hosting customers, this URL value then acts as the base path for all of the requests made through Carbon Connect.
+| `dataSourceTags` | String| No | Key-value pairs that will be added to all data sources connected through Carbon Connect as custom metadata. Example: `{{"userId": "swapnil@carbon.ai"}}`
+| `dataSourceTagsFilterQuery` | String | No| This parameter filters for tags when querying data sources. It functions similarly to our documented file filters. If not provided, all data sources will be returned. Example: `{{"key": "userId", "value": "swapnil@carbon.ai"}}`
+
 
 When you do not pass `open` or `setOpen`, Carbon Connect will manage the open state internally. If you pass `open` and `setOpen`, you will have to manage the open state yourself.
 
