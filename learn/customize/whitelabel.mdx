@@ -50,6 +50,22 @@ For all these data source types, `client_id` and `redirect_uri` are required cre
 - Google Drive takes an `api_key` optionally for those who want to use Google’s file picker
 - OneDrive and Sharepoint take a `file_picker_client_id` and `file_picker_redirect_uri` for those who want to use Microsoft’s file picker.
 
+### Custom Scopes 
+
+With white-labeling, you can also specify custom scopes to request from the OAuth provider through the `/integrations/oauth_url` endpoint. These custom scopes will be used as entered, rather than being combined with the default scopes requested by Carbon.
+
+The scopes must be provided as an array. For example:
+
+```json
+"scopes": [
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/drive.readonly"
+]
+```
+
+Additionally, Carbon Connect (version `3.0.26` and above) also supports custom scopes. This property, called `scopes`, must be set at the integration level and can only be an array.
+
 ### Contact Us
 
 Reach out to us at team@carbon.ai to set this up.
