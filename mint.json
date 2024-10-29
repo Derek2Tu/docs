@@ -294,6 +294,12 @@
       ]
     },
     {
+      "group": "SharePoint",
+      "pages": [
+        "api-reference/endpoint/data-sources/list-sites"
+      ]
+    },
+    {
       "group": "GitHub",
       "pages": [
         "api-reference/endpoint/data-sources/github-auth",
