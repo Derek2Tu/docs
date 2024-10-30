@@ -1,8 +1,8 @@
 ---
-title: 'Self-Hosting Setup'
+title: 'Post-Deployment Setup'
 ---
 
-### Activation
+### License Key Activation
 
 All self-hosted Carbon environments require a unique license key to run. Separate license keys *must* be used for separate environments. To generate a new license key, you must first obtain a registration key from Carbon. License keys can then be generated with the following request:
 ```bash
@@ -35,3 +35,14 @@ curl --request POST \
 }'
 ```
 Note that you should only delete a license key if it is *no longer associated* with a Carbon deployment.
+
+### Making API Requests
+
+All core functions in Carbon require an API key to be included in API requests. API keys are tied to organizations. Following this, all API requests require an organization. So, before making any requests to Carbon (save for requests to `/health`), you must first create at least one organization. There are two ways to do this.
+1. The Carbon image includes a script in the work directory (`/app`) called `create_org.py`. If you run `python3 create_org.py`, you'll be presented with a series of questions regarding the organization you want to create. Upon answering them, an organization will be created and the corresponding API key will be presented to you.
+2. If you don't want to (or can't) directly interact with the Carbon image, you can create an organization directly from within your Postgres database. To do so, run the following sql command from the `carbon` db:
+```sql
+set search_path to carbon;
+select * from carbon.gen_api_key_v3('<ORGANIZATION_NAME>', '<ORGANIZATION_EMAIL>', '<ORGANIZATION_OWNER_FIRST_NAME>', '<ORGANIZATION_OWNER_LAST_NAME>');
+```
+Replace all placeholders in brackets with real values. This query will create an organization, and the response will include the corresponding API key.
