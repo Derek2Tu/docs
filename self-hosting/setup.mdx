@@ -1,0 +1,37 @@
+---
+title: 'Self-Hosting Setup'
+---
+
+### Activation
+
+All self-hosted Carbon environments require a unique license key to run. Separate license keys *must* be used for separate environments. To generate a new license key, you must first obtain a registration key from Carbon. License keys can then be generated with the following request:
+```bash
+curl --request POST \
+  --url https://api.carbon.ai/registration/register \
+  --header 'Content-Type: application/json' \
+  --header 'Registration-Key: <REGISTRATION_KEY>' \
+  --data '{
+  "license_key_name": "<NAME_OF_LICENSE_KEY>"
+}'
+```
+Here, `<REGISTRATION_KEY>` is your registration key, and `<NAME_OF_LICENSE_KEY>` is a unique name for your license key. Once you have a license key, to use it in your Carbon deployment, set the environment variable `LICENSE_KEY=<KEY>`, where `<KEY>` is the key obtained from the above request. Without this environment variable, Carbon will fail to run.
+
+To list existing license keys for a given registration key, you can make the following request:
+```bash
+curl --request GET \
+  --url https://api.carbon.ai/registration/licenses \
+  --header 'Content-Type: application/json' \
+  --header 'Registration-Key: <REGISTRATION_KEY>'
+```
+
+Finally, to delete a license key, make the following request:
+```bash
+curl --request POST \
+  --url https://api.carbon.ai/registration/unregister \
+  --header 'Content-Type: application/json' \
+  --header 'Registration-Key: <REGISTRATION_KEY>' \
+  --data '{
+  "license_key_name": "<NAME_OF_LICENSE_KEY>"
+}'
+```
+Note that you should only delete a license key if it is *no longer associated* with a Carbon deployment.
