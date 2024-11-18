@@ -95,7 +95,8 @@
             "connectors/confluence",
             "connectors/gitbook",
             "connectors/salesforce",
-            "connectors/guru"
+            "connectors/guru",
+            "connectors/document360"
           ]
         },
         {
