@@ -1,0 +1,43 @@
+---
+title: 'Document360'
+description: 'The Carbon Connect `enabledIntegrations` value for Document360 is `DOCUMENT360`.'
+---
+
+## Authorization Type
+
+Document360 uses [access token authentication](`https://apidocs.document360.com/apidocs/api-token`) to connect to Document360. 
+
+Then you'll need to POST the credentials to `/integrations/document360`.
+
+## Configuration 
+
+#### Generating the Document360 access token.
+
+1. Log into the knowledge base portal.
+2. Navigate to Settings → Knowledge base portal → API tokens.
+3. The API tokens overview page appears with the list of the already generated tokens (if any).
+4. Click on the "New API token" button.
+5. Enter the token name, select the Allowed method(s) (GET, POST, PUT, DELETE) you want to allow for the token, and click on the Generate button.
+6. The generated token appears in the list below.
+7. Click on the copy button to copy the token to the clipboard.
+
+![](https://cdn.document360.io/2b5c503e-f283-4987-b5a8-2b71b454ecec/Images/Documentation/Screenshot-Api_Token_Created.png)
+
+## Functionality
+
+You can choose which Document360 Project versions (Workspaces), Categories, and Articles to sync with Carbon. 
+
+Specific items can be listed and synced with the global endpoints `/integrations/items/list` and `/integrations/files/sync` respectively.
+
+## Synchronization
+You can use the `resync_file` API endpoint to programmatically resync specific Document360 items.
+
+To sync Document360 files on a 24-hour schedule (_more frequent schedules available upon request_), you can use the `/update_users` endpoint. This endpoint allows organizations to customize syncing settings according to their requirements, with the option to enable syncing for all data sources using the string 'ALL'. It's important to note that each request supports up to 100 customer IDs.
+
+Here's an example illustrating how to automatically enable syncing for updated Document360 content for specified users:
+
+```
+{
+    "customer_ids": ["team@carbon.ai", "sam@openai.com"],
+    "auto_sync_enabled_sources": ["DOCUMENT360"]
+} 
