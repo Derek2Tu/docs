@@ -10,8 +10,8 @@ _*Example:*_ The `microsoft_file_picker_client_id` variable under `prod.data_con
 <Note> You can also pass these variables in as an `.env` file or simply as regular environment variables. </Note>
 
 ```yaml
-global_env: prod
-prod:
+global_env: dev
+dev:
   general:
     env: '' # local, dev, or prod
     data_source_encryption_key: ''
@@ -23,20 +23,30 @@ prod:
     disable_background_processes: '' # true or false
     disable_resync: '' # true or false
     disable_textract: '' # true or false
-    queue_backend: '' # Queue backend (PUBSUB , SQS, or ElasticMQ)
+    queue_backend: '' # Queue backend (PUBSUB , SQS, ElasticMQ, or NATS)
+    send_emails: '' # Control whether to send emails or not (true or false). Defaults to true.
     use_custom_queue: '' # If using a custom queue, provide the path to the file it's implemented in.
+    vertex_service_account_key: '' # For local dev
     carbon_webhook_signing_key: '' # for testing carbon webhooks
     disable_rate_limits: '' # true or false
+    disable_protected_routes: '' # default true, can be set to false to enable certain routes in a safe env
+    disable_autosync_service: '' # default false, can be set to true to disable autosyncing files from 3rd party connectors
+  request_timeouts:
+    default_request_timeout: 7 # used for all requests made to external APIs and URLs by default
+    web_scrape_request_timeout: 60 # used for requests made to apify during web scrape
+    <data_source_name>_request_timeout: 7 # used to customise request timeout for specific data sources. Replace data_source_name with actual name, for example notion_request_timeout and google_drive_request_timeout
   storage:
-    storage_backend: '' # Storage backend (S3, S3-compatible, GCS, or local)
+    storage_backend: '' # Storage backend (S3, S3-compatible, GCS, Azure, or local)
     storage_endpoint_url: '' # only relevant for S3-compatible storage
     storage_access_key_id: '' # only relevant for S3-compatible storage
     storage_secret_access_key: '' # only relevant for S3-compatible storage
     storage_tls: '' # only relevant for S3-compatible storage (true or false)
     storage_sse: '' # only relevant for S3-compatible storage (true or false)
+    azure_storage_account_url: '' # only relevant for Azure storage
+    gcs_service_account_email: '' # required if using GCP with a service account
   logging:
     better_exceptions: 1
-    log_json_format: '' # whether to log as JSON or not (true or false)
+    log_json_format: '' # true or false
     log_level: '' # INFO or DEBUG
     no_logging: '' # true or false
   db:
@@ -117,10 +127,26 @@ prod:
     sqs_webscrape_queue: ''
     sqs_zotero_queue: ''
     sqs_all_files_processed_webhook_queue: ''
+    sqs_external_api_slack_queue: ''
+    # Dedicated autosync queues can optionally be created for all third party connectors. 
+    # The naming convention for env variables will be appending _autosync to the original queue.
+    # For example autosync queue for sqs_external_api_dropbox_queue will be sqs_external_api_dropbox_queue_autosync
+    sqs_external_api_customer_files_queue_autosync: ''
+    sqs_external_api_dropbox_queue_autosync: ''
+    sqs_external_api_emails_queue_autosync: ''
+    sqs_external_api_help_center_queue_autosync: ''
+    sqs_external_api_onedrive_queue_autosync: ''
+    sqs_google_drive_queue_autosync: ''
+    sqs_notion_rate_limit_queue_autosync: ''
+    sqs_external_api_slack_queue_autosync: ''
   pubsub:
     # only required if using pubsub instead of sqs
     pubsub_project_id: ''
     pubsub_topic: ''
+  nats:
+    # only required if using nats instead of sqs
+    nats_connection_string: ''
+    use_jetstream: '' # true or false
   embedding_models:
     cohere:
       cohere_api_key: ''
@@ -145,6 +171,7 @@ prod:
     solar:
       solar_api_key: ''
   data_connectors:
+    protect_default_oauth_access_tokens: ''
     atlassian:
       atlassian_client_id: ''
       atlassian_client_secret: ''
@@ -159,9 +186,27 @@ prod:
       dropbox_app_key: ''
       dropbox_app_secret: ''
     gmail:
+      alt_3_gmail_client_id: ''
+      alt_3_gmail_client_secret: ''
+      alt_2_gmail_client_id: ''
+      alt_2_gmail_client_secret: ''
+      alt_gmail_client_id: ''
+      alt_gmail_client_secret: ''
       gmail_client_id: ''
       gmail_client_secret: ''
     google:
+      google_alt_2_api_key: ''
+      google_alt_2_client_id: ''
+      google_alt_2_client_secret: ''
+      google_alt_3_api_key: ''
+      google_alt_3_client_id: ''
+      google_alt_3_client_secret: ''
+      google_alt_4_api_key: ''
+      google_alt_4_client_id: ''
+      google_alt_4_client_secret: ''
+      google_alt_api_key: ''
+      google_alt_client_id: ''
+      google_alt_client_secret: ''
       google_api_key: ''
       google_client_id: ''
       google_client_secret: ''
@@ -199,6 +244,13 @@ prod:
       gong_client_id: ''
       gong_client_secret: ''
   data_processors:
+    apify:
+      apify_actor_id: ''
+      apify_api_key: ''
+      apify_api_key_for_resync: ''
+      default_apify_account_max_ram: ''
+      apify_slack_alerts_token: ''
+      apify_slack_alerts_channel: ''
     sauce_labs:
       sauce_labs_access_key: ''
       sauce_labs_region: ''
@@ -206,4 +258,27 @@ prod:
     assemblyai_api_key: ''
     deepgram_api_key: ''
     metaphor_api_key: ''
+    youtube_transcript_proxy: ''
+  loops:
+    loops_api_key: ''
+  paigo:
+    paigo_chars_stored_dimension_id: ''
+    paigo_chars_synced_dimension_id: ''
+    paigo_client_id: ''
+    paigo_client_secret: ''
+    paigo_embedding_dimension_id: ''
+  stripe:
+    stripe_api_key: ''
+    stripe_bytes_uploaded_event_name: ''
+    stripe_characters_synced_event_name: ''
+    stripe_pages_ocr_scanned_event_name: ''
+    stripe_urls_scraped_event_name: ''
+  supabase:
+    supabase_host: ''
+    supabase_name: ''
+    supabase_password: ''
+    supabase_port: ''
+    supabase_service_key: ''
+    supabase_url: ''
+    supabase_user: ''
 ```
